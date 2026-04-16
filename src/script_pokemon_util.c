@@ -358,7 +358,7 @@ void SetTeraType(struct ScriptContext *ctx)
  * if side/slot are assigned, it will create the mon at the assigned party location
  * if slot == PARTY_SIZE, it will give the mon to first available party or storage slot
  */
-static u32 ScriptGiveMonParameterized(u8 side, u8 slot, u16 species, u8 level, enum Item item, enum PokeBall ball, u8 nature, u8 abilityNum, u8 gender, u16 *evs, u16 *ivs, enum Move *moves, enum ShinyMode shinyMode, bool8 gmaxFactor, enum Type teraType, u8 dmaxLevel)
+static u32 ScriptGiveMonParameterized(u8 side, u8 slot, u16 species, u8 level, enum Item item, enum PokeBall ball, u8 nature, u8 abilityNum, u8 gender, const u16 *evs, const u16 *ivs, const enum Move *moves, enum ShinyMode shinyMode, bool8 gmaxFactor, enum Type teraType, u8 dmaxLevel)
 {
     struct Pokemon mon;
     u32 i;
@@ -487,6 +487,74 @@ u32 ScriptGiveMon(u16 species, u8 level, enum Item item)
     }
 
     return GiveScriptedMonToPlayer(&mon, PARTY_SIZE);
+}
+
+static u32 GiveMonSet(u16 species)
+{
+    u32 i;
+    enum Item item;
+    u8 nature;
+    u8 abilityNum;
+    u16 evs[NUM_STATS];
+    u16 ivs[NUM_STATS];
+    enum Move moves[MAX_MON_MOVES];
+
+    item = gPokemonSets[species].item;
+    if (item >= ITEMS_COUNT)
+        item = ITEM_NONE;
+
+    nature = gPokemonSets[species].nature;
+    if (nature >= NUM_NATURES)
+        nature = NATURE_RANDOM;
+
+    abilityNum = NUM_ABILITY_PERSONALITY;
+    if (gPokemonSets[species].ability != ABILITY_NONE)
+    {
+        abilityNum = CheckMonAbilitySlot(species, gPokemonSets[species].ability);
+        if (abilityNum >= NUM_ABILITY_SLOTS || GetAbilityBySpecies(species, abilityNum) == ABILITY_NONE)
+            abilityNum = NUM_ABILITY_PERSONALITY;
+    }
+
+    for (i = 0; i < NUM_STATS; i++)
+    {
+        evs[i] = gPokemonSets[species].evs[i];
+        ivs[i] = gPokemonSets[species].ivs[i];
+
+        if (evs[i] > MAX_PER_STAT_EVS)
+            evs[i] = MAX_PER_STAT_EVS;
+        if (ivs[i] > MAX_PER_STAT_IVS)
+            ivs[i] = MAX_PER_STAT_IVS;
+    }
+
+    for (i = 0; i < MAX_MON_MOVES; i++)
+    {
+        u16 move = gPokemonSets[species].moves[i];
+
+        if (move == MOVE_NONE || move == MOVE_DEFAULT || move < MOVES_COUNT)
+            moves[i] = move;
+        else
+            moves[i] = MOVE_DEFAULT;
+    }
+
+    return ScriptGiveMonParameterized(0, PARTY_SIZE, species, MAX_LEVEL,
+    item, BALL_POKE, nature,
+    abilityNum, MON_GENDER_RANDOM,
+    evs, ivs, moves, FALSE, FALSE, NUMBER_OF_MON_TYPES, 0);
+}
+
+void ScrCmd_givemonset(struct ScriptContext *ctx)
+{
+    u16 species = VarGet(ScriptReadHalfword(ctx));
+
+    Script_RequestEffects(SCREFF_V1 | SCREFF_SAVE);
+
+    if (species == SPECIES_NONE || species >= NUM_SPECIES || !DoesSpeciesHaveSet(species))
+    {
+        gSpecialVar_Result = MON_CANT_GIVE;
+        return;
+    }
+
+    gSpecialVar_Result = GiveMonSet(species);
 }
 
 #define PARSE_FLAG(n, default_) (flags & (1 << (n))) ? VarGet(ScriptReadHalfword(ctx)) : (default_)

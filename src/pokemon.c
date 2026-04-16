@@ -103,6 +103,7 @@ EWRAM_DATA static u8 sTriedEvolving = 0;
 EWRAM_DATA u16 gFollowerSteps = 0;
 
 #include "data/abilities.h"
+#include "data/pokemon/pokemon_sets.h"
 
 // Used in an unreferenced function in RS.
 // Unreferenced here and in FRLG.
@@ -7358,6 +7359,47 @@ enum Type GetTeraTypeFromPersonality(struct Pokemon *mon)
     return (GetMonData(mon, MON_DATA_PERSONALITY) & 0x1) == 0 ? types[0] : types[1];
 }
 
+bool32 DoesSpeciesHaveSet(u16 species)
+{
+    return (gPokemonSets[species].moves[0] > MOVE_POUND && gPokemonSets[species].ability > ABILITY_NONE) || species == SPECIES_EGG;
+}
+
+u32 CheckMonAbilitySlot(u16 species, const u16 ability)
+{
+    for (u8 i = 0; i < NUM_ABILITY_SLOTS; i++)
+    {
+        if (gSpeciesInfo[species].abilities[i] == ability)
+            return i;
+    }
+    return FALSE;
+}
+
+u32 CanMonLearnMove(u16 species, const u16 move)
+{
+    const struct LevelUpMove *learnset = GetSpeciesLevelUpLearnset(species);
+    const u16 * eggMoveLearnset = GetSpeciesEggMoves(species);
+    u16 j;
+
+    // Check teachable up moves
+    if (CanLearnTeachableMove(species, move))
+        return TRUE;
+
+    // Check level up moves
+    for (j = 0; learnset[j].move != LEVEL_UP_MOVE_END; j++)
+    {
+        if (move == learnset[j].move)
+            return TRUE;
+    }
+
+    // Check level up moves
+    for (j = 0; eggMoveLearnset[j] != MOVE_UNAVAILABLE; j++)
+    {
+        if (move == eggMoveLearnset[j])
+            return TRUE;
+    }
+    return FALSE;
+}
+
 struct Pokemon *GetSavedPlayerPartyMon(u32 index)
 {
     return &gSaveBlock1Ptr->playerParty[index];
@@ -7420,6 +7462,7 @@ u32 GiveScriptedMonToPlayer(struct Pokemon *mon, u8 slot)
     }
     if (sentToPc != MON_CANT_GIVE)
     {
+        FlagSet(FLAG_SYS_POKEMON_GET);
         HandleSetPokedexFlagFromMon(mon, FLAG_SET_SEEN);
         HandleSetPokedexFlagFromMon(mon, FLAG_SET_CAUGHT);
     }

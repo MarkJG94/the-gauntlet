@@ -38,7 +38,7 @@ static u32 NoFilter(struct BoxPokemon *boxmon);
 static u32 IsNotEgg(struct BoxPokemon *boxmon);
 static u32 IsMatchingSpecies(struct BoxPokemon *boxmon);
 static u32 CanMonDeleteMove(struct BoxPokemon *boxmon);
-static u32 CanMonLearnMove(struct BoxPokemon *boxmon);
+static u32 CanBoxMonLearnMove(struct BoxPokemon *boxmon);
 static u32 CanRelearnMoves(struct BoxPokemon *boxmon);
 
 static const struct PcMonSelection sPcMonSelectionTypes[] =
@@ -46,7 +46,7 @@ static const struct PcMonSelection sPcMonSelectionTypes[] =
     [SELECT_PC_MON_NORMAL] = {ChoosePartyMon, NoFilter, NULL, FALSE},
     [SELECT_PC_MON_TRADE] = {ChoosePartyMon, IsMatchingSpecies, NULL, FALSE},
     [SELECT_PC_MON_DAYCARE] = {ChooseSendDaycareMon, IsNotEgg, NULL, TRUE},
-    [SELECT_PC_MON_MOVE_TUTOR] = {ChooseMonForMoveTutor, CanMonLearnMove, MoveTutor_AfterChooseBoxMon, FALSE},
+    [SELECT_PC_MON_MOVE_TUTOR] = {ChooseMonForMoveTutor, CanBoxMonLearnMove, MoveTutor_AfterChooseBoxMon, FALSE},
     [SELECT_PC_MON_MOVE_DELETER] = {ChoosePartyMon, CanMonDeleteMove, NULL, FALSE},
     [SELECT_PC_MON_MOVE_RELEARNER] = {ChooseMonForMoveRelearner, CanRelearnMoves, NULL, FALSE}
 };
@@ -88,7 +88,7 @@ static u32 CanMonDeleteMove(struct BoxPokemon *boxmon)
     return VALID_MON;
 }
 
-static u32 CanMonLearnMove(struct BoxPokemon *boxmon)
+static u32 CanBoxMonLearnMove(struct BoxPokemon *boxmon)
 {
     if (GetBoxMonData(boxmon, MON_DATA_IS_EGG))
         return CANNOT_LEARN_MOVE_IS_EGG;
@@ -194,7 +194,7 @@ s32 LearnMove(const struct MoveLearnUI *ui, u8 taskId)
         GetBoxMonNickname(boxmon, gStringVar1);
         StringCopy(gStringVar2, GetMoveName(move));
         gSpecialVar_Result = FALSE;
-        switch (CanMonLearnMove(boxmon))
+        switch (CanBoxMonLearnMove(boxmon))
         {
         case VALID_MON:
             return LEARN_MOVE;

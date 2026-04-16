@@ -904,6 +904,10 @@ LittlerootTown_EventScript_GiveRunningShoes::
 	delay 30
 	return
 
+LittlerootTown_EventScript_GetPokemonFromCodeEntry::
+	goto EventScript_GetPokemonFromCodeEntry
+	end
+
 LittlerootTown_Text_OurNewHomeLetsGoInside:
 	.string "MOM: {PLAYER}, we're here, honey!\p"
 	.string "It must be tiring riding with our things\n"
@@ -1014,3 +1018,5 @@ LittlerootTown_Text_BirchSomethingToShowYouAtLab:
 	.string "I have something to show you.\n"
 	.string "Let's go to my LAB.$"
 
+LittlerootTown_Text_WhatMonWouldYouLike:
+    .string "What POKéMON would you like?\n"

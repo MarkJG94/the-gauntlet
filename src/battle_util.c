@@ -5665,6 +5665,9 @@ u32 GetBattleMoveTarget(enum Move move, enum MoveTarget moveTarget)
 
 enum Obedience GetAttackerObedienceForAction(void)
 {
+    // Custom gameplay rule: all Pokemon always obey regardless of level/badges.
+    return OBEYS;
+
     s32 rnd;
     s32 calc;
     u8 obedienceLevel = 0;
