@@ -531,6 +531,8 @@
 #define FLAG_UNUSED_0x1E2                    0x1E2 // Unused Flag
 #define FLAG_UNUSED_0x1E3                    0x1E3 // Unused Flag
 
+#define FLAG_GAUNTLET_ENTRANCE_DOLL_MOVED    FLAG_UNUSED_0x1DE
+
 // Mystery Gift Flags (Unknown)
 #define FLAG_MYSTERY_GIFT_DONE               0x1E4
 #define FLAG_MYSTERY_GIFT_1                  0x1E5

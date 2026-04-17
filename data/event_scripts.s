@@ -1819,3 +1819,9 @@ Text_PleaseVisitAgain:
 	.include "data/scripts/dexnav.inc"
 	.include "data/scripts/battle_frontier.inc"
 	.include "data/scripts/apricorn_tree.inc"
+
+	.include "data/maps/MarksCastle/scripts.inc"
+
+	.include "data/maps/GauntletEntrance/scripts.inc"
+
+	.include "data/maps/TheDrop/scripts.inc"
