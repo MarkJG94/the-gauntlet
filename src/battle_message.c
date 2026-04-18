@@ -3074,6 +3074,8 @@ static const u8 *BattleStringGetOpponentClassByTrainerId(u16 trainerId)
 {
     const u8 *toCpy;
 
+    const u8 *customTitle;
+
     if (gBattleTypeFlags & BATTLE_TYPE_SECRET_BASE)
         toCpy = gTrainerClasses[GetSecretBaseTrainerClass()].name;
     else if (trainerId == TRAINER_UNION_ROOM)
@@ -3089,7 +3091,14 @@ static const u8 *BattleStringGetOpponentClassByTrainerId(u16 trainerId)
     else if (gBattleTypeFlags & BATTLE_TYPE_EREADER_TRAINER)
         toCpy = gTrainerClasses[GetEreaderTrainerClassId()].name;
     else
-        toCpy = gTrainerClasses[GetTrainerClassFromId(trainerId)].name;
+    {
+        // Check for custom trainer title first, fall back to class name
+        customTitle = GetCustomTrainerTitle(trainerId);
+        if (customTitle != NULL)
+            toCpy = customTitle;
+        else
+            toCpy = gTrainerClasses[GetTrainerClassFromId(trainerId)].name;
+    }
 
     return toCpy;
 }

@@ -5786,6 +5786,10 @@ u16 GetBattleBGM(void)
     {
         enum TrainerClassID trainerClass;
 
+        if (!(gBattleTypeFlags & (BATTLE_TYPE_FRONTIER | BATTLE_TYPE_TRAINER_HILL))
+            && TRAINER_BATTLE_PARAM.opponentA == TRAINER_YUKI_ABYSS)
+            return MUS_VS_REGI;
+
         if (gBattleTypeFlags & BATTLE_TYPE_FRONTIER)
             trainerClass = GetFrontierOpponentClass(TRAINER_BATTLE_PARAM.opponentA);
         else if (gBattleTypeFlags & BATTLE_TYPE_TRAINER_HILL)

@@ -3025,10 +3025,16 @@ bool8 ScrCmd_buffertrainerclassname(struct ScriptContext *ctx)
 {
     u8 stringVarIndex = ScriptReadByte(ctx);
     enum TrainerClassID trainerClassId = VarGet(ScriptReadHalfword(ctx));
+    const u8 *customTitle;
 
     Script_RequestEffects(SCREFF_V1);
 
-    StringCopy(sScriptStringVars[stringVarIndex], GetTrainerClassNameFromId(trainerClassId));
+    // Check for custom trainer title first, fall back to class name if not set
+    customTitle = GetCustomTrainerTitle(trainerClassId);
+    if (customTitle != NULL)
+        StringCopy(sScriptStringVars[stringVarIndex], customTitle);
+    else
+        StringCopy(sScriptStringVars[stringVarIndex], GetTrainerClassNameFromId(trainerClassId));
     return FALSE;
 }
 

@@ -368,9 +368,13 @@ static u32 ScriptGiveMonParameterized(u8 side, u8 slot, u16 species, u8 level, e
     CreateMon(&mon, species, level, personality, OTID_STRUCT_PLAYER_ID);
 
     // shininess
-    if (shinyMode == SHINY_MODE_ALWAYS || (P_FLAG_FORCE_SHINY != 0 && FlagGet(P_FLAG_FORCE_SHINY)))
+    if (shinyMode == SHINY_MODE_ALWAYS)
         isShiny = TRUE;
-    else if (shinyMode == SHINY_MODE_NEVER || (P_FLAG_FORCE_NO_SHINY != 0 && FlagGet(P_FLAG_FORCE_NO_SHINY)))
+    else if (shinyMode == SHINY_MODE_NEVER)
+        isShiny = FALSE;
+    else if (P_FLAG_FORCE_SHINY != 0 && FlagGet(P_FLAG_FORCE_SHINY))
+        isShiny = TRUE;
+    else if (P_FLAG_FORCE_NO_SHINY != 0 && FlagGet(P_FLAG_FORCE_NO_SHINY))
         isShiny = FALSE;
     else
         isShiny = GetMonData(&mon, MON_DATA_IS_SHINY);
@@ -539,7 +543,7 @@ static u32 GiveMonSet(u16 species)
     return ScriptGiveMonParameterized(0, PARTY_SIZE, species, MAX_LEVEL,
     item, BALL_POKE, nature,
     abilityNum, MON_GENDER_RANDOM,
-    evs, ivs, moves, FALSE, FALSE, NUMBER_OF_MON_TYPES, 0);
+    evs, ivs, moves, SHINY_MODE_NEVER, FALSE, NUMBER_OF_MON_TYPES, 0);
 }
 
 void ScrCmd_givemonset(struct ScriptContext *ctx)

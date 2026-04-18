@@ -14155,7 +14155,7 @@ IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 
 
 === TRAINER_YUKI_ABYSS ===
-Name: YUKI
+Name: Yuki
 Class: Leader
 Pic: Leader Roxanne
 Gender: Female
@@ -14168,6 +14168,7 @@ Shiny: Yes
 Ability: Cursed Body
 IVs: 0 Atk
 EVs: 252 SpA / 4 SpD / 252 Spe
+Level: 100
 Timid Nature
 - Dazzling Gleam
 - Dark Pulse

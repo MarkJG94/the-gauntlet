@@ -284,6 +284,9 @@ static inline const u8 *GetTrainerClassNameFromId(u16 trainerId)
     return gTrainerClasses[GetTrainerClassFromId(trainerId)].name;
 }
 
+// Forward declaration for custom trainer title lookup
+const u8 *GetCustomTrainerTitle(u16 trainerId);
+
 static inline const u8 *GetTrainerNameFromId(u16 trainerId)
 {
     if (trainerId > TRAINER_PARTNER(PARTNER_NONE))
