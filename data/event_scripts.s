@@ -1825,3 +1825,5 @@ Text_PleaseVisitAgain:
 	.include "data/maps/GauntletEntrance/scripts.inc"
 
 	.include "data/maps/TheDrop/scripts.inc"
+
+	.include "data/maps/TheAbyss/scripts.inc"

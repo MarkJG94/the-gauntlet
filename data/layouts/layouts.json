@@ -9353,6 +9353,16 @@
       "secondary_tileset": "gTileset_MirageTower",
       "border_filepath": "data/layouts/TheDrop/border.bin",
       "blockdata_filepath": "data/layouts/TheDrop/map.bin"
+    },
+    {
+      "id": "LAYOUT_THE_ABYSS",
+      "name": "TheAbyss_Layout",
+      "width": 15,
+      "height": 60,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_BattlePyramid",
+      "border_filepath": "data/layouts/TheAbyss/border.bin",
+      "blockdata_filepath": "data/layouts/TheAbyss/map.bin"
     }
   ]
 }

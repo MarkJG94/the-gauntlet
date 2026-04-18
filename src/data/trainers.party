@@ -14153,47 +14153,77 @@ Mudkip
 Level: 15
 IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 
-=== TRAINER_ROXANNE_2 ===
-Name: ROXANNE
+
+=== TRAINER_YUKI_ABYSS ===
+Name: YUKI
 Class: Leader
 Pic: Leader Roxanne
 Gender: Female
 Music: Female
-Items: Full Restore / Full Restore / Full Restore
 Double Battle: Yes
-AI: Basic Trainer
+AI: Smart Trainer / Prediction / Double Battle
 
-Golem
-Level: 32
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+Gengar (F) @ Gengarite
+Shiny: Yes
+Ability: Cursed Body
+IVs: 0 Atk
+EVs: 252 SpA / 4 SpD / 252 Spe
+Timid Nature
+- Dazzling Gleam
+- Dark Pulse
+- Shadow Ball
 - Protect
-- Rollout
-- Magnitude
-- Explosion
 
-Kabuto @ Sitrus Berry
-Level: 35
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Swords Dance
-- Ice Beam
-- Surf
-- Rock Slide
+Zapdos-Galar @ Mental Herb
+Ability: Defiant
+Tera Type: Fighting
+EVs: 252 Atk / 4 SpD / 252 Spe
+Jolly Nature
+- Tailwind
+- Taunt
+- Close Combat
+- Brave Bird
 
-Onix
-Level: 35
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Iron Tail
-- Explosion
-- Roar
-- Rock Slide
+Ceruledge (F) @ Life Orb
+Ability: Flash Fire
+Tera Type: Fire
+EVs: 252 Atk / 4 SpD / 252 Spe
+Jolly Nature
+- Bitter Blade
+- Brick Break
+- Poltergeist
+- Psycho Cut
 
-Nosepass @ Sitrus Berry
-Level: 37
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Double Team
-- Explosion
+Swampert (F) @ Leftovers
+Ability: Damp
+Tera Type: Water
+EVs: 252 HP / 252 Atk / 4 SpD
+Adamant Nature
+- Earthquake
+- Liquidation
+- Knock Off
+- Counter
+
+Pachirisu (M) @ Sitrus Berry
+Ability: Volt Absorb
+Tera Type: Electric
+EVs: 252 HP / 4 SpD / 252 Spe
+Jolly Nature
+- Follow Me
+- Nuzzle
+- Volt Switch
 - Protect
-- Rock Slide
+
+Toxtricity-Low-Key (F) @ Air Balloon
+Ability: Punk Rock
+Tera Type: Electric
+EVs: 252 HP / 252 SpA / 4 SpD
+Modest Nature
+IVs: 0 Atk
+- Boomburst
+- Overdrive
+- Snarl
+- Psychic Noise
 
 === TRAINER_ROXANNE_3 ===
 Name: ROXANNE

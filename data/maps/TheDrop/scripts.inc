@@ -1,6 +1,11 @@
 TheDrop_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, TheDrop_OnTransition
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, TheDrop_OnFrame
 	.byte 0
+
+TheDrop_OnTransition::
+	setholewarp MAP_THE_ABYSS, 7, 58
+	end
 
 TheDrop_OnFrame::
 	map_script_2 VAR_TEMP_0, 0, TheDrop_EventScript_EntranceCutscene
@@ -40,4 +45,5 @@ TheDrop_Movement_PlayerStepForward:
 	step_end
 
 TheDrop_Text_NoWayOut:
-	.string "There is no way out. Good luck.$"
+	.string "There is only one way out.\p" 
+    .string "Good luck.$"

@@ -802,8 +802,12 @@ void SetWarpDestinationToFixedHoleWarp(s16 x, s16 y)
 {
     if (IsDummyWarp(&sFixedHoleWarp) == TRUE)
         sWarpDestination = gLastUsedWarp;
-    else
+    // Preserve existing behavior for scripts that call setholewarp with only a map
+    // (which stores coords as 0,0), but allow explicit coord overrides when non-zero.
+    else if (sFixedHoleWarp.x == 0 && sFixedHoleWarp.y == 0)
         SetWarpDestination(sFixedHoleWarp.mapGroup, sFixedHoleWarp.mapNum, WARP_ID_NONE, x, y);
+    else
+        SetWarpDestination(sFixedHoleWarp.mapGroup, sFixedHoleWarp.mapNum, WARP_ID_NONE, sFixedHoleWarp.x, sFixedHoleWarp.y);
 }
 
 static void SetWarpDestinationToContinueGameWarp(void)
