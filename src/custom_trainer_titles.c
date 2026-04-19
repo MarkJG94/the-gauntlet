@@ -9,21 +9,32 @@
 
 static const u16 sCustomTitlesTrainerIds[] = {
     TRAINER_YUKI_ABYSS,
+    TRAINER_OLLIE_ABYSS,
+    TRAINER_CAS_ABYSS,
+    TRAINER_SMITH_ABYSS,
 };
 
-static const u8 sCustomTitleKrustyKrabOwner[] = _("Krusty Krab Owner");
+static const u8 sCustomTitleWitchOfRuin[] = _("Witch of Ruin"); // Yuki
+static const u8 sCustomTitleHeliosCaptain[] = _("Helios Captain"); // Ollie
+static const u8 sCustomTitleCertifiedBug[] = _("Certified Bug"); // Cas
+static const u8 sCustomTitleStarshipLeader[] = _("Starship Leader"); // Smith
+
 
 static const u8 *sCustomTitles[] = {
-    sCustomTitleKrustyKrabOwner,
+    sCustomTitleWitchOfRuin,
+    sCustomTitleHeliosCaptain,
+    sCustomTitleCertifiedBug,
+    sCustomTitleStarshipLeader,
 };
 
 const u8 *GetCustomTrainerTitle(u16 trainerId)
 {
     u32 i;
+    u16 sanitizedTrainerId = SanitizeTrainerId(trainerId);
     
     for (i = 0; i < ARRAY_COUNT(sCustomTitlesTrainerIds); i++)
     {
-        if (sCustomTitlesTrainerIds[i] == trainerId)
+        if (sCustomTitlesTrainerIds[i] == sanitizedTrainerId)
             return sCustomTitles[i];
     }
     

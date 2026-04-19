@@ -81,61 +81,279 @@ Gender: Male
 Music: Male
 Double Battle: No
 
-=== TRAINER_SAWYER_1 ===
-Name: SAWYER
-Class: Hiker
-Pic: Hiker
+=== TRAINER_YUKI_ABYSS ===
+Name: Yuki
+Class: Leader
+Pic: Magma Grunt F
+Gender: Female
+Music: Suspicious
+Double Battle: Yes
+AI: Smart Trainer / Prediction / Double Battle / Force Setup First Turn / Smart Tera / Check Viability
+
+Gengar (F) @ Gengarite
+Shiny: Yes
+Ability: Cursed Body
+IVs: 0 Atk
+EVs: 252 SpA / 4 SpD / 252 Spe
+Timid Nature
+- Dazzling Gleam
+- Dark Pulse
+- Shadow Ball
+- Protect
+
+Zapdos-Galar @ Mental Herb
+Ability: Defiant
+Tera Type: Fighting
+EVs: 252 Atk / 4 SpD / 252 Spe
+Jolly Nature
+- Tailwind
+- Taunt
+- Close Combat
+- Brave Bird
+
+Ceruledge (F) @ Life Orb
+Ability: Flash Fire
+Tera Type: Fire
+EVs: 252 Atk / 4 SpD / 252 Spe
+Jolly Nature
+- Bitter Blade
+- Brick Break
+- Poltergeist
+- Psycho Cut
+
+Swampert (F) @ Leftovers
+Ability: Damp
+Tera Type: Water
+EVs: 252 HP / 252 Atk / 4 SpD
+Adamant Nature
+- Earthquake
+- Liquidation
+- Knock Off
+- Counter
+
+Pachirisu (M) @ Sitrus Berry
+Ability: Volt Absorb
+Tera Type: Electric
+EVs: 252 HP / 4 SpD / 252 Spe
+Jolly Nature
+- Follow Me
+- Nuzzle
+- Volt Switch
+- Protect
+
+Toxtricity-Low-Key (F) @ Air Balloon
+Ability: Punk Rock
+Tera Type: Electric
+EVs: 252 HP / 252 SpA / 4 SpD
+Modest Nature
+IVs: 0 Atk
+- Boomburst
+- Overdrive
+- Snarl
+- Psychic Noise
+
+=== TRAINER_OLLIE_ABYSS ===
+Name: Ollie
+Class: Rich Boy
+Pic: Rich Boy
 Gender: Male
-Music: Hiker
-Double Battle: No
-AI: Basic Trainer
+Music: Male
+Double Battle: Yes
+AI: Smart Trainer / Prediction / Double Battle / Smart Tera
 
-Geodude
-Level: 21
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Sandshrew @ Focus Sash
+Ability: Sand Rush
+Level: 1
+Tera Type: Ground
+EVs: 252 HP / 252 Atk / 4 SpD
+Adamant Nature
+- Endeavor
+- Leech Life
+- Protect
+- Knock Off
 
-=== TRAINER_GRUNT_AQUA_HIDEOUT_1 ===
-Name: GRUNT
-Class: Team Aqua
-Pic: Aqua Grunt M
+Blastoise @ Choice Specs
+Ability: Rain Dish
+IVs: 0 Atk
+EVs: 252 HP / 252 SpA / 4 SpD
+Modest Nature
+- Blizzard
+- Water Spout
+- Dark Pulse
+- Surf
+
+Dratini @ Eviolite
+Ability: Shed Skin
+EVs: 252 HP / 252 SpD / 4 Spe
+Careful Nature
+- Aqua Jet
+- Rain Dance
+- Light Screen
+- Protect
+
+Sceptile @ Sitrus Berry
+Ability: Unburden
+EVs: 252 Atk / 4 SpD / 4 Spe
+Adamant Nature
+- Acrobatics
+- Protect
+- Leaf Blade
+- Crunch
+
+Lapras @ Leftovers
+Ability: Water Absorb
+IVs: 0 Atk
+EVs: 252 HP / 4 SpA / 252 SpD
+Calm Nature
+- Perish Song
+- Protect
+- Chilling Water
+- Alluring Voice
+
+Gengar @ Gengarite
+Ability: Cursed Body
+IVs: 0 Atk
+EVs: 252 SpA / 4 SpD / 252 Spe
+Timid Nature
+- Protect
+- Dazzling Gleam
+- Sludge Wave
+- Shadow Ball
+
+=== TRAINER_SMITH_ABYSS ===
+Name: Smith
+Class: Rich Boy
+Pic: Palace Maven Spenser
 Gender: Male
-Music: Aqua
+Music: Suspicious
 Double Battle: No
-AI: Check Bad Move
+AI: Basic Trainer / Check Bad Move / Ace Pokemon / Smart Tera / Check Viability / Force Setup First Turn
 
-Poochyena
-Level: 32
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Surskit @ Focus Sash
+Level: 1
+Ability: Swift Swim
+EVs: 36 HP / 20 Def / 196 SpA / 20 SpD / 236 Spe
+IVs: 0 Atk
+Timid Nature
+- Sticky Web
+- Endeavor
+- Protect
+- Quick Attack
 
-=== TRAINER_GRUNT_AQUA_HIDEOUT_2 ===
-Name: GRUNT
-Class: Team Aqua
-Pic: Aqua Grunt M
-Gender: Male
-Music: Aqua
+Lunatone @ Colbur Berry
+Ability: Levitate
+EVs: 4 Def / 252 SpA / 252 Spe
+Timid Nature
+- Psychic
+- Earth Power
+- Ice Beam
+- Stealth Rock
+
+Blaziken @ Life Orb
+Ability: Speed Boost
+EVs: 252 Atk / 4 Def / 252 Spe
+IVs: 31 HP / 31 Atk / 30 Def / 30 SpA / 31 SpD / 31 Spe
+Naughty Nature
+- Flare Blitz
+- Protect
+- High Jump Kick
+- Hidden Power
+
+Mudkip @ Eviolite
+Ability: Torrent
+EVs: 252 HP / 252 Def / 4 SpD
+Relaxed Nature
+- Stealth Rock
+- Scald
+- Earthquake
+- Ice Punch
+
+Salamence @ Life Orb
+Ability: Intimidate
+EVs: 252 SpA / 4 SpD / 252 Spe
+Timid Nature
+- Draco Meteor
+- Fire Blast
+- Hydro Pump
+- Tailwind
+
+Metagross @ Metagrossite
+Ability: Clear Body
+EVs: 252 Atk / 4 SpD / 252 Spe
+Jolly Nature
+- Zen Headbutt
+- Meteor Mash
+- Hammer Arm
+- Ice Punch
+
+=== TRAINER_CAS_ABYSS ===
+Name: Cas
+Class: Bug Catcher
+Pic: Cooltrainer F
+Gender: Female
+Music: Intense
 Double Battle: No
-AI: Check Bad Move
+AI: Basic Trainer / Check Bad Move / Ace Pokemon / Smart Tera / Check Viability
 
-Zubat
-Level: 31
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Dustox @ Black Sludge
+Ability: Shield Dust
+EVs: 248 HP / 8 Def / 252 SpD
+Careful Nature
+- U-turn
+- Roost
+- Protect
+- Toxic
 
-Carvanha
-Level: 31
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Floatzel @ Choice Band
+Ability: Water Veil
+EVs: 252 Atk / 4 Def / 252 Spe
+Tera Type: Water
+Jolly Nature
+- Wave Crash
+- Flip Turn
+- Aqua Jet
+- Ice Spinner
 
-=== TRAINER_GRUNT_AQUA_HIDEOUT_3 ===
-Name: GRUNT
-Class: Team Aqua
-Pic: Aqua Grunt M
-Gender: Male
-Music: Aqua
-Double Battle: No
-AI: Check Bad Move
+Kirlia @ Eviolite
+Ability: Trace
+EVs: 4 Def / 252 SpA / 252 Spe
+IVs: 0 Atk
+Tera Type: Fairy
+Timid Nature
+- Moonblast
+- Psychic
+- Trick
+- Healing Wish
 
-Zubat
-Level: 32
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Staraptor @ Choice Scarf
+Ability: Reckless
+EVs: 252 Atk / 4 Def / 252 Spe
+Tera Type: Flying
+Jolly Nature
+- Brave Bird
+- Quick Attack
+- Close Combat
+- U-turn
+
+Sceptile @ Life Orb
+Ability: Overgrow
+EVs: 252 Atk / 4 SpD / 252 Spe
+Tera Type: Ground
+Jolly Nature
+- Swords Dance
+- Leaf Blade
+- Earthquake
+- Rock Slide
+
+Manectric @ Manectite
+Ability: Lightning Rod
+EVs: 252 SpA / 4 SpD / 252 Spe
+IVs: 31 HP / 0 Atk / 30 Def / 31 SpA / 31 SpD / 31 Spe
+Timid Nature
+- Volt Switch
+- Thunderbolt
+- Overheat
+- Hidden Power
 
 === TRAINER_GRUNT_AQUA_HIDEOUT_4 ===
 Name: GRUNT
@@ -14152,79 +14370,6 @@ IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
 Mudkip
 Level: 15
 IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
-
-
-=== TRAINER_YUKI_ABYSS ===
-Name: Yuki
-Class: Leader
-Pic: Leader Roxanne
-Gender: Female
-Music: Female
-Double Battle: Yes
-AI: Smart Trainer / Prediction / Double Battle
-
-Gengar (F) @ Gengarite
-Shiny: Yes
-Ability: Cursed Body
-IVs: 0 Atk
-EVs: 252 SpA / 4 SpD / 252 Spe
-Level: 100
-Timid Nature
-- Dazzling Gleam
-- Dark Pulse
-- Shadow Ball
-- Protect
-
-Zapdos-Galar @ Mental Herb
-Ability: Defiant
-Tera Type: Fighting
-EVs: 252 Atk / 4 SpD / 252 Spe
-Jolly Nature
-- Tailwind
-- Taunt
-- Close Combat
-- Brave Bird
-
-Ceruledge (F) @ Life Orb
-Ability: Flash Fire
-Tera Type: Fire
-EVs: 252 Atk / 4 SpD / 252 Spe
-Jolly Nature
-- Bitter Blade
-- Brick Break
-- Poltergeist
-- Psycho Cut
-
-Swampert (F) @ Leftovers
-Ability: Damp
-Tera Type: Water
-EVs: 252 HP / 252 Atk / 4 SpD
-Adamant Nature
-- Earthquake
-- Liquidation
-- Knock Off
-- Counter
-
-Pachirisu (M) @ Sitrus Berry
-Ability: Volt Absorb
-Tera Type: Electric
-EVs: 252 HP / 4 SpD / 252 Spe
-Jolly Nature
-- Follow Me
-- Nuzzle
-- Volt Switch
-- Protect
-
-Toxtricity-Low-Key (F) @ Air Balloon
-Ability: Punk Rock
-Tera Type: Electric
-EVs: 252 HP / 252 SpA / 4 SpD
-Modest Nature
-IVs: 0 Atk
-- Boomburst
-- Overdrive
-- Snarl
-- Psychic Noise
 
 === TRAINER_ROXANNE_3 ===
 Name: ROXANNE

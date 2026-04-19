@@ -5785,11 +5785,26 @@ u16 GetBattleBGM(void)
     else if (gBattleTypeFlags & BATTLE_TYPE_TRAINER)
     {
         enum TrainerClassID trainerClass;
+        u16 opponentA = SanitizeTrainerId(TRAINER_BATTLE_PARAM.opponentA);
+
+        // Gauntlet Custom Battle music takes priority over all other trainer battle music
+        if (!(gBattleTypeFlags & (BATTLE_TYPE_FRONTIER | BATTLE_TYPE_TRAINER_HILL))
+            && opponentA == TRAINER_YUKI_ABYSS)
+            return MUS_ABNORMAL_WEATHER;
 
         if (!(gBattleTypeFlags & (BATTLE_TYPE_FRONTIER | BATTLE_TYPE_TRAINER_HILL))
-            && TRAINER_BATTLE_PARAM.opponentA == TRAINER_YUKI_ABYSS)
-            return MUS_VS_REGI;
+            && opponentA == TRAINER_CAS_ABYSS)
+            return MUS_SAFARI_ZONE;
 
+        if (!(gBattleTypeFlags & (BATTLE_TYPE_FRONTIER | BATTLE_TYPE_TRAINER_HILL))
+            && opponentA == TRAINER_OLLIE_ABYSS)
+            return MUS_AQUA_MAGMA_HIDEOUT;
+
+        if (!(gBattleTypeFlags & (BATTLE_TYPE_FRONTIER | BATTLE_TYPE_TRAINER_HILL))
+            && opponentA == TRAINER_SMITH_ABYSS)
+            return MUS_PETALBURG_WOODS;
+
+        //////////////////
         if (gBattleTypeFlags & BATTLE_TYPE_FRONTIER)
             trainerClass = GetFrontierOpponentClass(TRAINER_BATTLE_PARAM.opponentA);
         else if (gBattleTypeFlags & BATTLE_TYPE_TRAINER_HILL)
