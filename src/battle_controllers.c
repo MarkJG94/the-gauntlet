@@ -1486,15 +1486,19 @@ static u32 GetBattlerMonData(enum BattlerId battler, struct Pokemon *party, u32 
         src = (u8 *)&battleMon;
         for (size = 0; size < sizeof(battleMon); size++)
             dst[size] = src[size];
-        #if TESTING
-        if (gTestRunnerEnabled)
         {
             enum BattleTrainer trainer = GetBattlerTrainer(battler);
             u32 partyIndex = gBattlerPartyIndexes[battler];
-            if (TestRunner_Battle_GetForcedAbility(trainer, partyIndex))
-                gBattleMons[battler].ability = TestRunner_Battle_GetForcedAbility(trainer, partyIndex);
+            enum Ability forcedAbility = GetTrainerPartyAbilityFromId(trainer, partyIndex);
+
+            #if TESTING
+            if (gTestRunnerEnabled && TestRunner_Battle_GetForcedAbility(trainer, partyIndex))
+                forcedAbility = TestRunner_Battle_GetForcedAbility(trainer, partyIndex);
+            #endif
+
+            if (forcedAbility != ABILITY_NONE)
+                gBattleMons[battler].ability = forcedAbility;
         }
-        #endif
         break;
     case REQUEST_SPECIES_BATTLE:
         data16 = GetMonData(&party[monId], MON_DATA_SPECIES);

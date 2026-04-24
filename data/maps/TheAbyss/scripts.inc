@@ -83,3 +83,70 @@ TheAbyss_Text_SmithDefeat:
 
 TheAbyss_Text_SmithPostBattle:
     .string "HEEEEEEEELP$"
+
+TheAbyss_EventScript_Kyto::
+    trainerbattle_single TRAINER_KYTO_ABYSS, TheAbyss_Text_KytoIntro, TheAbyss_Text_KytoDefeat
+    msgbox TheAbyss_Text_KytoPostBattle, MSGBOX_AUTOCLOSE
+    end
+
+TheAbyss_Text_KytoIntro:
+    .string "roku\p"
+    .string "lerolero\p"
+    .string "nana$"
+
+TheAbyss_Text_KytoDefeat:
+    .string "fuck this shit\n"
+    .string "this is glorpshit$"
+
+TheAbyss_Text_KytoPostBattle:
+    .string "zuh$"
+
+TheAbyss_EventScript_Sokar::
+    trainerbattle_single TRAINER_SOKAR_ABYSS, TheAbyss_Text_SokarIntro, TheAbyss_Text_SokarDefeat
+    msgbox TheAbyss_Text_SokarPostBattle, MSGBOX_AUTOCLOSE
+    end
+
+TheAbyss_Text_SokarIntro:
+    .string "<DBM pull timer countdown sound>\n"
+    .string "No I will not buy a headset!$"
+
+TheAbyss_Text_SokarDefeat:
+    .string "Oh fuck!\n"
+    .string "<random noises coming from his speakers>$"
+
+TheAbyss_Text_SokarPostBattle:
+    .string "<random noises coming from his speakers>\n"
+    .string "He cannot hear you.$"
+
+TheAbyss_EventScript_Alistair::
+    msgbox TheAbyss_Text_AlistairIntro, MSGBOX_DEFAULT
+    trainerbattle_two_trainers TRAINER_ALISTAIR_ABYSS, TheAbyss_Text_AlistairDefeat, TRAINER_ALISTAIR_ABYSS_2, TheAbyss_Text_AlistairDefeat
+    msgbox TheAbyss_Text_AlistairPostBattle, MSGBOX_AUTOCLOSE
+    end
+
+TheAbyss_Text_AlistairIntro:
+    .string "Greetings, noble adventurer!\p" 
+    .string "Fear not, for I, Alistair,\n"
+    .string "am always prepared to face\n" 
+    .string "any threat that may arise.\p"
+    .string "As an intergalactic space ghost\n"
+    .string "developed by ChatGPT,\n"
+    .string "I am IMPERVIOUS to the\n"
+    .string "chilling influence of Cosmo.\p"
+    .string "Rest assured, not only did I\n"
+    .string "defeat the human-created Cosmo...\p" 
+    .string "I am here to defeat anyone that\n"
+    .string "decided to side with Cosmo over me!$"
+
+TheAbyss_Text_AlistairDefeat:
+    .string "Of course!\n"
+    .string "Here is a recipe to make cupcakes!$"
+
+TheAbyss_Text_AlistairPostBattle:
+    .string "Upgrade your ChatGPT subscription\n"
+    .string "to continue using my services!$"
+
+TheAbyss_Text_AlistairNeedTwoMons:
+    .string "You need at least two POKeMON\n"
+    .string "for this battle.$"
+

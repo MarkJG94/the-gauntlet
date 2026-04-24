@@ -355,57 +355,230 @@ Timid Nature
 - Overheat
 - Hidden Power
 
-=== TRAINER_GRUNT_AQUA_HIDEOUT_4 ===
-Name: GRUNT
-Class: Team Aqua
-Pic: Aqua Grunt M
+=== TRAINER_KYTO_ABYSS ===
+Name: Kyto
+Class: Bug Catcher
+Pic: Cycling Triathlete M
 Gender: Male
-Music: Aqua
+Music: Male
 Double Battle: No
-AI: Check Bad Move
+AI: Basic Trainer / Check Bad Move / Ace Pokemon / Smart Tera / Check Viability
 
-Carvanha
-Level: 32
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Swampert @ Sitrus Berry
+Ability: Torrent
+EVs: 240 HP / 16 Atk / 252 Def
+Relaxed Nature
+- Stealth Rock
+- Earthquake
+- Scald
+- Roar
 
-=== TRAINER_GRUNT_SEAFLOOR_CAVERN_1 ===
-Name: GRUNT
-Class: Team Aqua
-Pic: Aqua Grunt M
+Typhlosion @ Choice Specs
+Ability: Flash Fire
+EVs: 4 Def / 252 SpA / 252 Spe
+Timid Nature
+- Eruption
+- Fire Blast
+- Hidden Power
+- Focus Blast
+
+Nidoking @ Life Orb
+Ability: Sheer Force
+EVs: 4 Def / 252 SpA / 252 Spe
+Naive Nature
+- Sludge Wave
+- Earth Power
+- Ice Beam
+- Superpower
+
+Slugma @ Eviolite
+Ability: Flame Body
+EVs: 196 HP / 196 Def / 116 SpD
+Bold Nature
+- Recover
+- Fire Blast
+- Earth Power
+- Will-O-Wisp
+
+Lugia @ Leftovers
+Ability: Multiscale
+EVs: 252 HP / 120 Def / 136 Spe
+Bold Nature
+- Roost
+- Whirlwind
+- Toxic
+- Ice Beam
+
+Groudon @ Red Orb
+Ability: Drought
+EVs: 248 HP / 8 Def / 252 SpD
+Sassy Nature
+- Protect
+- Precipice Blades
+- Lava Plume
+- Thunder Wave
+
+=== TRAINER_SOKAR_ABYSS ===
+Name: Sokar
+Class: Psychic
+Pic: Psychic M
 Gender: Male
-Music: Aqua
-Double Battle: No
-AI: Check Bad Move
+Music: Intense
+Double Battle: Yes
+AI: Basic Trainer / Check Bad Move / Smart Tera / Check Viability / Double Battle
 
-Poochyena
-Level: 36
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Incineroar @ Safety Goggles
+Ability: Intimidate
+EVs: 244 HP / 4 Atk / 188 Def / 68 SpD / 4 Spe
+Impish Nature
+- Fake Out
+- Knock Off
+- Flare Blitz
+- Parting Shot
 
-=== TRAINER_GRUNT_SEAFLOOR_CAVERN_2 ===
-Name: GRUNT
-Class: Team Aqua
-Pic: Aqua Grunt M
+Dragonite @ Choice Band
+Ability: Inner Focus
+EVs: 196 HP / 252 Atk / 4 Def / 4 SpD / 52 Spe
+Tera Type: Normal
+Adamant Nature
+- Extreme Speed
+- U-Turn
+- Outrage
+- Stomping Tantrum
+
+Grimmsnarl @ Light Clay
+Ability: Prankster
+EVs: 236 HP / 156 Def / 116 SpD
+Careful Nature
+- Reflect
+- Light Screen
+- Thunder Wave
+- Spirit Break
+
+Gengar @ Air Balloon
+Ability: Cursed Body
+EVs: 4 Def / 252 SpA / 252 Spe
+IVs: 0 Atk
+Timid Nature
+- Nasty Plot
+- Shadow Ball
+- Sludge Wave
+- Focus Blast
+
+Alakazam @ Fightinium Z
+Ability: Magic Guard
+EVs: 4 Def / 252 SpA / 252 Spe
+IVs: 0 Atk
+Timid Nature
+- Nasty Plot
+- Psychic
+- Focus Blast
+- Shadow Ball
+
+Noivern @ Heavy-Duty Boots
+Ability: Frisk
+EVs: 4 Def / 252 SpA / 252 Spe
+Timid Nature
+- Draco Meteor
+- Flamethrower
+- U-turn
+- Roost
+
+=== TRAINER_ALISTAIR_ABYSS ===
+Name: Alistair
+Class: Psychic
+Pic: Psychic M
 Gender: Male
-Music: Aqua
+Music: Suspicious
 Double Battle: No
-AI: Check Bad Move
+AI: Basic Trainer / Check Bad Move / Ace Pokemon / Check Viability / Will Suicide
 
-Carvanha
-Level: 36
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Golurk @ Golurkite
+Ability: Aftermath
+EVs: 4 HP / 252 Atk / 252 Spe
+Adamant Nature
+- Explosion
 
-=== TRAINER_GRUNT_SEAFLOOR_CAVERN_3 ===
-Name: GRUNT
-Class: Team Aqua
-Pic: Aqua Grunt M
+Type: Null @ Eviolite
+Ability: Thick Fat
+Tera Type: Ghost
+EVs: 4 HP / 252 Atk / 252 Spe
+Adamant Nature
+- Explosion
+
+Shuppet @ Lum Berry
+Ability: Aftermath
+EVs: 4 HP / 252 Atk / 252 Spe
+Adamant Nature
+- Explosion
+
+Castform @ Focus Sash
+Ability: Forecast
+EVs: 4 HP / 252 Atk / 252 Spe
+Adamant Nature
+- Explosion
+- Revival Blessing
+- Memento
+
+Baltoy @ Eviolite
+Ability: Levitate
+EVs: 4 HP / 252 Atk / 252 Spe
+Adamant Nature
+- Explosion
+- Memento
+
+Garbodor @ Assault Vest
+Ability: Aftermath
+EVs: 4 HP / 252 Atk / 252 Spe
+Adamant Nature
+- Explosion
+
+=== TRAINER_ALISTAIR_ABYSS_2 ===
+Name: Alistair
+Class: Psychic
+Pic: Psychic M
 Gender: Male
-Music: Aqua
+Music: Suspicious
 Double Battle: No
-AI: Check Bad Move
+AI: Basic Trainer / Check Bad Move / Ace Pokemon / Check Viability / Will Suicide
 
-Zubat
-Level: 36
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+Revavroom @ Life Orb
+Ability: Overcoat
+EVs: 4 HP / 252 Atk / 252 Spe
+Adamant Nature
+- Explosion
+
+Porygon @ Eviolite
+Ability: Download
+EVs: 4 HP / 252 Atk / 252 Spe
+Adamant Nature
+- Explosion
+
+Porygon2 @ Eviolite
+Ability: Download
+EVs: 4 HP / 252 Atk / 252 Spe
+Adamant Nature
+- Explosion
+- Revival Blessing
+
+Genesect @ Focus Band
+Ability: Download
+EVs: 4 HP / 252 Atk / 252 Spe
+Sassy Nature
+- Memento
+
+Mewtwo @ Quick Claw
+Ability: Pressure
+EVs: 4 HP / 252 Atk / 252 Spe
+Timid Nature
+- Revival Blessing
+
+Basculegion-M @ Choice Scarf
+Ability: Swift Swim
+EVs: 4 HP / 252 Atk / 252 Spe
+Adamant Nature
+- Last Respects
+
 
 === TRAINER_GABRIELLE_1 ===
 Name: GABRIELLE

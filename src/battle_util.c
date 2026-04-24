@@ -9553,15 +9553,23 @@ void CopyMonLevelAndBaseStatsToBattleMon(enum BattlerId battler, struct Pokemon 
 void CopyMonAbilityAndTypesToBattleMon(enum BattlerId battler, struct Pokemon *mon)
 {
     gBattleMons[battler].ability = GetMonAbility(mon);
-    #if TESTING
-    if (gTestRunnerEnabled)
     {
-        u32 array = (!IsPartnerMonFromSameTrainer(battler)) ? battler : GetBattlerSide(battler);
+        enum BattleTrainer trainer = GetBattlerTrainer(battler);
         u32 partyIndex = gBattlerPartyIndexes[battler];
-        if (TestRunner_Battle_GetForcedAbility(array, partyIndex))
-            gBattleMons[battler].ability = TestRunner_Battle_GetForcedAbility(array, partyIndex);
+        enum Ability forcedAbility = GetTrainerPartyAbilityFromId(trainer, partyIndex);
+
+        #if TESTING
+        if (gTestRunnerEnabled)
+        {
+            u32 array = (!IsPartnerMonFromSameTrainer(battler)) ? battler : GetBattlerSide(battler);
+            if (TestRunner_Battle_GetForcedAbility(array, partyIndex))
+                forcedAbility = TestRunner_Battle_GetForcedAbility(array, partyIndex);
+        }
+        #endif
+
+        if (forcedAbility != ABILITY_NONE)
+            gBattleMons[battler].ability = forcedAbility;
     }
-    #endif
     gBattleMons[battler].types[0] = GetSpeciesType(gBattleMons[battler].species, 0);
     gBattleMons[battler].types[1] = GetSpeciesType(gBattleMons[battler].species, 1);
     gBattleMons[battler].types[2] = TYPE_MYSTERY;

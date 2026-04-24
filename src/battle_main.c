@@ -2003,7 +2003,9 @@ u8 CreateNPCTrainerPartyFromTrainer(struct Pokemon *party, const struct Trainer 
                     if (speciesInfo->abilities[abilityNum] == partyData[monIndex].ability)
                         break;
                 }
-                assertf(abilityNum < maxAbilityNum, "illegal ability %S for %S", gAbilitiesInfo[partyData[monIndex].ability].name, speciesInfo->speciesName);
+                // Allow trainer-defined off-species abilities; ability is applied later from trainer data.
+                if (abilityNum >= maxAbilityNum)
+                    abilityNum = 0;
             }
             else if (B_TRAINER_MON_RANDOM_ABILITY)
             {
@@ -3302,16 +3304,19 @@ void SwitchInClearSetData(enum BattlerId battler, struct Volatiles *volatilesCop
     // Clear selected party ID so Revival Blessing doesn't get confused.
     gSelectedMonPartyId = PARTY_SIZE;
 
-    // Allow for illegal abilities within tests.
-    #if TESTING
-    if (gTestRunnerEnabled)
     {
         enum BattleTrainer trainer = GetBattlerTrainer(battler);
         u32 partyIndex = gBattlerPartyIndexes[battler];
-        if (TestRunner_Battle_GetForcedAbility(trainer, partyIndex))
-            gBattleMons[battler].ability = TestRunner_Battle_GetForcedAbility(trainer, partyIndex);
+        enum Ability forcedAbility = GetTrainerPartyAbilityFromId(trainer, partyIndex);
+
+        #if TESTING
+        if (gTestRunnerEnabled && TestRunner_Battle_GetForcedAbility(trainer, partyIndex))
+            forcedAbility = TestRunner_Battle_GetForcedAbility(trainer, partyIndex);
+        #endif // TESTING
+
+        if (forcedAbility != ABILITY_NONE)
+            gBattleMons[battler].ability = forcedAbility;
     }
-    #endif // TESTING
 
     Ai_UpdateSwitchInData(battler);
 }
@@ -3519,15 +3524,19 @@ static void DoBattleIntro(void)
                 memset(&gBattleMons[battler].volatiles, 0, sizeof(struct Volatiles));
                 for (i = 0; i < NUM_BATTLE_STATS; i++)
                     gBattleMons[battler].statStages[i] = DEFAULT_STAT_STAGE;
-                #if TESTING
-                if (gTestRunnerEnabled)
                 {
                     enum BattleTrainer trainer = GetBattlerTrainer(battler);
                     u32 partyIndex = gBattlerPartyIndexes[battler];
-                    if (TestRunner_Battle_GetForcedAbility(trainer, partyIndex))
-                        gBattleMons[battler].ability = TestRunner_Battle_GetForcedAbility(trainer, partyIndex);
+                    enum Ability forcedAbility = GetTrainerPartyAbilityFromId(trainer, partyIndex);
+
+                    #if TESTING
+                    if (gTestRunnerEnabled && TestRunner_Battle_GetForcedAbility(trainer, partyIndex))
+                        forcedAbility = TestRunner_Battle_GetForcedAbility(trainer, partyIndex);
+                    #endif
+
+                    if (forcedAbility != ABILITY_NONE)
+                        gBattleMons[battler].ability = forcedAbility;
                 }
-                #endif
             }
 
             // Draw sprite.
@@ -3822,18 +3831,20 @@ static void TryDoEventsBeforeFirstTurn(void)
         }
 
         // Allow for illegal abilities within tests.
-        #if TESTING
-        if (gTestRunnerEnabled)
+        for (enum BattlerId battler = 0; battler < gBattlersCount; ++battler)
         {
-            for (enum BattlerId battler = 0; battler < gBattlersCount; ++battler)
-            {
-                enum BattleTrainer trainer = GetBattlerTrainer(battler);
-                u32 partyIndex = gBattlerPartyIndexes[battler];
-                if (TestRunner_Battle_GetForcedAbility(trainer, partyIndex))
-                    gBattleMons[battler].ability = TestRunner_Battle_GetForcedAbility(trainer, partyIndex);
-            }
+            enum BattleTrainer trainer = GetBattlerTrainer(battler);
+            u32 partyIndex = gBattlerPartyIndexes[battler];
+            enum Ability forcedAbility = GetTrainerPartyAbilityFromId(trainer, partyIndex);
+
+            #if TESTING
+            if (gTestRunnerEnabled && TestRunner_Battle_GetForcedAbility(trainer, partyIndex))
+                forcedAbility = TestRunner_Battle_GetForcedAbility(trainer, partyIndex);
+            #endif // TESTING
+
+            if (forcedAbility != ABILITY_NONE)
+                gBattleMons[battler].ability = forcedAbility;
         }
-        #endif // TESTING
 
         gBattleStruct->speedTieBreaks = RandomUniform(RNG_SPEED_TIE, 0, Factorial(MAX_BATTLERS_COUNT) - 1);
         gBattleTurnCounter = 0;

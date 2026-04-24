@@ -352,6 +352,16 @@ static inline const struct TrainerMon *GetTrainerPartyFromId(u16 trainerId)
     return GetTrainerStructFromId(trainerId)->party;
 }
 
+static inline enum Ability GetTrainerPartyAbilityFromId(u16 trainerId, u32 partyIndex)
+{
+    const struct Trainer *trainer = GetTrainerStructFromId(trainerId);
+
+    if (partyIndex >= trainer->partySize)
+        return ABILITY_NONE;
+
+    return trainer->party[partyIndex].ability;
+}
+
 static inline const u64 GetTrainerAIFlagsFromId(u16 trainerId)
 {
     return GetTrainerStructFromId(trainerId)->aiFlags;

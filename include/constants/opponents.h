@@ -9,10 +9,10 @@
 #define TRAINER_OLLIE_ABYSS                   2
 #define TRAINER_CAS_ABYSS                     3
 #define TRAINER_SMITH_ABYSS                   4
-#define TRAINER_GRUNT_AQUA_HIDEOUT_4          5
-#define TRAINER_GRUNT_SEAFLOOR_CAVERN_1       6
-#define TRAINER_GRUNT_SEAFLOOR_CAVERN_2       7
-#define TRAINER_GRUNT_SEAFLOOR_CAVERN_3       8
+#define TRAINER_KYTO_ABYSS                    5
+#define TRAINER_SOKAR_ABYSS                   6
+#define TRAINER_ALISTAIR_ABYSS                7
+#define TRAINER_ALISTAIR_ABYSS_2              8
 #define TRAINER_GABRIELLE_1                   9
 #define TRAINER_GRUNT_PETALBURG_WOODS        10
 #define TRAINER_MARCEL                       11

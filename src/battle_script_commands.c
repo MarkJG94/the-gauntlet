@@ -5276,15 +5276,19 @@ static void Cmd_switchindataupdate(void)
     gBattleMons[battler].types[1] = GetSpeciesType(gBattleMons[battler].species, 1);
     gBattleMons[battler].types[2] = TYPE_MYSTERY;
     gBattleMons[battler].ability = GetAbilityBySpecies(gBattleMons[battler].species, gBattleMons[battler].abilityNum);
-    #if TESTING
-    if (gTestRunnerEnabled)
     {
         enum BattleTrainer trainer = GetBattlerTrainer(battler);
         u32 partyIndex = gBattlerPartyIndexes[battler];
-        if (TestRunner_Battle_GetForcedAbility(trainer, partyIndex))
-            gBattleMons[battler].ability = TestRunner_Battle_GetForcedAbility(trainer, partyIndex);
+        enum Ability forcedAbility = GetTrainerPartyAbilityFromId(trainer, partyIndex);
+
+        #if TESTING
+        if (gTestRunnerEnabled && TestRunner_Battle_GetForcedAbility(trainer, partyIndex))
+            forcedAbility = TestRunner_Battle_GetForcedAbility(trainer, partyIndex);
+        #endif
+
+        if (forcedAbility != ABILITY_NONE)
+            gBattleMons[battler].ability = forcedAbility;
     }
-    #endif
 
     if (GetBattlerPartyState(battler)->isKnockedOff)
     {
@@ -9143,14 +9147,18 @@ static void Cmd_healpartystatus(void)
             else
             {
                 ability = GetAbilityBySpecies(species, abilityNum);
-                #if TESTING
-                if (gTestRunnerEnabled)
                 {
                     enum BattleTrainer trainer = GetBattlerTrainer(gBattlerAttacker);
-                    if (TestRunner_Battle_GetForcedAbility(trainer, i))
-                        ability = TestRunner_Battle_GetForcedAbility(trainer, i);
+                    enum Ability forcedAbility = GetTrainerPartyAbilityFromId(trainer, i);
+
+                    #if TESTING
+                    if (gTestRunnerEnabled && TestRunner_Battle_GetForcedAbility(trainer, i))
+                        forcedAbility = TestRunner_Battle_GetForcedAbility(trainer, i);
+                    #endif
+
+                    if (forcedAbility != ABILITY_NONE)
+                        ability = forcedAbility;
                 }
-                #endif
             }
 
             if (!(isSoundMove && ability == ABILITY_SOUNDPROOF))
