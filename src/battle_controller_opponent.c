@@ -556,12 +556,12 @@ static void OpponentHandleChoosePokemon(enum BattlerId battler)
     if (gBattleResources->bufferA[battler][1] == PARTY_ACTION_CHOOSE_FAINTED_MON)
     {
         chosenMonId = AI_SelectRevivalBlessingMon(battler);
-        if (chosenMonId == PARTY_SIZE)
+        if (chosenMonId == PARTY_SIZE_MAX)
             chosenMonId = GetFirstFaintedPartyIndex(battler);
         gSelectedMonPartyId = chosenMonId;
     }
     // Switching out
-    else if (gBattleStruct->AI_monToSwitchIntoId[battler] == PARTY_SIZE)
+    else if (gBattleStruct->AI_monToSwitchIntoId[battler] == PARTY_SIZE_MAX)
     {
         if (IsSwitchOutEffect(GetMoveEffect(gCurrentMove)) || gAiLogicData->ejectButtonSwitch || gAiLogicData->ejectPackSwitch)
             switchType = SWITCH_MID_BATTLE_FORCED;
@@ -572,7 +572,7 @@ static void OpponentHandleChoosePokemon(enum BattlerId battler)
             SetBattlerAiData(GetBattlerAtPosition(B_POSITION_PLAYER_RIGHT), gAiLogicData);
 
         chosenMonId = GetMostSuitableMonToSwitchInto(battler, switchType);
-        if (chosenMonId == PARTY_SIZE) // Advanced logic failed so we pick the next available battler
+        if (chosenMonId == PARTY_SIZE_MAX) // Advanced logic failed so we pick the next available battler
         {
             enum BattlerId battler1, battler2;
             s32 firstId, lastId;
@@ -601,7 +601,7 @@ static void OpponentHandleChoosePokemon(enum BattlerId battler)
     else
     {
         chosenMonId = gBattleStruct->AI_monToSwitchIntoId[battler];
-        gBattleStruct->AI_monToSwitchIntoId[battler] = PARTY_SIZE;
+        gBattleStruct->AI_monToSwitchIntoId[battler] = PARTY_SIZE_MAX;
         gBattleStruct->monToSwitchIntoId[battler] = chosenMonId;
     }
     #if TESTING

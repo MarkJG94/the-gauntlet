@@ -3504,7 +3504,7 @@ enum AIPivot ShouldPivot(enum BattlerId battlerAtk, enum BattlerId battlerDef, e
 {
     enum Move predictedMoveSpeedCheck = GetIncomingMoveSpeedCheck(battlerAtk, battlerDef, gAiLogicData);
     bool32 aiIsFaster = AI_IsFaster(battlerAtk, battlerDef, move, predictedMoveSpeedCheck, CONSIDER_PRIORITY);
-    bool32 hasGoodSwitchin = gAiLogicData->mostSuitableMonId[battlerAtk] >= PARTY_SIZE ? FALSE : TRUE;
+    bool32 hasGoodSwitchin = gAiLogicData->mostSuitableMonId[battlerAtk] >= PARTY_SIZE_MAX ? FALSE : TRUE;
     // If AI should switch, it should pivot
     if (aiIsFaster)
     {
@@ -3906,7 +3906,9 @@ bool32 AnyPartyMemberStatused(enum BattlerId battlerId, bool32 checkSoundproof)
         hasStatusToCure = TRUE;
 
     // Check inactive party mons' status
-    for (u32 monIndex = 0; monIndex < PARTY_SIZE; monIndex++)
+    s32 firstId, lastId;
+    GetAIPartyIndexes(battlerId, &firstId, &lastId);
+    for (u32 monIndex = firstId; monIndex < lastId; monIndex++)
     {
         if (monIndex == battlerOnField1 || monIndex == battlerOnField2)
             continue;
@@ -4456,15 +4458,14 @@ bool32 ShouldUseWishAromatherapy(enum BattlerId battlerAtk, enum BattlerId battl
       && (CanTargetFaintAi(battlerDef, battlerAtk) || BattlerWillFaintFromSecondaryDamage(battlerAtk, gAiLogicData->abilities[battlerAtk])))
         return FALSE; // Don't heal if last mon and will faint
 
-    for (u32 monIndex = 0; monIndex < PARTY_SIZE; monIndex++)
+    for (u32 monIndex = firstId; monIndex < lastId; monIndex++)
     {
         u32 currHp = GetMonData(&party[monIndex], MON_DATA_HP);
         u32 maxHp = GetMonData(&party[monIndex], MON_DATA_MAX_HP);
 
         if (!GetMonData(&party[monIndex], MON_DATA_IS_EGG) && currHp > 0)
         {
-            if ((currHp * 100) / maxHp < 65 // Less than 65% health remaining
-              && monIndex >= firstId && monIndex < lastId) // Can only switch to mon on your team
+            if ((currHp * 100) / maxHp < 65) // Less than 65% health remaining
             {
                 needHealing = TRUE;
             }
@@ -4596,7 +4597,9 @@ bool32 IsPartyFullyHealedExceptBattler(enum BattlerId battlerId)
 {
     struct Pokemon *party = GetBattlerParty(battlerId);
 
-    for (u32 monIndex = 0; monIndex < PARTY_SIZE; monIndex++)
+    s32 firstId, lastId;
+    GetAIPartyIndexes(battlerId, &firstId, &lastId);
+    for (u32 monIndex = firstId; monIndex < lastId; monIndex++)
     {
         if (monIndex != gBattlerPartyIndexes[battlerId]
          && GetMonData(&party[monIndex], MON_DATA_HP) != 0
@@ -4612,7 +4615,9 @@ bool32 PartyHasMoveCategory(enum BattlerId battlerId, enum DamageCategory catego
 {
     struct Pokemon *party = GetBattlerParty(battlerId);
 
-    for (u32 monIndex = 0; monIndex < PARTY_SIZE; monIndex++)
+    s32 firstId, lastId;
+    GetAIPartyIndexes(battlerId, &firstId, &lastId);
+    for (u32 monIndex = firstId; monIndex < lastId; monIndex++)
     {
         if (GetMonData(&party[monIndex], MON_DATA_HP) == 0)
             continue;
@@ -5489,10 +5494,12 @@ void DecideTerastal(enum BattlerId battler)
 enum AIConsiderGimmick ShouldTeraFromCalcs(enum BattlerId battler, enum BattlerId opposingBattler, struct AltTeraCalcs *altCalcs)
 {
     struct Pokemon *party = GetBattlerParty(battler);
+    s32 firstId, lastId;
 
     // Check how many pokemon we have that could tera
     int numPossibleTera = 0;
-    for (u32 monIndex = 0; monIndex < PARTY_SIZE; monIndex++)
+    GetAIPartyIndexes(battler, &firstId, &lastId);
+    for (u32 monIndex = firstId; monIndex < lastId; monIndex++)
     {
         if (GetMonData(&party[monIndex], MON_DATA_HP) != 0
          && GetMonData(&party[monIndex], MON_DATA_SPECIES_OR_EGG) != SPECIES_NONE
@@ -6358,7 +6365,7 @@ void GetAIPartyIndexes(enum BattlerId battler, s32 *firstId, s32 *lastId)
 {
     if (BATTLE_TWO_VS_ONE_OPPONENT && (battler & BIT_SIDE) == B_SIDE_OPPONENT)
     {
-        *firstId = 0, *lastId = PARTY_SIZE;
+        *firstId = 0, *lastId = ENEMY_PARTY_SIZE;
     }
     else if (gBattleTypeFlags & (BATTLE_TYPE_TWO_OPPONENTS | BATTLE_TYPE_INGAME_PARTNER | BATTLE_TYPE_TOWER_LINK_MULTI))
     {
@@ -6369,7 +6376,10 @@ void GetAIPartyIndexes(enum BattlerId battler, s32 *firstId, s32 *lastId)
     }
     else
     {
-        *firstId = 0, *lastId = PARTY_SIZE;
+        if ((battler & BIT_SIDE) == B_SIDE_OPPONENT)
+            *firstId = 0, *lastId = ENEMY_PARTY_SIZE;
+        else
+            *firstId = 0, *lastId = PARTY_SIZE;
     }
 }
 

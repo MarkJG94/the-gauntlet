@@ -1827,3 +1827,5 @@ Text_PleaseVisitAgain:
 	.include "data/maps/TheDrop/scripts.inc"
 
 	.include "data/maps/TheAbyss/scripts.inc"
+
+	.include "data/maps/SafeHaven/scripts.inc"

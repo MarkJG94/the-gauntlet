@@ -453,10 +453,10 @@ void AI_TrySwitchOrUseItem(enum BattlerId battler)
         {
             BtlController_EmitTwoReturnValues(battler, B_COMM_TO_ENGINE, B_ACTION_SWITCH, 0);
             SetAIUsingGimmick(battler, NO_GIMMICK);
-            if (gBattleStruct->AI_monToSwitchIntoId[battler] == PARTY_SIZE)
+            if (gBattleStruct->AI_monToSwitchIntoId[battler] == PARTY_SIZE_MAX)
             {
                 s32 monToSwitchId = gAiLogicData->mostSuitableMonId[battler];
-                if (monToSwitchId == PARTY_SIZE)
+                if (monToSwitchId == PARTY_SIZE_MAX)
                 {
                     GetActiveBattlerIds(battler, &battlerIn1, &battlerIn2);
                     GetAIPartyIndexes(battler, &firstId, &lastId);
@@ -2146,7 +2146,7 @@ static s32 AI_CheckBadMove(enum BattlerId battlerAtk, enum BattlerId battlerDef,
         if (!hasPartner
           || DoesPartnerHaveSameMoveEffect(BATTLE_PARTNER(battlerAtk), battlerDef, move, aiData->partnerMove)
           || (aiData->partnerMove != MOVE_NONE && IsBattleMoveStatus(aiData->partnerMove))
-          || gBattleStruct->monToSwitchIntoId[BATTLE_PARTNER(battlerAtk)] != PARTY_SIZE)
+          || gBattleStruct->monToSwitchIntoId[BATTLE_PARTNER(battlerAtk)] != PARTY_SIZE_MAX)
             ADJUST_SCORE(-20);
         break;
     case EFFECT_HELPING_HAND:
@@ -2154,7 +2154,7 @@ static s32 AI_CheckBadMove(enum BattlerId battlerAtk, enum BattlerId battlerDef,
           || DoesPartnerHaveSameMoveEffect(BATTLE_PARTNER(battlerAtk), battlerDef, move, aiData->partnerMove)
           || aiData->abilities[BATTLE_PARTNER(battlerAtk)] == ABILITY_GOOD_AS_GOLD
           || (aiData->partnerMove != MOVE_NONE && IsBattleMoveStatus(aiData->partnerMove))
-          || gBattleStruct->monToSwitchIntoId[BATTLE_PARTNER(battlerAtk)] != PARTY_SIZE) //Partner is switching out.
+          || gBattleStruct->monToSwitchIntoId[BATTLE_PARTNER(battlerAtk)] != PARTY_SIZE_MAX) //Partner is switching out.
             ADJUST_SCORE(-20);
         break;
     case EFFECT_TRICK:
@@ -3016,7 +3016,7 @@ static s32 AI_CheckBadMove(enum BattlerId battlerAtk, enum BattlerId battlerDef,
             ADJUST_SCORE(-10);
         break;
     case EFFECT_REVIVAL_BLESSING:
-        if (GetFirstFaintedPartyIndex(battlerAtk) == PARTY_SIZE)
+        if (GetFirstFaintedPartyIndex(battlerAtk) == PARTY_SIZE_MAX)
             ADJUST_SCORE(-10);
         else if (CanAIFaintTarget(battlerAtk, battlerDef, 0))
             ADJUST_SCORE(-10);
@@ -3122,7 +3122,7 @@ static s32 AI_CheckBadMove(enum BattlerId battlerAtk, enum BattlerId battlerDef,
         // Don't use a status move if the mon is the last one in the party, has no good switchin, or is trapped
         else if (GetBattleMoveCategory(move) == DAMAGE_CATEGORY_STATUS
             && (CountUsablePartyMons(battlerAtk) < 1
-            || gAiLogicData->mostSuitableMonId[battlerAtk] == PARTY_SIZE
+            || gAiLogicData->mostSuitableMonId[battlerAtk] == PARTY_SIZE_MAX
             || IsBattlerTrapped(battlerDef, battlerAtk)))
             ADJUST_SCORE(-30);
     }
@@ -5774,12 +5774,12 @@ static s32 AI_CalcMoveEffectScore(enum BattlerId battlerAtk, enum BattlerId batt
             ADJUST_SCORE(DECENT_EFFECT);
         break;
     case EFFECT_REVIVAL_BLESSING:
-        if (GetFirstFaintedPartyIndex(battlerAtk) != PARTY_SIZE)
+        if (GetFirstFaintedPartyIndex(battlerAtk) != PARTY_SIZE_MAX)
         {
             ADJUST_SCORE(DECENT_EFFECT);
             if (aiData->shouldSwitch & (1u << battlerAtk)) // Bad matchup
                 ADJUST_SCORE(WEAK_EFFECT);
-            if (aiData->mostSuitableMonId[battlerAtk] != PARTY_SIZE) // Good mon to send in after
+            if (aiData->mostSuitableMonId[battlerAtk] != PARTY_SIZE_MAX) // Good mon to send in after
                 ADJUST_SCORE(WEAK_EFFECT);
         }
         break;

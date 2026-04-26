@@ -469,7 +469,8 @@ static void SetBattlePartyIds(void)
     {
         for (enum BattlerId i = 0; i < gBattlersCount; i++)
         {
-            for (u32 j = 0; j < PARTY_SIZE; j++)
+            u32 partySize = IsOnPlayerSide(i) ? PARTY_SIZE : ENEMY_PARTY_SIZE;
+            for (u32 j = 0; j < partySize; j++)
             {
                 if (i < 2)
                 {
@@ -490,13 +491,13 @@ static void SetBattlePartyIds(void)
                         gBattlerPartyIndexes[i] = j;
                         break;
                     }
-                    else if (IsValidForBattleButDead(&GetBattlerParty(i)[j]) && gBattlerPartyIndexes[i] < PARTY_SIZE)
+                    else if (IsValidForBattleButDead(&GetBattlerParty(i)[j]) && gBattlerPartyIndexes[i] < partySize)
                     {
                         // Put an "option" on a dead mon that can be revived;
-                        gBattlerPartyIndexes[i] = j + PARTY_SIZE;
+                        gBattlerPartyIndexes[i] = j + partySize;
                     }
 
-                    if (gBattlerPartyIndexes[i] >= PARTY_SIZE)
+                    if (gBattlerPartyIndexes[i] >= partySize)
                         continue;
                     // No valid mons were found. Add the empty slot.
                     if (gBattlerPartyIndexes[i - 2] == 0)
@@ -505,8 +506,8 @@ static void SetBattlePartyIds(void)
                         gBattlerPartyIndexes[i] = 0;
                 }
             }
-            if (gBattlerPartyIndexes[i] >= PARTY_SIZE)
-                gBattlerPartyIndexes[i] -= PARTY_SIZE;
+            if (gBattlerPartyIndexes[i] >= partySize)
+                gBattlerPartyIndexes[i] -= partySize;
         }
 
         if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS)
@@ -2393,7 +2394,7 @@ void BtlController_HandleSwitchInAnim(enum BattlerId battler)
     }
     else if (IsControllerOpponent(battler))
     {
-        gBattleStruct->monToSwitchIntoId[battler] = PARTY_SIZE;
+        gBattleStruct->monToSwitchIntoId[battler] = PARTY_SIZE_MAX;
     }
 
     if (isPlayerSide)

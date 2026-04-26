@@ -902,7 +902,7 @@ void HandleAction_ActionFinished(void)
 {
     u32 i, j;
     bool32 afterYouActive = gSpecialStatuses[gBattlerByTurnOrder[gCurrentTurnActionNumber + 1]].afterYou;
-    gBattleStruct->monToSwitchIntoId[gBattlerByTurnOrder[gCurrentTurnActionNumber]] = gSelectedMonPartyId = PARTY_SIZE;
+    gBattleStruct->monToSwitchIntoId[gBattlerByTurnOrder[gCurrentTurnActionNumber]] = gSelectedMonPartyId = PARTY_SIZE_MAX;
     gCurrentTurnActionNumber++;
     gCurrentActionFuncId = gActionsByTurnOrder[gCurrentTurnActionNumber];
     memset(&gSpecialStatuses, 0, sizeof(gSpecialStatuses));
@@ -1852,7 +1852,7 @@ bool32 HandleFaintedMonActions(void)
             gBattleStruct->eventState.faintedAction++;
             for (enum BattlerId i = 0; i < gBattlersCount; i++)
             {
-                if (gAbsentBattlerFlags & (1u << i) && !HasNoMonsToSwitch(i, PARTY_SIZE, PARTY_SIZE))
+                if (gAbsentBattlerFlags & (1u << i) && !HasNoMonsToSwitch(i, PARTY_SIZE_MAX, PARTY_SIZE_MAX))
                     gAbsentBattlerFlags &= ~(1u << i);
             }
             // fall through
@@ -1939,12 +1939,14 @@ void TryClearRageAndFuryCutter(void)
 bool32 HasNoMonsToSwitch(enum BattlerId battler, u8 partyIdBattlerOn1, u8 partyIdBattlerOn2)
 {
     u32 i, playerId, flankId;
+    u32 partySize;
     struct Pokemon *party;
 
     if (!IsDoubleBattle())
         return FALSE;
 
     bool32 isPlayerside = IsOnPlayerSide(battler);
+    partySize = isPlayerside ? PARTY_SIZE : ENEMY_PARTY_SIZE;
 
     if (BATTLE_TWO_VS_ONE_OPPONENT && !isPlayerside)
     {
@@ -1959,7 +1961,7 @@ bool32 HasNoMonsToSwitch(enum BattlerId battler, u8 partyIdBattlerOn1, u8 partyI
          && (gHitMarker & HITMARKER_FAINTED(playerId)))
         {
             u8 count = 0;
-            for (i = 0; i < PARTY_SIZE; i++)
+            for (i = 0; i < partySize; i++)
                 if (IsValidForBattle(&party[i]))
                     count++;
 
@@ -1967,19 +1969,19 @@ bool32 HasNoMonsToSwitch(enum BattlerId battler, u8 partyIdBattlerOn1, u8 partyI
                 return TRUE;
         }
 
-        if (partyIdBattlerOn1 == PARTY_SIZE)
+        if (partyIdBattlerOn1 == PARTY_SIZE_MAX)
             partyIdBattlerOn1 = gBattlerPartyIndexes[flankId];
-        if (partyIdBattlerOn2 == PARTY_SIZE)
+        if (partyIdBattlerOn2 == PARTY_SIZE_MAX)
             partyIdBattlerOn2 = gBattlerPartyIndexes[playerId];
 
-        for (i = 0; i < PARTY_SIZE; i++)
+        for (i = 0; i < partySize; i++)
         {
             if (IsValidForBattle(&party[i])
              && i != partyIdBattlerOn1 && i != partyIdBattlerOn2
              && i != gBattleStruct->monToSwitchIntoId[flankId] && i != playerId[gBattleStruct->monToSwitchIntoId])
                 break;
         }
-        return (i == PARTY_SIZE);
+        return (i == partySize);
     }
     else if (gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER)
     {
@@ -1989,19 +1991,19 @@ bool32 HasNoMonsToSwitch(enum BattlerId battler, u8 partyIdBattlerOn1, u8 partyI
             flankId = GetBattlerAtPosition(B_POSITION_OPPONENT_LEFT);
             playerId = GetBattlerAtPosition(B_POSITION_OPPONENT_RIGHT);
 
-            if (partyIdBattlerOn1 == PARTY_SIZE)
+            if (partyIdBattlerOn1 == PARTY_SIZE_MAX)
                 partyIdBattlerOn1 = gBattlerPartyIndexes[flankId];
-            if (partyIdBattlerOn2 == PARTY_SIZE)
+            if (partyIdBattlerOn2 == PARTY_SIZE_MAX)
                 partyIdBattlerOn2 = gBattlerPartyIndexes[playerId];
 
-            for (i = 0; i < PARTY_SIZE; i++)
+            for (i = 0; i < partySize; i++)
             {
                 if (IsValidForBattle(&party[i])
                  && i != partyIdBattlerOn1 && i != partyIdBattlerOn2
                  && i != gBattleStruct->monToSwitchIntoId[flankId] && i != playerId[gBattleStruct->monToSwitchIntoId])
                     break;
             }
-            return (i == PARTY_SIZE);
+            return (i == partySize);
         }
         else
         {
@@ -2078,19 +2080,19 @@ bool32 HasNoMonsToSwitch(enum BattlerId battler, u8 partyIdBattlerOn1, u8 partyI
             party = gPlayerParty;
         }
 
-        if (partyIdBattlerOn1 == PARTY_SIZE)
+        if (partyIdBattlerOn1 == PARTY_SIZE_MAX)
             partyIdBattlerOn1 = gBattlerPartyIndexes[flankId];
-        if (partyIdBattlerOn2 == PARTY_SIZE)
+        if (partyIdBattlerOn2 == PARTY_SIZE_MAX)
             partyIdBattlerOn2 = gBattlerPartyIndexes[playerId];
 
-        for (i = 0; i < PARTY_SIZE; i++)
+        for (i = 0; i < partySize; i++)
         {
             if (IsValidForBattle(&party[i])
              && i != partyIdBattlerOn1 && i != partyIdBattlerOn2
              && i != gBattleStruct->monToSwitchIntoId[flankId] && i != playerId[gBattleStruct->monToSwitchIntoId])
                 break;
         }
-        return (i == PARTY_SIZE);
+        return (i == partySize);
     }
 }
 
@@ -10003,7 +10005,7 @@ void ClearPursuitValues(void)
 {
     for (enum BattlerId i = 0; i < gBattlersCount; i++)
         gBattleStruct->battlerState[i].pursuitTarget = FALSE;
-    gBattleStruct->pursuitStoredSwitch = PARTY_SIZE;
+    gBattleStruct->pursuitStoredSwitch = PARTY_SIZE_MAX;
 }
 
 void ClearPursuitValuesIfSet(enum BattlerId battler)

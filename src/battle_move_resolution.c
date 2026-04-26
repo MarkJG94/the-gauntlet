@@ -3831,7 +3831,7 @@ static enum MoveEndResult MoveEndPursuitNextAction(void)
         else if (IsBattlerAlive(gBattlerTarget))
         {
             gBattlerAttacker = gBattlerTarget;
-            if (gBattleStruct->pursuitStoredSwitch == PARTY_SIZE)
+            if (gBattleStruct->pursuitStoredSwitch == PARTY_SIZE_MAX)
                 gBattlescriptCurrInstr = BattleScript_MoveSwitchOpenPartyScreen;
             else
                 gBattlescriptCurrInstr = BattleScript_DoSwitchOut;
@@ -4086,25 +4086,26 @@ static enum Move GetMetronomeMove(void)
 static enum Move GetAssistMove(void)
 {
     enum Move move = MOVE_NONE;
+    u32 partySize = IsOnPlayerSide(gBattlerAttacker) ? PARTY_SIZE : ENEMY_PARTY_SIZE;
     u32 chooseableMovesNo = 0;
     struct Pokemon *party;
-    u8 battlerByPartyId[PARTY_SIZE];
-    enum Move validMoves[PARTY_SIZE * MAX_MON_MOVES] = {MOVE_NONE};
+    u8 battlerByPartyId[PARTY_SIZE_MAX];
+    enum Move validMoves[PARTY_SIZE_MAX * MAX_MON_MOVES] = {MOVE_NONE};
 
     party = GetBattlerParty(gBattlerAttacker);
 
-    for (u32 i = 0; i < PARTY_SIZE; i++)
+    for (u32 i = 0; i < partySize; i++)
         battlerByPartyId[i] = MAX_BATTLERS_COUNT;
     for (u32 battler = 0; battler < gBattlersCount; battler++)
     {
         if (!IsBattlerAlly(battler, gBattlerAttacker))
             continue;
 
-        if (gBattlerPartyIndexes[battler] < PARTY_SIZE)
+        if (gBattlerPartyIndexes[battler] < partySize)
             battlerByPartyId[gBattlerPartyIndexes[battler]] = battler;
     }
 
-    for (u32 monId = 0; monId < PARTY_SIZE; monId++)
+    for (u32 monId = 0; monId < partySize; monId++)
     {
         if (monId == gBattlerPartyIndexes[gBattlerAttacker])
             continue;

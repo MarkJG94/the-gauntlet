@@ -320,7 +320,7 @@ static void PlayerPartnerHandleChoosePokemon(enum BattlerId battler)
     else if (gBattleStruct->monToSwitchIntoId[battler] >= PARTY_SIZE || !IsValidForBattle(&gPlayerParty[gBattleStruct->monToSwitchIntoId[battler]]))
     {
         chosenMonId = GetMostSuitableMonToSwitchInto(battler, SWITCH_AFTER_KO);
-        if (chosenMonId == PARTY_SIZE || !IsValidForBattle(&gPlayerParty[chosenMonId])) // just switch to the next mon
+        if (chosenMonId == PARTY_SIZE_MAX || !IsValidForBattle(&gPlayerParty[chosenMonId])) // just switch to the next mon
         {
             s32 firstId = (IsAiVsAiBattle()) ? 0 : (PARTY_SIZE / 2);
             enum BattlerId battler1 = GetBattlerAtPosition(B_POSITION_PLAYER_LEFT);
@@ -341,7 +341,7 @@ static void PlayerPartnerHandleChoosePokemon(enum BattlerId battler)
     else // Mon to switch out has been already chosen.
     {
         chosenMonId = gBattleStruct->monToSwitchIntoId[battler];
-        gBattleStruct->AI_monToSwitchIntoId[battler] = PARTY_SIZE;
+        gBattleStruct->AI_monToSwitchIntoId[battler] = PARTY_SIZE_MAX;
         gBattleStruct->monToSwitchIntoId[battler] = chosenMonId;
     }
     #if TESTING

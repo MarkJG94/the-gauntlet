@@ -608,13 +608,18 @@ static void CB2_InitBattleInternal(void)
     gMain.inBattle = TRUE;
     gSaveBlock2Ptr->frontier.disableRecordBattle = FALSE;
 
-    for (i = 0; i < PARTY_SIZE; i++)
+        for (i = 0; i < PARTY_SIZE; i++)
     {
         AdjustFriendship(&gPlayerParty[i], FRIENDSHIP_EVENT_LEAGUE_BATTLE);
 
-        // Apply party-wide start-of-battle form changes for both sides.
+            // Apply party-wide start-of-battle form changes for the player side.
         TryFormChange(&gPlayerParty[i], FORM_CHANGE_BEGIN_BATTLE);
-        TryFormChange(&gEnemyParty[i], FORM_CHANGE_BEGIN_BATTLE);
+        }
+
+        // Apply party-wide start-of-battle form changes for all enemy slots.
+        for (i = 0; i < ENEMY_PARTY_SIZE; i++)
+        {
+            TryFormChange(&gEnemyParty[i], FORM_CHANGE_BEGIN_BATTLE);
     }
 
     if (!(gBattleTypeFlags & BATTLE_TYPE_TRAINER))
@@ -1946,6 +1951,8 @@ u8 CreateNPCTrainerPartyFromTrainer(struct Pokemon *party, const struct Trainer 
         else
         {
             monsCount = trainer->partySize;
+            if (monsCount > ENEMY_PARTY_SIZE)
+                monsCount = ENEMY_PARTY_SIZE;
         }
 
         u32 monIndices[monsCount];
@@ -3085,7 +3092,7 @@ static void BattleStartClearSetData(void)
         gBattleStruct->lastTakenMoveFrom[i][1] = MOVE_NONE;
         gBattleStruct->lastTakenMoveFrom[i][2] = MOVE_NONE;
         gBattleStruct->lastTakenMoveFrom[i][3] = MOVE_NONE;
-        gBattleStruct->AI_monToSwitchIntoId[i] = PARTY_SIZE;
+        gBattleStruct->AI_monToSwitchIntoId[i] = PARTY_SIZE_MAX;
         gBattleStruct->skyDropTargets[i] = SKY_DROP_NO_TARGET;
     }
 
@@ -3151,24 +3158,28 @@ static void BattleStartClearSetData(void)
     for (i = 0; i < PARTY_SIZE; i++)
     {
         gBattleStruct->partyState[B_SIDE_PLAYER][i].usedHeldItem = ITEM_NONE;
-        gBattleStruct->partyState[B_SIDE_OPPONENT][i].usedHeldItem = ITEM_NONE;
         gBattleStruct->itemLost[B_SIDE_PLAYER][i].originalItem = GetMonData(&gPlayerParty[i], MON_DATA_HELD_ITEM);
-        gBattleStruct->itemLost[B_SIDE_OPPONENT][i].originalItem = GetMonData(&gEnemyParty[i], MON_DATA_HELD_ITEM);
         gPartyCriticalHits[i] = 0;
+    }
+
+    for (i = 0; i < ENEMY_PARTY_SIZE; i++)
+    {
+        gBattleStruct->partyState[B_SIDE_OPPONENT][i].usedHeldItem = ITEM_NONE;
+        gBattleStruct->itemLost[B_SIDE_OPPONENT][i].originalItem = GetMonData(&gEnemyParty[i], MON_DATA_HELD_ITEM);
     }
 
     gBattleStruct->swapDamageCategory = FALSE; // Photon Geyser, Shell Side Arm, Light That Burns the Sky
     gBattleStruct->categoryOverride = FALSE; // used for Z-Moves and Max Moves
 
     ClearPursuitValues();
-    gSelectedMonPartyId = PARTY_SIZE; // Revival Blessing
+    gSelectedMonPartyId = PARTY_SIZE_MAX; // Revival Blessing
     gCategoryIconSpriteId = 0xFF;
 
     if (IsSleepClauseEnabled())
     {
-        // If monCausingSleepClause[side] equals PARTY_SIZE, Sleep Clause is not active for the given side.
-        gBattleStruct->monCausingSleepClause[B_SIDE_PLAYER] = PARTY_SIZE;
-        gBattleStruct->monCausingSleepClause[B_SIDE_OPPONENT] = PARTY_SIZE;
+        // If monCausingSleepClause[side] equals PARTY_SIZE_MAX, Sleep Clause is not active for the given side.
+        gBattleStruct->monCausingSleepClause[B_SIDE_PLAYER] = PARTY_SIZE_MAX;
+        gBattleStruct->monCausingSleepClause[B_SIDE_OPPONENT] = PARTY_SIZE_MAX;
     }
 }
 
@@ -3302,7 +3313,7 @@ void SwitchInClearSetData(enum BattlerId battler, struct Volatiles *volatilesCop
     gAiLogicData->ejectPackSwitch = FALSE;
 
     // Clear selected party ID so Revival Blessing doesn't get confused.
-    gSelectedMonPartyId = PARTY_SIZE;
+    gSelectedMonPartyId = PARTY_SIZE_MAX;
 
     {
         enum BattleTrainer trainer = GetBattlerTrainer(battler);
@@ -3823,7 +3834,7 @@ static void TryDoEventsBeforeFirstTurn(void)
         {
             for (enum BattlerId battler = 0; battler < gBattlersCount; battler++)
             {
-                gBattleStruct->monToSwitchIntoId[battler] = PARTY_SIZE; // Included here because switches can happen before during set ups (eg. eject pack)
+                gBattleStruct->monToSwitchIntoId[battler] = PARTY_SIZE_MAX; // Included here because switches can happen before during set ups (eg. eject pack)
                 struct Pokemon *mon = GetBattlerMon(battler);
                 if (!IsBattlerAlive(battler) || gBattleMons[battler].species == SPECIES_NONE || GetMonData(mon, MON_DATA_IS_EGG))
                     gAbsentBattlerFlags |= 1u << battler;
@@ -3922,7 +3933,7 @@ static void TryDoEventsBeforeFirstTurn(void)
     case FIRST_TURN_EVENTS_END:
         for (enum BattlerId battler = 0; battler < MAX_BATTLERS_COUNT; battler++)
         {
-            gBattleStruct->monToSwitchIntoId[battler] = PARTY_SIZE;
+            gBattleStruct->monToSwitchIntoId[battler] = PARTY_SIZE_MAX;
             gChosenActionByBattler[battler] = B_ACTION_NONE;
             gChosenMoveByBattler[battler] = MOVE_NONE;
         }
@@ -4019,7 +4030,7 @@ void BattleTurnPassed(void)
     {
         gChosenActionByBattler[battler] = B_ACTION_NONE;
         gChosenMoveByBattler[battler] = MOVE_NONE;
-        gBattleStruct->monToSwitchIntoId[battler] = PARTY_SIZE;
+        gBattleStruct->monToSwitchIntoId[battler] = PARTY_SIZE_MAX;
         gBattleMons[battler].volatiles.electrified = FALSE;
         gBattleMons[battler].volatiles.flinched = FALSE;
         gBattleMons[battler].volatiles.powder = FALSE;
@@ -4180,7 +4191,7 @@ static void HandleTurnActionSelectionState(void)
             ComputeBattlerDecisions(battler); // Do AI score computations here so we can use them in AI_TrySwitchOrUseItem
             // fallthrough
         case STATE_BEFORE_ACTION_CHOSEN: // Choose an action.
-            gBattleStruct->monToSwitchIntoId[battler] = PARTY_SIZE;
+            gBattleStruct->monToSwitchIntoId[battler] = PARTY_SIZE_MAX;
             if (gBattleTypeFlags & BATTLE_TYPE_MULTI
                 || (position & BIT_FLANK) == B_FLANK_LEFT
                 || gAbsentBattlerFlags & 1u << GetBattlerAtPosition(BATTLE_PARTNER(position))
@@ -4222,7 +4233,7 @@ static void HandleTurnActionSelectionState(void)
                     }
                     else
                     {
-                        gBattleStruct->itemPartyIndex[battler] = PARTY_SIZE;
+                        gBattleStruct->itemPartyIndex[battler] = PARTY_SIZE_MAX;
                         BtlController_EmitChooseAction(battler, B_COMM_TO_CONTROLLER, gChosenActionByBattler[0], gBattleResources->bufferB[0][1] | (gBattleResources->bufferB[0][2] << 8));
                         MarkBattlerForControllerExec(battler);
                         gBattleCommunication[battler]++;

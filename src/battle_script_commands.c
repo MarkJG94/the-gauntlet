@@ -4433,9 +4433,10 @@ static void Cmd_getexp(void)
 static u32 CountAliveMonsForBattlerSide(enum BattlerId battler)
 {
     u32 aliveMons = 0;
+    u32 partySize = IsOnPlayerSide(battler) ? PARTY_SIZE : ENEMY_PARTY_SIZE;
     struct Pokemon *party = GetBattlerParty(battler);
 
-    for (u32 partyMon = 0; partyMon < PARTY_SIZE; partyMon++)
+    for (u32 partyMon = 0; partyMon < partySize; partyMon++)
     {
         if (GetMonData(&party[partyMon], MON_DATA_SPECIES)
          && GetMonData(&party[partyMon], MON_DATA_HP) > 0
@@ -4500,7 +4501,7 @@ static bool32 NoAliveMonsForOpponent(void)
     u32 HP_count = 0;
 
     // Get total HP for the enemy's party to determine if the player has won
-    for (i = 0; i < PARTY_SIZE; i++)
+    for (i = 0; i < ENEMY_PARTY_SIZE; i++)
     {
         if (GetMonData(&gEnemyParty[i], MON_DATA_SPECIES) && !GetMonData(&gEnemyParty[i], MON_DATA_IS_EGG)
          && (!(gBattleTypeFlags & BATTLE_TYPE_ARENA) || !(gBattleStruct->arenaLostOpponentMons & (1u << i))))
@@ -5195,7 +5196,9 @@ static void Cmd_returnatktoball(void)
 
 static bool32 IsValidSwitchIn(enum BattleSide side, u32 index)
 {
-    if (index >= PARTY_SIZE)
+    u32 partySize = (side == B_SIDE_PLAYER) ? PARTY_SIZE : ENEMY_PARTY_SIZE;
+
+    if (index >= partySize)
         return FALSE;
 
     struct Pokemon *party = GetSideParty(side);
@@ -5213,7 +5216,9 @@ static bool32 IsValidSwitchIn(enum BattleSide side, u32 index)
 
 static u32 GetArbitraryValidSwitchIn(enum BattleSide side)
 {
-    for (u32 i = 0; i < PARTY_SIZE; i++)
+    u32 partySize = (side == B_SIDE_PLAYER) ? PARTY_SIZE : ENEMY_PARTY_SIZE;
+
+    for (u32 i = 0; i < partySize; i++)
     {
         if (IsValidSwitchIn(side, i))
             return i;
@@ -5347,9 +5352,12 @@ static void Cmd_switchinanim(void)
 bool32 CanBattlerSwitch(enum BattlerId battler)
 {
     s32 i, lastMonId;
+    s32 partySize;
     enum BattlerId battlerIn1, battlerIn2;
     bool32 ret = FALSE;
     struct Pokemon *party;
+
+    partySize = IsOnPlayerSide(battler) ? PARTY_SIZE : ENEMY_PARTY_SIZE;
 
     if (BATTLE_TWO_VS_ONE_OPPONENT && !IsOnPlayerSide(battler))
     {
@@ -5357,7 +5365,7 @@ bool32 CanBattlerSwitch(enum BattlerId battler)
         battlerIn2 = GetBattlerAtPosition(B_POSITION_OPPONENT_RIGHT);
         party = gEnemyParty;
 
-        for (i = 0; i < PARTY_SIZE; i++)
+        for (i = 0; i < partySize; i++)
         {
             if (GetMonData(&party[i], MON_DATA_HP) != 0
              && GetMonData(&party[i], MON_DATA_SPECIES) != SPECIES_NONE
@@ -5366,7 +5374,7 @@ bool32 CanBattlerSwitch(enum BattlerId battler)
                 break;
         }
 
-        ret = (i != PARTY_SIZE);
+        ret = (i != partySize);
     }
     else if (gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER)
     {
@@ -5474,7 +5482,7 @@ bool32 CanBattlerSwitch(enum BattlerId battler)
             party = gPlayerParty;
         }
 
-        for (i = 0; i < PARTY_SIZE; i++)
+        for (i = 0; i < partySize; i++)
         {
             if (GetMonData(&party[i], MON_DATA_HP) != 0
              && GetMonData(&party[i], MON_DATA_SPECIES) != SPECIES_NONE
@@ -5483,7 +5491,7 @@ bool32 CanBattlerSwitch(enum BattlerId battler)
                 break;
         }
 
-        ret = (i != PARTY_SIZE);
+        ret = (i != partySize);
     }
     return ret;
 }
@@ -5512,7 +5520,7 @@ static void Cmd_jumpifcantswitch(void)
 static void ChooseMonToSendOut(enum BattlerId battler, u8 slotId)
 {
     gBattleStruct->battlerPartyIndexes[battler] = gBattlerPartyIndexes[battler];
-    gBattleStruct->monToSwitchIntoId[battler] = PARTY_SIZE;
+    gBattleStruct->monToSwitchIntoId[battler] = PARTY_SIZE_MAX;
     gBattleStruct->field_93 &= ~(1u << battler);
 
     BtlController_EmitChoosePokemon(battler, B_COMM_TO_CONTROLLER, PARTY_ACTION_SEND_OUT, slotId, ABILITY_NONE, 0, gBattleStruct->battlerPartyOrders[battler]);
@@ -5536,7 +5544,7 @@ static void Cmd_openpartyscreen(void)
             {
                 if (gHitMarker & HITMARKER_FAINTED(battler))
                 {
-                    if (HasNoMonsToSwitch(battler, PARTY_SIZE, PARTY_SIZE))
+                    if (HasNoMonsToSwitch(battler, PARTY_SIZE_MAX, PARTY_SIZE_MAX))
                     {
                         gAbsentBattlerFlags |= 1u << battler;
                         gHitMarker &= ~HITMARKER_FAINTED(battler);
@@ -5578,7 +5586,7 @@ static void Cmd_openpartyscreen(void)
                         continue;
 
                     battler = i;
-                    if (HasNoMonsToSwitch(battler, PARTY_SIZE, PARTY_SIZE))
+                    if (HasNoMonsToSwitch(battler, PARTY_SIZE_MAX, PARTY_SIZE_MAX))
                     {
                         gAbsentBattlerFlags |= 1u << battler;
                         gHitMarker &= ~HITMARKER_FAINTED(battler);
@@ -5631,7 +5639,7 @@ static void Cmd_openpartyscreen(void)
                     if ((1 << BATTLE_PARTNER(i)) & hitmarkerFaintBits && (1 << i) & hitmarkerFaintBits)
                     {
                         battler = BATTLE_PARTNER(i);
-                        if (HasNoMonsToSwitch(battler, PARTY_SIZE, PARTY_SIZE))
+                        if (HasNoMonsToSwitch(battler, PARTY_SIZE_MAX, PARTY_SIZE_MAX))
                         {
                             gAbsentBattlerFlags |= (1u << battler);
                             gHitMarker &= ~(HITMARKER_FAINTED(battler));
@@ -5681,7 +5689,7 @@ static void Cmd_openpartyscreen(void)
         {
             gBattlescriptCurrInstr = cmd->nextInstr;
         }
-        else if (HasNoMonsToSwitch(battler, PARTY_SIZE, PARTY_SIZE))
+        else if (HasNoMonsToSwitch(battler, PARTY_SIZE_MAX, PARTY_SIZE_MAX))
         {
             gAbsentBattlerFlags |= 1u << battler;
             gHitMarker &= ~HITMARKER_FAINTED(battler);
@@ -5690,7 +5698,7 @@ static void Cmd_openpartyscreen(void)
         else
         {
             gBattleStruct->battlerPartyIndexes[battler] = gBattlerPartyIndexes[battler];
-            gBattleStruct->monToSwitchIntoId[battler] = PARTY_SIZE;
+            gBattleStruct->monToSwitchIntoId[battler] = PARTY_SIZE_MAX;
             gBattleStruct->field_93 &= ~(1u << battler);
 
             BtlController_EmitChoosePokemon(battler, B_COMM_TO_CONTROLLER, hitmarkerFaintBits, gBattleStruct->monToSwitchIntoId[BATTLE_PARTNER(battler)], ABILITY_NONE, 0, gBattleStruct->battlerPartyOrders[battler]);
@@ -11052,12 +11060,12 @@ static void Cmd_givecaughtmon(void)
         }
         break;
     case GIVECAUGHTMON_HANDLE_CHOSEN_MON:
-        if (gSelectedMonPartyId != PARTY_SIZE)
+        if (gSelectedMonPartyId != PARTY_SIZE_MAX)
         {
             if (gSelectedMonPartyId > PARTY_SIZE)
             {
                 // Choosing Pokemon was cancelled
-                gSelectedMonPartyId = PARTY_SIZE;
+                gSelectedMonPartyId = PARTY_SIZE_MAX;
                 gBattleCommunication[MULTIUSE_STATE] = GIVECAUGHTMON_GIVE_AND_SHOW_MSG;
             }
             else
@@ -11072,12 +11080,12 @@ static void Cmd_givecaughtmon(void)
                     ZeroMonData(&gPlayerParty[gSelectedMonPartyId]);
                     gBattleStruct->itemLost[B_SIDE_PLAYER][gSelectedMonPartyId].originalItem = ITEM_NONE;
                     gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_SWAPPED_INTO_PARTY;
-                    gSelectedMonPartyId = PARTY_SIZE;
+                    gSelectedMonPartyId = PARTY_SIZE_MAX;
                     gBattleCommunication[MULTIUSE_STATE] = GIVECAUGHTMON_GIVE_AND_SHOW_MSG;
                 }
                 else
                 {
-                    gSelectedMonPartyId = PARTY_SIZE;
+                    gSelectedMonPartyId = PARTY_SIZE_MAX;
                     gBattleCommunication[MULTIUSE_STATE] = GIVECAUGHTMON_GIVE_AND_SHOW_MSG;
                 }
             }
@@ -11130,7 +11138,7 @@ static void Cmd_givecaughtmon(void)
         GetMonData(caughtMon, MON_DATA_NICKNAME, gBattleResults.caughtMonNick);
         gBattleResults.caughtMonBall = GetMonData(caughtMon, MON_DATA_POKEBALL);
 
-        gSelectedMonPartyId = PARTY_SIZE;
+        gSelectedMonPartyId = PARTY_SIZE_MAX;
         gBattleCommunication[MULTIUSE_STATE] = 0;
 
         if (gBattleCommunication[MULTISTRING_CHOOSER] == B_MSG_NO_MESSSAGE_SKIP)
@@ -11832,7 +11840,7 @@ u8 GetFirstFaintedPartyIndex(enum BattlerId battler)
 {
     u32 i;
     u32 start = 0;
-    u32 end = PARTY_SIZE;
+    u32 end = IsOnPlayerSide(battler) ? PARTY_SIZE : ENEMY_PARTY_SIZE;
     struct Pokemon *party = GetBattlerParty(battler);
 
     // Check whether partner is separate trainer.
@@ -11862,8 +11870,8 @@ u8 GetFirstFaintedPartyIndex(enum BattlerId battler)
         }
     }
 
-    // Returns PARTY_SIZE if none found.
-    return PARTY_SIZE;
+    // Returns PARTY_SIZE_MAX if none found.
+    return PARTY_SIZE_MAX;
 }
 
 void ApplyExperienceMultipliers(s32 *expAmount, u8 expGetterMonId, u8 faintedBattler)
@@ -12819,14 +12827,14 @@ void BS_TryRevivalBlessing(void)
     u8 index = GetFirstFaintedPartyIndex(gBattlerAttacker);
 
     // Move fails if there are no battlers to revive.
-    if (index == PARTY_SIZE)
+    if (index == PARTY_SIZE_MAX)
     {
         gBattlescriptCurrInstr = cmd->failInstr;
         return;
     }
 
     // Battler selected! Revive and go to next instruction.
-    if (gSelectedMonPartyId != PARTY_SIZE)
+    if (gSelectedMonPartyId != PARTY_SIZE_MAX)
     {
         struct Pokemon *party = GetBattlerParty(gBattlerAttacker);
 
@@ -12846,7 +12854,7 @@ void BS_TryRevivalBlessing(void)
             gBattleCommunication[MULTIUSE_STATE] = TRUE;
         }
 
-        gSelectedMonPartyId = PARTY_SIZE;
+        gSelectedMonPartyId = PARTY_SIZE_MAX;
         gBattlescriptCurrInstr = cmd->nextInstr;
     }
     else

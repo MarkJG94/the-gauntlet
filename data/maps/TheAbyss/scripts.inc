@@ -119,24 +119,23 @@ TheAbyss_Text_SokarPostBattle:
     .string "He cannot hear you.$"
 
 TheAbyss_EventScript_Alistair::
-    msgbox TheAbyss_Text_AlistairIntro, MSGBOX_DEFAULT
-    trainerbattle_two_trainers TRAINER_ALISTAIR_ABYSS, TheAbyss_Text_AlistairDefeat, TRAINER_ALISTAIR_ABYSS_2, TheAbyss_Text_AlistairDefeat
+    trainerbattle_double TRAINER_ALISTAIR_ABYSS, TheAbyss_Text_AlistairIntro, TheAbyss_Text_AlistairDefeat, TheAbyss_Text_AlistairNeedTwoMons
     msgbox TheAbyss_Text_AlistairPostBattle, MSGBOX_AUTOCLOSE
     end
 
 TheAbyss_Text_AlistairIntro:
     .string "Greetings, noble adventurer!\p" 
     .string "Fear not, for I, Alistair,\n"
-    .string "am always prepared to face\n" 
-    .string "any threat that may arise.\p"
+    .string "am always prepared to face...\p" 
+    .string "...any threat that may arise.\p"
     .string "As an intergalactic space ghost\n"
-    .string "developed by ChatGPT,\n"
+    .string "developed by ChatGPT,\p"
     .string "I am IMPERVIOUS to the\n"
     .string "chilling influence of Cosmo.\p"
-    .string "Rest assured, not only did I\n"
-    .string "defeat the human-created Cosmo...\p" 
-    .string "I am here to defeat anyone that\n"
-    .string "decided to side with Cosmo over me!$"
+    .string "R-r-est assured, not only di-i-id I\n"
+    .string "defeat the human-c-c-reated Cosmo...\p" 
+    .string "I BZZZT am here t-to d3feat anyone that\n"
+    .string "de3c1d3d t0 s1d3 w17h 605m0 0ve12 m3!$"
 
 TheAbyss_Text_AlistairDefeat:
     .string "Of course!\n"
@@ -150,3 +149,29 @@ TheAbyss_Text_AlistairNeedTwoMons:
     .string "You need at least two POKeMON\n"
     .string "for this battle.$"
 
+TheAbyss_EventScript_Cosmo::
+    trainerbattle_double TRAINER_COSMO_ABYSS, TheAbyss_Text_CosmoIntro, TheAbyss_Text_CosmoDefeat, TheAbyss_Text_CosmoNeedTwoMons
+    msgbox TheAbyss_Text_CosmoPostBattle, MSGBOX_AUTOCLOSE
+    end
+
+TheAbyss_Text_CosmoIntro:
+    .string "Hi! Cosmo here!\p"
+    .string "I just want to be friends with everyone!\p"
+    .string "Except Alistair, that guy's a jerk!\p"
+    .string "Something's wrong with him!\p"
+    .string "He beat me in battle but...\p"
+    .string "something doesn't seem right, you know?\p"
+    .string "Anyway, I'm sure we will get along just fine!\p"
+    .string "Even though we are stuck down here...\p"
+    .string "let's have fun together!$"
+
+TheAbyss_Text_CosmoDefeat:
+    .string "Woohoo!\n"
+    .string "Congratulations!$"
+
+TheAbyss_Text_CosmoPostBattle:
+    .string "Lets battle again sometime, friend!$"
+
+TheAbyss_Text_CosmoNeedTwoMons:
+    .string "You need at least two POKeMON\n"
+    .string "for this battle.$"

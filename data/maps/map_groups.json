@@ -1166,6 +1166,7 @@
   "gMapGroup_TheGauntlet": [
     "GauntletEntrance",
     "TheDrop",
-    "TheAbyss"
+    "TheAbyss",
+    "SafeHaven"
   ]
 }

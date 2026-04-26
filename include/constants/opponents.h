@@ -12,7 +12,7 @@
 #define TRAINER_KYTO_ABYSS                    5
 #define TRAINER_SOKAR_ABYSS                   6
 #define TRAINER_ALISTAIR_ABYSS                7
-#define TRAINER_ALISTAIR_ABYSS_2              8
+#define TRAINER_COSMO_ABYSS                   8
 #define TRAINER_GABRIELLE_1                   9
 #define TRAINER_GRUNT_PETALBURG_WOODS        10
 #define TRAINER_MARCEL                       11

@@ -487,7 +487,7 @@ Timid Nature
 === TRAINER_ALISTAIR_ABYSS ===
 Name: Alistair
 Class: Psychic
-Pic: Psychic M
+Pic: Salon Maiden Anabel
 Gender: Male
 Music: Suspicious
 Double Battle: No
@@ -533,15 +533,6 @@ EVs: 4 HP / 252 Atk / 252 Spe
 Adamant Nature
 - Explosion
 
-=== TRAINER_ALISTAIR_ABYSS_2 ===
-Name: Alistair
-Class: Psychic
-Pic: Psychic M
-Gender: Male
-Music: Suspicious
-Double Battle: No
-AI: Basic Trainer / Check Bad Move / Ace Pokemon / Check Viability / Will Suicide
-
 Revavroom @ Life Orb
 Ability: Overcoat
 EVs: 4 HP / 252 Atk / 252 Spe
@@ -559,7 +550,7 @@ Ability: Download
 EVs: 4 HP / 252 Atk / 252 Spe
 Adamant Nature
 - Explosion
-- Revival Blessing
+- Memento
 
 Genesect @ Focus Band
 Ability: Download
@@ -578,6 +569,75 @@ Ability: Swift Swim
 EVs: 4 HP / 252 Atk / 252 Spe
 Adamant Nature
 - Last Respects
+
+=== TRAINER_COSMO_ABYSS ===
+Name: Cosmo
+Class: Psychic
+Pic: Dome Ace Tucker
+Gender: Male
+Music: Male
+Double Battle: No
+AI: Basic Trainer / Check Bad Move / Ace Pokemon / Check Viability
+
+Minior @ White Herb  
+Ability: Shields Down  
+Tera Type: Flying  
+EVs: 252 Atk / 4 SpD / 252 Spe  
+Jolly Nature  
+- Shell Smash  
+- Acrobatics  
+- Stone Edge  
+- Earthquake  
+
+Beheeyem @ Choice Specs  
+Ability: Analytic  
+Tera Type: Psychic  
+EVs: 252 HP / 252 SpA / 4 SpD  
+Modest Nature  
+- Psychic  
+- Thunderbolt  
+- Energy Ball  
+- Trick  
+
+Claydol @ Leftovers  
+Ability: Levitate  
+Tera Type: Water  
+EVs: 252 HP / 144 Def / 112 SpD  
+Bold Nature  
+- Rapid Spin  
+- Stealth Rock  
+- Earth Power  
+- Ice Beam  
+
+Solrock @ Heat Rock  
+Ability: Levitate  
+Tera Type: Fire  
+EVs: 252 HP / 252 Def / 4 SpD  
+Bold Nature  
+- Stealth Rock  
+- Will-O-Wisp  
+- Morning Sun  
+- Explosion  
+
+Lunatone @ Power Herb  
+Ability: Levitate  
+Tera Type: Psychic  
+EVs: 252 SpA / 4 SpD / 252 Spe  
+Timid Nature  
+- Meteor Beam  
+- Psychic  
+- Earth Power  
+- Rock Polish  
+
+Purugly @ Life Orb  
+Ability: Defiant  
+Tera Type: Normal  
+EVs: 252 Atk / 4 SpD / 252 Spe  
+Jolly Nature  
+- Fake Out  
+- Double-Edge  
+- Knock Off  
+- U-turn  
 
 
 === TRAINER_GABRIELLE_1 ===

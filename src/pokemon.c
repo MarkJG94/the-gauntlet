@@ -96,7 +96,7 @@ EWRAM_DATA static u8 sLearningMoveTableID = 0;
 EWRAM_DATA u8 gPlayerPartyCount = 0;
 EWRAM_DATA u8 gEnemyPartyCount = 0;
 EWRAM_DATA struct Pokemon gPlayerParty[PARTY_SIZE] = {0};
-EWRAM_DATA struct Pokemon gEnemyParty[PARTY_SIZE] = {0};
+EWRAM_DATA struct Pokemon gEnemyParty[ENEMY_PARTY_SIZE] = {0};
 EWRAM_DATA struct SpriteTemplate gMultiuseSpriteTemplate = {0};
 EWRAM_DATA static struct MonSpritesGfxManager *sMonSpritesGfxManagers[MON_SPR_GFX_MANAGERS_COUNT] = {NULL};
 EWRAM_DATA static u8 sTriedEvolving = 0;
@@ -1286,7 +1286,7 @@ void ZeroPlayerPartyMons(void)
 void ZeroEnemyPartyMons(void)
 {
     s32 i;
-    for (i = 0; i < PARTY_SIZE; i++)
+    for (i = 0; i < ENEMY_PARTY_SIZE; i++)
         ZeroMonData(&gEnemyParty[i]);
 }
 
@@ -3469,8 +3469,9 @@ u8 CopyMonToPC(struct Pokemon *mon)
 u8 CalculatePartyCount(struct Pokemon *party)
 {
     u32 partyCount = 0;
+    u32 partySize = (party == gEnemyParty) ? ENEMY_PARTY_SIZE : PARTY_SIZE;
 
-    while (partyCount < PARTY_SIZE
+    while (partyCount < partySize
         && GetMonData(&party[partyCount], MON_DATA_SPECIES) != SPECIES_NONE)
     {
         partyCount++;
@@ -5803,6 +5804,22 @@ u16 GetBattleBGM(void)
         if (!(gBattleTypeFlags & (BATTLE_TYPE_FRONTIER | BATTLE_TYPE_TRAINER_HILL))
             && opponentA == TRAINER_SMITH_ABYSS)
             return MUS_PETALBURG_WOODS;
+
+        if (!(gBattleTypeFlags & (BATTLE_TYPE_FRONTIER | BATTLE_TYPE_TRAINER_HILL))
+            && opponentA == TRAINER_KYTO_ABYSS)
+            return MUS_SCHOOL;
+        
+        if (!(gBattleTypeFlags & (BATTLE_TYPE_FRONTIER | BATTLE_TYPE_TRAINER_HILL))
+            && opponentA == TRAINER_SOKAR_ABYSS)
+            return MUS_AQUA_MAGMA_HIDEOUT;
+
+        if (!(gBattleTypeFlags & (BATTLE_TYPE_FRONTIER | BATTLE_TYPE_TRAINER_HILL))
+            && opponentA == TRAINER_ALISTAIR_ABYSS)
+            return MUS_B_FACTORY;
+
+        if (!(gBattleTypeFlags & (BATTLE_TYPE_FRONTIER | BATTLE_TYPE_TRAINER_HILL))
+            && opponentA == TRAINER_COSMO_ABYSS)
+            return MUS_UNDERWATER;
 
         //////////////////
         if (gBattleTypeFlags & BATTLE_TYPE_FRONTIER)
