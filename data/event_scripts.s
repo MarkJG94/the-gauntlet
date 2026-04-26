@@ -1704,6 +1704,10 @@ EventScript_ReceivedMon::
 	end
 
 EventScript_ReceivedMonParty::
+	setflag FLAG_GAUNTLET_CODE_ENTRY_USED
+	setflag FLAG_SAFE_HAVEN_CODE_ENTRY_USED
+	setflag FLAG_SAFE_HAVEN_CODE_ENTRY_HIDDEN
+	removeobject VAR_LAST_TALKED
 	playfanfare MUS_OBTAIN_ITEM
 	message EnterCode_ReceivedGiftMon
 	waitmessage
@@ -1748,7 +1752,7 @@ EventScript_CodeExit::
 
 EnterCode_EnterCodeText:
     .string "Hello, {PLAYER}!\n"
-	.string "Would you like to purchase a Pokémon?$"
+	.string "Would you like to receive a Pokémon?$"
 
 EnterCode_FailedText:
     .string "Hmm…\n"

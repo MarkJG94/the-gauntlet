@@ -13,8 +13,30 @@
   "show_map_name": true,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
   "connections": null,
-  "object_events": [],
-  "warp_events": [],
+  "object_events": [
+    {
+      "graphics_id": "OBJ_EVENT_GFX_POKE_BALL",
+      "x": 7,
+      "y": 4,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "SafeHaven_EventScript_GetPokemonOnCodeEntry",
+      "flag": "FLAG_SAFE_HAVEN_CODE_ENTRY_HIDDEN"
+    }
+  ],
+  "warp_events": [
+    {
+      "x": 9,
+      "y": 29,
+      "elevation": 0,
+      "dest_map": "MAP_SAFE_HAVEN",
+      "dest_warp_id": "0"
+    }
+  ],
   "coord_events": [],
   "bg_events": []
 }

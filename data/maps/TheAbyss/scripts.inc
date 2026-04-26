@@ -8,6 +8,12 @@ TheAbyss_EventScript_FlashTile::
 	animateflash 1
 	setflashlevel VAR_0x8004
 	end
+
+TheAbyss_EventScript_WarpToSafeHaven::
+    warp MAP_SAFE_HAVEN, 9, 29
+    waitstate
+    end
+
 TheAbyss_EventScript_Yuki::
 	trainerbattle_double TRAINER_YUKI_ABYSS, TheAbyss_Text_YukiIntro, TheAbyss_Text_YukiDefeat, TheAbyss_Text_YukiNeedTwoMons
 	msgbox TheAbyss_Text_YukiPostBattle, MSGBOX_AUTOCLOSE

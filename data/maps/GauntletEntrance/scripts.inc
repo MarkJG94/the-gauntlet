@@ -25,7 +25,6 @@ GauntletEntrance_EventScript_GetPokemonOnCodeEntry::
     goto EventScript_GetPokemonFromCodeEntry
     end
 
-
 GauntletEntrance_EventScript_End:
 	release
 	end
@@ -51,3 +50,4 @@ GauntletEntrance_Text_BradTree:
     .string "Brad the Tree: 'CHEESECAKE'\p"
     .string "You quickly walk away from\n"
     .string "Brad the Tree.$"
+
