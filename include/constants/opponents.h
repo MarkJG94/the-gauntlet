@@ -13,48 +13,7 @@
 #define TRAINER_SOKAR_ABYSS                   6
 #define TRAINER_ALISTAIR_ABYSS                7
 #define TRAINER_COSMO_ABYSS                   8
-#define TRAINER_GABRIELLE_1                   9
-#define TRAINER_GRUNT_PETALBURG_WOODS        10
-#define TRAINER_MARCEL                       11
-#define TRAINER_ALBERTO                      12
-#define TRAINER_ED                           13
-#define TRAINER_GRUNT_SEAFLOOR_CAVERN_4      14
-#define TRAINER_DECLAN                       15
-#define TRAINER_GRUNT_RUSTURF_TUNNEL         16
-#define TRAINER_GRUNT_WEATHER_INST_1         17
-#define TRAINER_GRUNT_WEATHER_INST_2         18
-#define TRAINER_GRUNT_WEATHER_INST_3         19
-#define TRAINER_GRUNT_MUSEUM_1               20
-#define TRAINER_GRUNT_MUSEUM_2               21
-#define TRAINER_GRUNT_SPACE_CENTER_1         22
-#define TRAINER_GRUNT_MT_PYRE_1              23
-#define TRAINER_GRUNT_MT_PYRE_2              24
-#define TRAINER_GRUNT_MT_PYRE_3              25
-#define TRAINER_GRUNT_WEATHER_INST_4         26
-#define TRAINER_GRUNT_AQUA_HIDEOUT_5         27
-#define TRAINER_GRUNT_AQUA_HIDEOUT_6         28
-#define TRAINER_FREDRICK                     29
-#define TRAINER_MATT                         30
-#define TRAINER_ZANDER                       31
-#define TRAINER_SHELLY_WEATHER_INSTITUTE     32
-#define TRAINER_SHELLY_SEAFLOOR_CAVERN       33
-#define TRAINER_ARCHIE                       34
-#define TRAINER_LEAH                         35
-#define TRAINER_DAISY                        36
-#define TRAINER_ROSE_1                       37
-#define TRAINER_FELIX                        38
-#define TRAINER_VIOLET                       39
-#define TRAINER_ROSE_2                       40
-#define TRAINER_ROSE_3                       41
-#define TRAINER_ROSE_4                       42
-#define TRAINER_ROSE_5                       43
-#define TRAINER_DUSTY_1                      44
-#define TRAINER_CHIP                         45
-#define TRAINER_FOSTER                       46
-#define TRAINER_DUSTY_2                      47
-#define TRAINER_DUSTY_3                      48
-#define TRAINER_DUSTY_4                      49
-#define TRAINER_DUSTY_5                      50
+#define TRAINER_DUSCLOPS_SH                   9
 #define TRAINER_GABBY_AND_TY_1               51
 #define TRAINER_GABBY_AND_TY_2               52
 #define TRAINER_GABBY_AND_TY_3               53
@@ -878,3 +837,5 @@
 #define TRAINER_PARTNER(partner)           (MAX_TRAINERS_COUNT + partner)
 
 #endif  // GUARD_CONSTANTS_OPPONENTS_H
+
+

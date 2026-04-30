@@ -1693,6 +1693,17 @@ EventScript_GetPokemonFromCodeEntry::
     goto EventScript_ReceivedMon
 	end
 
+EventScript_GetPokemonFromCodeEntry_Gauntlet::
+	lockall
+	msgbox EnterCode_EnterCodeText, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, EventScript_CodeExit
+	special EnterCode
+	waitstate
+	special GetPokemonNameFeedback
+	goto_if_eq VAR_RESULT, 0, EventScript_CodeFailed
+	goto EventScript_ReceivedMon_Gauntlet
+	end
+
 EventScript_ReceivedMon::
 	bufferspeciesname STR_VAR_1, VAR_RESULT
 	copyvar VAR_TEMP_TRANSFERRED_SPECIES, VAR_RESULT
@@ -1703,11 +1714,29 @@ EventScript_ReceivedMon::
 	goto EventScript_CodeExit
 	end
 
+EventScript_ReceivedMon_Gauntlet::
+	bufferspeciesname STR_VAR_1, VAR_RESULT
+	copyvar VAR_TEMP_TRANSFERRED_SPECIES, VAR_RESULT
+	msgbox EnterCode_SucceededText, MSGBOX_DEFAULT
+	givemonset VAR_TEMP_TRANSFERRED_SPECIES
+	goto_if_eq VAR_RESULT, MON_GIVEN_TO_PARTY, EventScript_ReceivedMonParty_Gauntlet
+	goto_if_eq VAR_RESULT, MON_GIVEN_TO_PC, EventScript_ReceivedMonPC
+	goto EventScript_CodeExit
+	end
+
 EventScript_ReceivedMonParty::
 	setflag FLAG_GAUNTLET_CODE_ENTRY_USED
 	setflag FLAG_SAFE_HAVEN_CODE_ENTRY_USED
 	setflag FLAG_SAFE_HAVEN_CODE_ENTRY_HIDDEN
 	removeobject VAR_LAST_TALKED
+	playfanfare MUS_OBTAIN_ITEM
+	message EnterCode_ReceivedGiftMon
+	waitmessage
+	waitfanfare
+	goto EventScript_NicknamePartyMonFromCode
+	end
+
+EventScript_ReceivedMonParty_Gauntlet::
 	playfanfare MUS_OBTAIN_ITEM
 	message EnterCode_ReceivedGiftMon
 	waitmessage
@@ -1833,3 +1862,5 @@ Text_PleaseVisitAgain:
 	.include "data/maps/TheAbyss/scripts.inc"
 
 	.include "data/maps/SafeHaven/scripts.inc"
+
+	.include "data/maps/TheAscent/scripts.inc"

@@ -53,7 +53,7 @@ Route123_EventScript_Braxton::
 	end
 
 Route123_EventScript_Violet::
-	trainerbattle_single TRAINER_VIOLET, Route123_Text_VioletIntro, Route123_Text_VioletDefeat
+	trainerbattle_single TRAINER_NONE, Route123_Text_VioletIntro, Route123_Text_VioletDefeat
 	msgbox Route123_Text_VioletPostBattle, MSGBOX_AUTOCLOSE
 	end
 
@@ -115,17 +115,17 @@ Route123_EventScript_Kindra::
 	end
 
 Route123_EventScript_Frederick::
-	trainerbattle_single TRAINER_FREDRICK, Route123_Text_FrederickIntro, Route123_Text_FrederickDefeat
+	trainerbattle_single TRAINER_NONE, Route123_Text_FrederickIntro, Route123_Text_FrederickDefeat
 	msgbox Route123_Text_FrederickPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route123_EventScript_Alberto::
-	trainerbattle_single TRAINER_ALBERTO, Route123_Text_AlbertoIntro, Route123_Text_AlbertoDefeat
+	trainerbattle_single TRAINER_NONE, Route123_Text_AlbertoIntro, Route123_Text_AlbertoDefeat
 	msgbox Route123_Text_AlbertoPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route123_EventScript_Ed::
-	trainerbattle_single TRAINER_ED, Route123_Text_EdIntro, Route123_Text_EdDefeat
+	trainerbattle_single TRAINER_NONE, Route123_Text_EdIntro, Route123_Text_EdDefeat
 	msgbox Route123_Text_EdPostBattle, MSGBOX_AUTOCLOSE
 	end
 
@@ -195,4 +195,5 @@ Route123_Text_RouteSignMtPyre:
 
 Route123_Text_BerryMastersHouse:
 	.string "BERRY MASTER'S HOUSE$"
+
 

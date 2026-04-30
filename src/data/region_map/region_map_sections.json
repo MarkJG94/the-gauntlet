@@ -490,7 +490,7 @@
     },
     {
       "id": "MAPSEC_ABANDONED_SHIP",
-      "name": "ABANDONED SHIP",
+      "name": "Safe Haven",
       "x": 6,
       "y": 14,
       "width": 1,
@@ -1638,6 +1638,14 @@
     {
       "id": "MAPSEC_THE_ABYSS",
       "name": "The Maw"
+    },
+    {
+      "id": "MAPSEC_SAFE_HAVEN",
+      "name": "Unexplored Path"
+    },
+    {
+      "id": "MAPSEC_THE_ASCENT",
+      "name": "The Ascent"
     }
   ]
 }

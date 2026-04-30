@@ -173,7 +173,7 @@ static void PopulateBattleFrontierStreak(int, u8 *);
 static const struct MatchCallTrainerTextInfo sMatchCallTrainers[] =
 {
     {
-        .trainerId = TRAINER_ROSE_1,
+        .trainerId = TRAINER_NONE,
         .unused = 0,
         .battleTopicTextIds = BATTLE_TEXT_IDS(8),
         .generalTextId = TEXT_ID(GEN_TOPIC_PERSONAL, 3),
@@ -191,7 +191,7 @@ static const struct MatchCallTrainerTextInfo sMatchCallTrainers[] =
         .differentRouteMatchCallTextId = TEXT_ID(REQ_TOPIC_DIFF_ROUTE, 12),
     },
     {
-        .trainerId = TRAINER_DUSTY_1,
+        .trainerId = TRAINER_NONE,
         .unused = 0,
         .battleTopicTextIds = BATTLE_TEXT_IDS(12),
         .generalTextId = TEXT_ID(GEN_TOPIC_PERSONAL, 4),
@@ -678,7 +678,7 @@ static const struct MatchCallTrainerTextInfo sMatchCallTrainers[] =
         .differentRouteMatchCallTextId = TEXT_ID(REQ_TOPIC_DIFF_ROUTE, 5),
     },
     {
-        .trainerId = TRAINER_GABRIELLE_1,
+        .trainerId = TRAINER_NONE,
         .unused = 0,
         .battleTopicTextIds = BATTLE_TEXT_IDS(8),
         .generalTextId = TEXT_ID(GEN_TOPIC_PERSONAL, 2),
@@ -2073,3 +2073,4 @@ void SetActiveTrainerRematches(u32 matchCallId, u32 value)
     gSaveBlock1Ptr->trainerRematches[matchCallId] = value;
 #endif
 }
+

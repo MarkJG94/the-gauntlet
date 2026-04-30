@@ -1,0 +1,42 @@
+{
+  "id": "MAP_THE_ASCENT",
+  "name": "TheAscent",
+  "layout": "LAYOUT_THE_ASCENT",
+  "music": "MUS_DUMMY",
+  "region_map_section": "MAPSEC_THE_ASCENT",
+  "requires_flash": false,
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_NONE",
+  "allow_cycling": false,
+  "allow_escaping": false,
+  "allow_running": false,
+  "show_map_name": true,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": null,
+  "object_events": [],
+  "warp_events": [
+    {
+      "x": 19,
+      "y": 48,
+      "elevation": 0,
+      "dest_map": "MAP_THE_ASCENT",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 19,
+      "y": 37,
+      "elevation": 0,
+      "dest_map": "MAP_THE_ASCENT",
+      "dest_warp_id": "2"
+    },
+    {
+      "x": 8,
+      "y": 45,
+      "elevation": 0,
+      "dest_map": "MAP_THE_ASCENT",
+      "dest_warp_id": "0"
+    }
+  ],
+  "coord_events": [],
+  "bg_events": []
+}

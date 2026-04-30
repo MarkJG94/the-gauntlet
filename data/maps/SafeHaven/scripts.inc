@@ -30,3 +30,18 @@ SafeHaven_Text_CodeEntryWarning:
     .string "You can only use this once.\n"
     .string "Proceed?$"
 
+SafeHaven_EventScript_Dusclops::
+    trainerbattle_single TRAINER_DUSCLOPS_SH, TheAbyss_Text_DusclopsIntro, TheAbyss_Text_DusclopsDefeat
+    msgbox TheAbyss_Text_DusclopsPostBattle, MSGBOX_AUTOCLOSE
+    end
+
+TheAbyss_Text_DusclopsIntro:
+    .string "LEAVE....$"
+
+TheAbyss_Text_DusclopsDefeat:
+    .string "...$"
+    
+TheAbyss_Text_DusclopsPostBattle:
+    .string "...\n"
+    .string "...$" 
+

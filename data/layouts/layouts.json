@@ -9373,6 +9373,16 @@
       "secondary_tileset": "gTileset_Fallarbor",
       "border_filepath": "data/layouts/SafeHaven/border.bin",
       "blockdata_filepath": "data/layouts/SafeHaven/map.bin"
+    },
+    {
+      "id": "LAYOUT_THE_ASCENT",
+      "name": "TheAscent_Layout",
+      "width": 31,
+      "height": 50,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/TheAscent/border.bin",
+      "blockdata_filepath": "data/layouts/TheAscent/map.bin"
     }
   ]
 }

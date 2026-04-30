@@ -40,11 +40,11 @@ Objects listed in `regularTrainersOnLand` or `regularTrainersInWater` are consid
 
 | Sequence   | Trainer ID       |
 | ---------- | ---------------- |
-| 1st Battle | `TRAINER_ROSE_1` |
-| 2nd Battle | `TRAINER_ROSE_2` |
-| 3rd Battle | `TRAINER_ROSE_3` |
-| 4th Battle | `TRAINER_ROSE_4` |
-| 5th Battle | `TRAINER_ROSE_5` |
+| 1st Battle | `TRAINER_NONE` |
+| 2nd Battle | `TRAINER_NONE` |
+| 3rd Battle | `TRAINER_NONE` |
+| 4th Battle | `TRAINER_NONE` |
+| 5th Battle | `TRAINER_NONE` |
 
 The game determines which version of the Trainer you'll fight next by following these rules:
 
@@ -66,7 +66,7 @@ If a Trainer is intended to have less than five unique rematch parties, the extr
 
 ```c
 // This Trainer only has two teams.
-    [REMATCH_ROSE] = REMATCH(TRAINER_ROSE_1, TRAINER_ROSE_2, TRAINER_ROSE_2, TRAINER_ROSE_2, TRAINER_ROSE_2, MAP_ROUTE118),
+    [REMATCH_ROSE] = REMATCH(TRAINER_NONE, TRAINER_NONE, TRAINER_NONE, TRAINER_NONE, TRAINER_NONE, MAP_ROUTE118),
 ```
 
 WARNING: Rematch IDs should be placed BEFORE `REMATCH_WALLY_VR`. Trainers below that are treated as "special Trainers" that are not triggered by the Vs. Seeker.
@@ -77,7 +77,7 @@ The trainer's object needs to have a script that begins with a method to signify
 #### `trainerbattle`
 ```
 Route103_EventScript_Daisy::
-    trainerbattle_single TRAINER_DAISY, Route103_Text_DaisyIntro, Route103_Text_DaisyDefeated
+    trainerbattle_single TRAINER_NONE, Route103_Text_DaisyIntro, Route103_Text_DaisyDefeated
     msgbox Route103_Text_DaisyPostBattle, MSGBOX_AUTOCLOSE
     end
 ```
@@ -113,3 +113,4 @@ If you want Trainers to spin once they are eligible for a rematch, their overwor
 
 ## How do gym leaders rematch work with Vs. Seeker?
 They follow vanilla Emerald rules. You need to have set the flag `FLAG_SYS_GAME_CLEAR` by defeating Steven in Ever Grande City for the first rematch to be available. And then you need to have beaten every Gym Leader in a rematch once the second rematch is available. Then you need to beat every Gym Leader in a second rematch for the third rematch to be available, etc, etc ...
+

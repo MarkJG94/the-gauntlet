@@ -28,11 +28,15 @@
 #include "random.h"
 #include "reshow_battle_screen.h"
 #include "sound.h"
+#include "sprite.h"
 #include "string_util.h"
 #include "task.h"
 #include "text.h"
 #include "util.h"
 #include "window.h"
+#include "battle_gfx_sfx_util.h"
+#include "decompress.h"
+#include "trainer_pokemon_sprites.h"
 #include "constants/battle_anim.h"
 #include "constants/items.h"
 #include "constants/moves.h"
@@ -378,7 +382,6 @@ static void OpponentHandleDrawTrainerPic(enum BattlerId battler)
     s16 xPos;
     enum TrainerPicID trainerPicId;
 
-    // Sets Multibattle test opponent sprites to not be Hiker
     if (IsMultibattleTest())
     {
         if (GetBattlerPosition(battler) == B_POSITION_OPPONENT_LEFT)
@@ -403,7 +406,7 @@ static void OpponentHandleDrawTrainerPic(enum BattlerId battler)
         {
             if ((GetBattlerPosition(battler) & BIT_FLANK) != 0) // second mon
                 xPos = 152;
-           else // first mon
+            else // first mon
                 xPos = 200;
         }
         else
@@ -451,7 +454,6 @@ static void OpponentHandleChooseMove(enum BattlerId battler)
         }
         else if (gAiBattleData->choiceWatch)
         {
-            gAiBattleData->choiceWatch = FALSE;
             BtlController_EmitTwoReturnValues(battler, B_COMM_TO_ENGINE, B_ACTION_SAFARI_WATCH_CAREFULLY, 0);
         }
         else

@@ -15,7 +15,8 @@ static const u16 sCustomTitlesTrainerIds[] = {
     TRAINER_KYTO_ABYSS,
     TRAINER_SOKAR_ABYSS,
     TRAINER_ALISTAIR_ABYSS,
-    TRAINER_COSMO_ABYSS
+    TRAINER_COSMO_ABYSS,
+    TRAINER_DUSCLOPS_SH
 };
 
 static const u8 sCustomTitleWitchOfRuin[] = _("Witch of Ruin"); // Yuki
@@ -26,6 +27,7 @@ static const u8 sCustomTitleSoCold[] = _("So Cold"); // Kyto
 static const u8 sCustomTitleHeadsetHater[] = _("Headset Hater"); // Sokar
 static const u8 sCustomTitleAbandonedAI[] = _("Abandoned AI"); // Alistair
 static const u8 sCustomTitleStarshipMascot[] = _("Starship Mascot"); // Cosmo
+static const u8 sCustomTitleTheForgotten[] = _("The Forgotten"); // Dusclops SH
 
 
 static const u8 *sCustomTitles[] = {
@@ -36,7 +38,8 @@ static const u8 *sCustomTitles[] = {
     sCustomTitleSoCold,
     sCustomTitleHeadsetHater,
     sCustomTitleAbandonedAI,
-    sCustomTitleStarshipMascot
+    sCustomTitleStarshipMascot,
+    sCustomTitleTheForgotten
 };
 
 const u8 *GetCustomTrainerTitle(u16 trainerId)

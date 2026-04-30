@@ -317,3 +317,4 @@ FortreeCity_Gym_Text_WinonaRematchNeedTwoMons:
 	.string "POKéMON with you?\p"
 	.string "Please return with two POKéMON\n"
 	.string "at the very least.$"
+

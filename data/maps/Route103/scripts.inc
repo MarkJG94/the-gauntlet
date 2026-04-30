@@ -200,7 +200,7 @@ Route103_EventScript_RouteSign::
 	end
 
 Route103_EventScript_Daisy::
-	trainerbattle_single TRAINER_DAISY, Route103_Text_DaisyIntro, Route103_Text_DaisyDefeated
+	trainerbattle_single TRAINER_NONE, Route103_Text_DaisyIntro, Route103_Text_DaisyDefeated
 	msgbox Route103_Text_DaisyPostBattle, MSGBOX_AUTOCLOSE
 	end
 
@@ -350,4 +350,5 @@ Route103_Text_ShortcutToOldale:
 Route103_Text_RouteSign:
 	.string "ROUTE 103\n"
 	.string "{DOWN_ARROW} OLDALE TOWN$"
+
 

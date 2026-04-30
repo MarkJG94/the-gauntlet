@@ -216,3 +216,4 @@ VictoryRoad_1F_Text_KatelynnDefeat:
 VictoryRoad_1F_Text_KatelynnPostBattle:
 	.string "Humph, go right on ahead.\n"
 	.string "See if I care.$"
+

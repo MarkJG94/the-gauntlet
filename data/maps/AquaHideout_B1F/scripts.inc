@@ -75,7 +75,7 @@ AquaHideout_B1F_EventScript_DefeatedElectrode2::
 	end
 
 AquaHideout_B1F_EventScript_Grunt5::
-	trainerbattle_single TRAINER_GRUNT_AQUA_HIDEOUT_5, AquaHideout_B1F_Text_Grunt5Intro, AquaHideout_B1F_Text_Grunt5Defeat
+	trainerbattle_single TRAINER_NONE, AquaHideout_B1F_Text_Grunt5Intro, AquaHideout_B1F_Text_Grunt5Defeat
 	msgbox AquaHideout_B1F_Text_Grunt5PostBattle, MSGBOX_AUTOCLOSE
 	end
 
@@ -108,3 +108,4 @@ AquaHideout_B1F_Text_Grunt7Defeat:
 AquaHideout_B1F_Text_Grunt7PostBattle:
 	.string "If you have a cool uniform, you look\n"
 	.string "good even in a loss, don't you think?$"
+

@@ -21,6 +21,7 @@
 #include "palette.h"
 #include "party_menu.h"
 #include "pokemon_animation.h"
+#include "trainer_pokemon_sprites.h"
 #include "recorded_battle.h"
 #include "string_util.h"
 #include "sound.h"
@@ -2157,7 +2158,10 @@ static void Controller_HandleTrainerSlideBack(enum BattlerId battler)
     if (gSprites[gBattleStruct->trainerSlideSpriteIds[battler]].callback == SpriteCallbackDummy)
     {
         if (!IsOnPlayerSide(battler))
-            FreeTrainerFrontPicPalette(gSprites[gBattleStruct->trainerSlideSpriteIds[battler]].oam.affineParam);
+        {
+            if (gSprites[gBattleStruct->trainerSlideSpriteIds[battler]].oam.affineParam != 0xAAAA)
+                FreeTrainerFrontPicPalette(gSprites[gBattleStruct->trainerSlideSpriteIds[battler]].oam.affineParam);
+        }
         FreeSpriteOamMatrix(&gSprites[gBattleStruct->trainerSlideSpriteIds[battler]]);
         DestroySprite(&gSprites[gBattleStruct->trainerSlideSpriteIds[battler]]);
         BtlController_Complete(battler);
@@ -2969,7 +2973,8 @@ static void SpriteCB_FreePlayerSpriteLoadMonSprite(struct Sprite *sprite)
 
 static void SpriteCB_FreeOpponentSprite(struct Sprite *sprite)
 {
-    FreeTrainerFrontPicPalette(sprite->oam.affineParam);
+    if (sprite->oam.affineParam != 0xAAAA)
+        FreeTrainerFrontPicPalette(sprite->oam.affineParam);
     FreeSpriteOamMatrix(sprite);
     DestroySprite(sprite);
 }

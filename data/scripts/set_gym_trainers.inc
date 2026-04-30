@@ -167,3 +167,4 @@ EventScript_SetViridianGymTrainers::
 	settrainerflag TRAINER_COOLTRAINER_YUJI
 	settrainerflag TRAINER_COOLTRAINER_WARREN
 	return
+

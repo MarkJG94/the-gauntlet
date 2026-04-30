@@ -55,6 +55,9 @@ const u16 gTrainerPalette_RuinManiac[] = INCBIN_U16("graphics/trainers/front_pic
 const u32 gTrainerFrontPic_Interviewer[] = INCBIN_U32("graphics/trainers/front_pics/interviewer.4bpp.smol");
 const u16 gTrainerPalette_Interviewer[] = INCBIN_U16("graphics/trainers/front_pics/interviewer.gbapal");
 
+const u32 gTrainerFrontPic_Dusclops[] = INCBIN_U32("graphics/trainers/front_pics/dusclops.4bpp.smol");
+const u16 gTrainerPalette_Dusclops[] = INCBIN_U16("graphics/trainers/front_pics/dusclops.gbapal");
+
 const u32 gTrainerFrontPic_TuberF[] = INCBIN_U32("graphics/trainers/front_pics/tuber_f.4bpp.smol");
 const u16 gTrainerPalette_TuberF[] = INCBIN_U16("graphics/trainers/front_pics/tuber_f.gbapal");
 
@@ -516,6 +519,7 @@ const struct TrainerSprite gTrainerSprites[] =
     TRAINER_SPRITE(TRAINER_PIC_FRONT_AROMA_LADY, gTrainerFrontPic_AromaLady, gTrainerPalette_AromaLady),
     TRAINER_SPRITE(TRAINER_PIC_FRONT_RUIN_MANIAC, gTrainerFrontPic_RuinManiac, gTrainerPalette_RuinManiac),
     TRAINER_SPRITE(TRAINER_PIC_FRONT_INTERVIEWER, gTrainerFrontPic_Interviewer, gTrainerPalette_Interviewer),
+    TRAINER_SPRITE(TRAINER_PIC_FRONT_DUSCLOPS, gTrainerFrontPic_Dusclops, gTrainerPalette_Dusclops),
     TRAINER_SPRITE(TRAINER_PIC_FRONT_TUBER_F, gTrainerFrontPic_TuberF, gTrainerPalette_TuberF),
     TRAINER_SPRITE(TRAINER_PIC_FRONT_TUBER_M, gTrainerFrontPic_TuberM, gTrainerPalette_TuberM),
     TRAINER_SPRITE(TRAINER_PIC_FRONT_COOLTRAINER_F, gTrainerFrontPic_CoolTrainerF, gTrainerPalette_CoolTrainerF),

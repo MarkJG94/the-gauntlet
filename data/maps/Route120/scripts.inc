@@ -325,7 +325,7 @@ Route120_EventScript_Jennifer::
 	end
 
 Route120_EventScript_Chip::
-	trainerbattle_single TRAINER_CHIP, Route120_Text_ChipIntro, Route120_Text_ChipDefeat
+	trainerbattle_single TRAINER_NONE, Route120_Text_ChipIntro, Route120_Text_ChipDefeat
 	msgbox Route120_Text_ChipPostBattle, MSGBOX_AUTOCLOSE
 	end
 
@@ -427,3 +427,4 @@ Route120_Text_RouteSignFortree:
 Route120_Text_RouteSign121:
 	.string "{RIGHT_ARROW} ROUTE 121\n"
 	.string "{LEFT_ARROW} ROUTE 120$"
+

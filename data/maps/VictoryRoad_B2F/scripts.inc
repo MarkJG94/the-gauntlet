@@ -22,7 +22,7 @@ VictoryRoad_B2F_EventScript_Julie::
 	end
 
 VictoryRoad_B2F_EventScript_Felix::
-	trainerbattle_single TRAINER_FELIX, VictoryRoad_B2F_Text_FelixIntro, VictoryRoad_B2F_Text_FelixDefeat
+	trainerbattle_single TRAINER_NONE, VictoryRoad_B2F_Text_FelixIntro, VictoryRoad_B2F_Text_FelixDefeat
 	msgbox VictoryRoad_B2F_Text_FelixPostBattle, MSGBOX_AUTOCLOSE
 	end
 
@@ -105,4 +105,5 @@ VictoryRoad_B2F_Text_DianneDefeat:
 VictoryRoad_B2F_Text_DiannePostBattle:
 	.string "You do have guts! I like that!\n"
 	.string "Keep it going!$"
+
 

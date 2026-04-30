@@ -22,7 +22,7 @@ GauntletEntrance_EventScript_BradTree::
     end
 
 GauntletEntrance_EventScript_GetPokemonOnCodeEntry::
-    goto EventScript_GetPokemonFromCodeEntry
+	goto EventScript_GetPokemonFromCodeEntry_Gauntlet
     end
 
 GauntletEntrance_EventScript_End:
