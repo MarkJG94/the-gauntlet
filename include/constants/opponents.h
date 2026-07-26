@@ -14,6 +14,9 @@
 #define TRAINER_ALISTAIR_ABYSS                7
 #define TRAINER_COSMO_ABYSS                   8
 #define TRAINER_DUSCLOPS_SH                   9
+#define TRAINER_BEN_ASCENT                   10
+#define TRAINER_ITAG_ASCENT                  11
+#define TRAINER_VICI_ASCENT                  12
 #define TRAINER_GABBY_AND_TY_1               51
 #define TRAINER_GABBY_AND_TY_2               52
 #define TRAINER_GABBY_AND_TY_3               53
@@ -820,11 +823,12 @@
 #define TRAINER_MAY_PLACEHOLDER             854
 #define TRAINER_PLACEHOLDER                 855
 
+
 // NOTE: Because each Trainer uses a flag to determine when they are defeated, there is only space for 9 additional trainers before trainer flag space overflows
 //       More space can be made by shifting flags around in constants/flags.h or changing how trainer flags are handled
 //       MAX_TRAINERS_COUNT can be increased but will take up additional saveblock space
 
-#define TRAINERS_COUNT_EMERALD     856
+#define TRAINERS_COUNT_EMERALD     857
 #define MAX_TRAINERS_COUNT_EMERALD 864
 
 #if IS_FRLG

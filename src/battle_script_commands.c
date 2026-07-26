@@ -5282,11 +5282,11 @@ static void Cmd_switchindataupdate(void)
     gBattleMons[battler].types[2] = TYPE_MYSTERY;
     gBattleMons[battler].ability = GetAbilityBySpecies(gBattleMons[battler].species, gBattleMons[battler].abilityNum);
     {
-        enum BattleTrainer trainer = GetBattlerTrainer(battler);
         u32 partyIndex = gBattlerPartyIndexes[battler];
-        enum Ability forcedAbility = GetTrainerPartyAbilityFromId(trainer, partyIndex);
+        enum Ability forcedAbility = GetTrainerPartyAbilityFromId(GetBattlerTrainerId(battler), partyIndex);
 
         #if TESTING
+        enum BattleTrainer trainer = GetBattlerTrainer(battler);
         if (gTestRunnerEnabled && TestRunner_Battle_GetForcedAbility(trainer, partyIndex))
             forcedAbility = TestRunner_Battle_GetForcedAbility(trainer, partyIndex);
         #endif
@@ -9156,10 +9156,10 @@ static void Cmd_healpartystatus(void)
             {
                 ability = GetAbilityBySpecies(species, abilityNum);
                 {
-                    enum BattleTrainer trainer = GetBattlerTrainer(gBattlerAttacker);
-                    enum Ability forcedAbility = GetTrainerPartyAbilityFromId(trainer, i);
+                    enum Ability forcedAbility = GetTrainerPartyAbilityFromId(GetBattlerTrainerId(gBattlerAttacker), i);
 
                     #if TESTING
+                    enum BattleTrainer trainer = GetBattlerTrainer(gBattlerAttacker);
                     if (gTestRunnerEnabled && TestRunner_Battle_GetForcedAbility(trainer, i))
                         forcedAbility = TestRunner_Battle_GetForcedAbility(trainer, i);
                     #endif

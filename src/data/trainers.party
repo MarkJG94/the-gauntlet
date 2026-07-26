@@ -659,6 +659,185 @@ Adamant Nature
 - Fleur Cannon
 - Oceanic Operetta
 
+
+=== TRAINER_BEN_ASCENT ===
+Name: Ben
+Class: Ruin Maniac
+Pic: Ruin Maniac
+Gender: Male
+Music: Suspicious
+Double Battle: Yes
+AI: Smart Trainer / Check Bad Move / Ace Pokemon / Force Setup First Turn / Check Viability 
+
+Lapras @ Heavy Duty Boots
+Ability: Shell Armor
+Tera Type: Ghost
+Calm Nature
+- Protect
+- Rain Dance
+- Perish Song
+- Ice Beam
+
+Ludicolo @ King's Rock  
+Ability: Swift Swim  
+Tera Type: Fire
+Modest Nature  
+- Fake Out  
+- Weather Ball  
+- Grass Knot  
+- Fling
+
+Snorlax @ Leftovers
+Ability: Thick Fat
+Tera Type: Normal
+Careful Nature
+- Curse
+- Body Slam
+- Rest
+- Earthquake
+
+Dragonite @ Loaded Dice
+Ability: Multiscale
+Tera Type: Steel
+Adamant Nature
+- Scale Shot
+- Iron Head
+- Extreme Speed
+- Protect
+
+Ho-oh @ Clear Amulet
+Ability: Regenerator
+Tera Type: Fire
+Adamant Nature
+- Sacred Fire
+- Brave Bird
+- Tailwind
+- Protect
+
+Spoink @ Eviolite
+Ability: Own Tempo
+Tera Type: Psychic
+Serious Nature
+- Twinkle Tackle
+- Never-Ending Nightmare
+- Shattered Psyche
+- Malicious Moonsault
+
+
+=== TRAINER_ITAG_ASCENT ===
+Name: itag
+Class: Team Magma
+Pic: Magma Grunt M
+Gender: Male
+Music: Cool
+Double Battle: No
+AI: Smart Trainer / Check Bad Move / Ace Pokemon / Smart Tera / Check Viability
+
+Wo-Chien @ Sitrus Berry
+Ability: Tablets of Ruin
+Calm Nature
+- Pollen Puff
+- Ruination
+- Leech Seed
+- Protect
+
+Zygarde-10 @ Choice Band
+Ability: Aura Break
+Jolly Nature
+- Thousand Arrows
+- Extreme Speed
+- Outrage
+- Toxic
+
+Eternatus @ Black Sludge
+Ability: Pressure
+Timid Nature
+- Cosmic Power
+- Recover
+- Dynamax Cannon
+- Fire Spin
+
+Zeraora @ Electrium Z
+Ability: Volt Absorb
+Jolly Nature
+- Fake Out
+- Volt Switch
+- Plasma Fists
+- Snarl
+
+Kyogre @ Rocky Helmet
+Ability: Drizzle
+Bold Nature
+- Roar
+- Substitute
+- Scald
+- Ice Beam
+
+Aggron @ Aggronite
+Ability: Sturdy
+Careful Nature
+- Curse
+- Heavy Slam
+- Rest
+- Sleep Talk
+
+=== TRAINER_VICI_ASCENT ===
+Name: Vici
+Class: Team Aqua
+Pic: Aqua Grunt M
+Gender: Male
+Music: Cool
+Double Battle: No
+AI: Smart Trainer / Check Bad Move / Ace Pokemon / Smart Tera / Check Viability
+
+Incineroar @ Safety Goggles
+Ability: Intimidate
+Impish Nature
+- Fake Out
+- Darkest Lariat
+- Parting Shot
+- Flare Blitz
+
+Amoonguss @ Covert Cloak
+Ability: Regenerator
+Bold Nature
+- Spore
+- Rage Powder
+- Pollen Puff
+- Protect
+
+Landorus @ Life Orb
+Ability: Sheer Force
+Modest Nature
+- Earth Power
+- Sludge Bomb
+- Protect
+- Sandsear Storm
+
+Zapdos @ King's Rock
+Ability: Pressure
+Timid Nature
+- Heat Wave
+- Discharge
+- Roost
+- Defog
+
+Tapu Fini @ Sitrus Berry
+Ability: Misty Surge
+Bold Nature
+- Calm Mind
+- Draining Kiss
+- Scald
+- Taunt
+
+Metagross @ Metagrossite
+Ability: Clear Body
+Adamant Nature
+- Bullet Punch
+- Stomping Tantrum
+- Psychic Fangs
+- Ice Punch
+
 === TRAINER_GABBY_AND_TY_1 ===
 Name: GABBY & TY
 Class: Interviewer

@@ -3316,11 +3316,11 @@ void SwitchInClearSetData(enum BattlerId battler, struct Volatiles *volatilesCop
     gSelectedMonPartyId = PARTY_SIZE_MAX;
 
     {
-        enum BattleTrainer trainer = GetBattlerTrainer(battler);
         u32 partyIndex = gBattlerPartyIndexes[battler];
-        enum Ability forcedAbility = GetTrainerPartyAbilityFromId(trainer, partyIndex);
+        enum Ability forcedAbility = GetTrainerPartyAbilityFromId(GetBattlerTrainerId(battler), partyIndex);
 
         #if TESTING
+        enum BattleTrainer trainer = GetBattlerTrainer(battler);
         if (gTestRunnerEnabled && TestRunner_Battle_GetForcedAbility(trainer, partyIndex))
             forcedAbility = TestRunner_Battle_GetForcedAbility(trainer, partyIndex);
         #endif // TESTING
@@ -3536,11 +3536,11 @@ static void DoBattleIntro(void)
                 for (i = 0; i < NUM_BATTLE_STATS; i++)
                     gBattleMons[battler].statStages[i] = DEFAULT_STAT_STAGE;
                 {
-                    enum BattleTrainer trainer = GetBattlerTrainer(battler);
                     u32 partyIndex = gBattlerPartyIndexes[battler];
-                    enum Ability forcedAbility = GetTrainerPartyAbilityFromId(trainer, partyIndex);
+                    enum Ability forcedAbility = GetTrainerPartyAbilityFromId(GetBattlerTrainerId(battler), partyIndex);
 
                     #if TESTING
+                    enum BattleTrainer trainer = GetBattlerTrainer(battler);
                     if (gTestRunnerEnabled && TestRunner_Battle_GetForcedAbility(trainer, partyIndex))
                         forcedAbility = TestRunner_Battle_GetForcedAbility(trainer, partyIndex);
                     #endif
@@ -3844,11 +3844,11 @@ static void TryDoEventsBeforeFirstTurn(void)
         // Allow for illegal abilities within tests.
         for (enum BattlerId battler = 0; battler < gBattlersCount; ++battler)
         {
-            enum BattleTrainer trainer = GetBattlerTrainer(battler);
             u32 partyIndex = gBattlerPartyIndexes[battler];
-            enum Ability forcedAbility = GetTrainerPartyAbilityFromId(trainer, partyIndex);
+            enum Ability forcedAbility = GetTrainerPartyAbilityFromId(GetBattlerTrainerId(battler), partyIndex);
 
             #if TESTING
+            enum BattleTrainer trainer = GetBattlerTrainer(battler);
             if (gTestRunnerEnabled && TestRunner_Battle_GetForcedAbility(trainer, partyIndex))
                 forcedAbility = TestRunner_Battle_GetForcedAbility(trainer, partyIndex);
             #endif // TESTING

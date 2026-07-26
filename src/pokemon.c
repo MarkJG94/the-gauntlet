@@ -5821,6 +5821,10 @@ u16 GetBattleBGM(void)
             && opponentA == TRAINER_COSMO_ABYSS)
             return MUS_UNDERWATER;
 
+        if (!(gBattleTypeFlags & (BATTLE_TYPE_FRONTIER | BATTLE_TYPE_TRAINER_HILL))
+            && opponentA == TRAINER_BEN_ASCENT)
+            return MUS_VS_REGI;
+
         //////////////////
         if (gBattleTypeFlags & BATTLE_TYPE_FRONTIER)
             trainerClass = GetFrontierOpponentClass(TRAINER_BATTLE_PARAM.opponentA);

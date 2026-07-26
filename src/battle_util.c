@@ -9556,9 +9556,8 @@ void CopyMonAbilityAndTypesToBattleMon(enum BattlerId battler, struct Pokemon *m
 {
     gBattleMons[battler].ability = GetMonAbility(mon);
     {
-        enum BattleTrainer trainer = GetBattlerTrainer(battler);
         u32 partyIndex = gBattlerPartyIndexes[battler];
-        enum Ability forcedAbility = GetTrainerPartyAbilityFromId(trainer, partyIndex);
+        enum Ability forcedAbility = GetTrainerPartyAbilityFromId(GetBattlerTrainerId(battler), partyIndex);
 
         #if TESTING
         if (gTestRunnerEnabled)

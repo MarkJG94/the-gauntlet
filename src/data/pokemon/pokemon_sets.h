@@ -6588,7 +6588,7 @@ const struct PokemonSets gPokemonSets[NUM_SPECIES] =
     {
         .name = _("Drilbur"),
         .item = ITEM_EVIOLITE,
-        .ability = ABILITY_MOLD_BREAKER,
+        .ability = ABILITY_SAND_RUSH,
         .nature = NATURE_JOLLY,
         .evs = {0, 156, 116, 212, 0, 0},
         .ivs = {31, 31, 31, 31, 31, 31},
@@ -6599,11 +6599,11 @@ const struct PokemonSets gPokemonSets[NUM_SPECIES] =
     {
         .name = _("Excadrill"),
         .item = ITEM_LEFTOVERS,
-        .ability = ABILITY_MOLD_BREAKER,
+        .ability = ABILITY_SAND_RUSH,
         .nature = NATURE_JOLLY,
         .evs = {156, 0, 0, 100, 0, 252},
         .ivs = {31, 31, 31, 31, 31, 31},
-        .moves = {MOVE_EARTHQUAKE, MOVE_RAPID_SPIN, MOVE_IRON_HEAD, MOVE_STEALTH_ROCK}
+        .moves = {MOVE_EARTHQUAKE, MOVE_RAPID_SPIN, MOVE_IRON_HEAD, MOVE_PROTECT}
     },
 
     [SPECIES_AUDINO] = // TODO: Set
@@ -7644,7 +7644,7 @@ const struct PokemonSets gPokemonSets[NUM_SPECIES] =
     {
         .name = _("Fraxure"),
         .item = ITEM_EVIOLITE,
-        .ability = ABILITY_MOLD_BREAKER,
+        .ability = ABILITY_UNNERVE,
         .nature = NATURE_JOLLY,
         .evs = {0, 252, 4, 252, 0, 0},
         .ivs = {31, 31, 31, 31, 31, 31},
@@ -7655,7 +7655,7 @@ const struct PokemonSets gPokemonSets[NUM_SPECIES] =
     {
         .name = _("Haxorus"),
         .item = ITEM_CHOICE_BAND,
-        .ability = ABILITY_MOLD_BREAKER,
+        .ability = ABILITY_UNNERVE,
         .nature = NATURE_JOLLY,
         .evs = {0, 252, 0, 252, 0, 4},
         .ivs = {31, 31, 31, 31, 31, 31},
@@ -12143,7 +12143,7 @@ const struct PokemonSets gPokemonSets[NUM_SPECIES] =
     {
         .name = _("Tinkaton"),
         .item = ITEM_AIR_BALLOON,
-        .ability = ABILITY_MOLD_BREAKER,
+        .ability = ABILITY_PICKPOCKET,
         .nature = NATURE_JOLLY,
         .evs = {252, 0, 0, 232, 0, 24},
         .ivs = {31, 31, 31, 31, 31, 31},
@@ -12847,7 +12847,7 @@ const struct PokemonSets gPokemonSets[NUM_SPECIES] =
     {
         .name = _("Ogerpon-H"),
         .item = ITEM_HEARTHFLAME_MASK,
-        .ability = ABILITY_MOLD_BREAKER,
+        .ability = ABILITY_DEFIANT,
         .nature = NATURE_JOLLY,
         .evs = {0, 252, 0, 0, 0, 0},
         .ivs = {31, 31, 31, 31, 31, 31},

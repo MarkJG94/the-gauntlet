@@ -1489,11 +1489,11 @@ static u32 GetBattlerMonData(enum BattlerId battler, struct Pokemon *party, u32 
         for (size = 0; size < sizeof(battleMon); size++)
             dst[size] = src[size];
         {
-            enum BattleTrainer trainer = GetBattlerTrainer(battler);
             u32 partyIndex = gBattlerPartyIndexes[battler];
-            enum Ability forcedAbility = GetTrainerPartyAbilityFromId(trainer, partyIndex);
+            enum Ability forcedAbility = GetTrainerPartyAbilityFromId(GetBattlerTrainerId(battler), partyIndex);
 
             #if TESTING
+            enum BattleTrainer trainer = GetBattlerTrainer(battler);
             if (gTestRunnerEnabled && TestRunner_Battle_GetForcedAbility(trainer, partyIndex))
                 forcedAbility = TestRunner_Battle_GetForcedAbility(trainer, partyIndex);
             #endif
@@ -3321,5 +3321,33 @@ enum BattleTrainer GetBattlerTrainer(enum BattlerId battler)
             return B_TRAINER_1;
     default:
         return B_TRAINER_1;
+    }
+}
+
+// Unlike GetBattlerTrainer (which returns a small per-battle-slot index used to key
+// test-only lookup tables), this resolves the actual numeric trainer ID for a battler
+// so it can be used with GetTrainerStructFromId-based lookups (e.g. trainer-forced abilities).
+u16 GetBattlerTrainerId(enum BattlerId battler)
+{
+    switch (battler)
+    {
+    case B_BATTLER_0:
+        if (gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER)
+            return gPartnerTrainerId;
+        return TRAINER_NONE;
+    case B_BATTLER_1:
+        if (gBattleTypeFlags & BATTLE_TYPE_TRAINER)
+            return TRAINER_BATTLE_PARAM.opponentA;
+        return TRAINER_NONE;
+    case B_BATTLER_2:
+        if (gBattleTypeFlags & (BATTLE_TYPE_MULTI | BATTLE_TYPE_INGAME_PARTNER))
+            return gPartnerTrainerId;
+        return TRAINER_NONE;
+    case B_BATTLER_3:
+        if (gBattleTypeFlags & BATTLE_TYPE_TRAINER)
+            return (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS) ? TRAINER_BATTLE_PARAM.opponentB : TRAINER_BATTLE_PARAM.opponentA;
+        return TRAINER_NONE;
+    default:
+        return TRAINER_NONE;
     }
 }
