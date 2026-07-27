@@ -38,6 +38,7 @@
 #include "main.h"
 #include "malloc.h"
 #include "m4a.h"
+#include "main_menu.h"
 #include "map_name_popup.h"
 #include "match_call.h"
 #include "menu.h"
@@ -392,8 +393,6 @@ void DoWhiteOut(void)
     RunScriptImmediately(EventScript_WhiteOut);
     HealPlayerParty();
     Overworld_ResetStateAfterWhiteOut();
-    SetWarpDestinationToLastHealLocation();
-    WarpIntoMap();
 }
 
 void Overworld_ResetStateAfterFly(void)
@@ -1906,27 +1905,15 @@ void CB2_NewGame(void)
 
 void CB2_WhiteOut(void)
 {
-    u8 state;
-
     if (++gMain.state >= 120)
     {
         FieldClearVBlankHBlankCallbacks();
         StopMapMusic();
         ResetSafariZoneFlag_();
         DoWhiteOut();
-        ResetInitialPlayerAvatarState();
         ScriptContext_Init();
-        UnlockPlayerFieldControls();
-        if (IsWhiteoutCutscene())
-            gFieldCallback = FieldCB_RushInjuredPokemonToCenter;
-        else
-            gFieldCallback = FieldCB_WarpExitFadeFromBlack;
-        state = 0;
-        SetFollowerNPCData(FNPC_DATA_SURF_BLOB, FNPC_SURF_BLOB_NONE);
-        DoMapLoadLoop(&state);
-        SetFieldVBlankCallback();
-        SetMainCallback1(CB1_Overworld);
-        SetMainCallback2(CB2_Overworld);
+        SetMainCallback1(NULL);
+        SetMainCallback2(CB2_InitMainMenu);
     }
 }
 

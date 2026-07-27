@@ -5720,9 +5720,9 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
     [SPECIES_PUMPKABOO_SMALL] =
     {
         .baseHP        = 44,
-        .baseAttack    = 66,
+        .baseAttack    = 75,
         .baseDefense   = 70,
-        .baseSpeed     = 56,
+        .baseSpeed     = 60,
         .baseSpAttack  = 44,
         .baseSpDefense = 55,
         .types = MON_TYPES(TYPE_GHOST, TYPE_GRASS),

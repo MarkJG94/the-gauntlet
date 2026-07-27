@@ -9,6 +9,7 @@
 #include "pokemon.h"
 #include "script.h"
 #include "script_movement.h"
+#include "sound.h"
 #include "sprite.h"
 #include "task.h"
 #include "trainer_see.h"
@@ -20,7 +21,10 @@
 #include "constants/event_objects.h"
 #include "constants/event_object_movement.h"
 #include "constants/field_effects.h"
+#include "constants/map_groups.h"
+#include "constants/maps.h"
 #include "constants/script_commands.h"
+#include "constants/songs.h"
 #include "constants/trainer_types.h"
 
 // this file's functions
@@ -803,6 +807,13 @@ static bool8 TrainerExclamationMark(u8 taskId, struct Task *task, struct ObjectE
 
     ObjectEventGetLocalIdAndMap(trainerObj, &gFieldEffectArguments[0], &gFieldEffectArguments[1], &gFieldEffectArguments[2]);
     FieldEffectStart(FLDEFF_EXCLAMATION_MARK_ICON);
+
+    // The Ascent's patrolling Dusclops decoys (object ids 3-5) get a ping when they spot the player.
+    if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(MAP_THE_ASCENT)
+     && gSaveBlock1Ptr->location.mapNum == MAP_NUM(MAP_THE_ASCENT)
+     && trainerObj->localId >= 3 && trainerObj->localId <= 5)
+        PlaySE(SE_PIN);
+
     direction = GetFaceDirectionMovementAction(trainerObj->facingDirection);
     ObjectEventSetHeldMovement(trainerObj, direction);
     task->tFuncId++; // TRSEE_EXCLAMATION_WAIT

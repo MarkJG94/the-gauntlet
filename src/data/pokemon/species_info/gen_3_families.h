@@ -7243,7 +7243,7 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
     [SPECIES_SPINDA] =
     {
         .baseHP        = 60,
-        .baseAttack    = 60,
+        .baseAttack    = 100,
         .baseDefense   = 60,
         .baseSpeed     = 60,
         .baseSpAttack  = 60,

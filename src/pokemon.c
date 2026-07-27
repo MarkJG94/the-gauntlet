@@ -5825,6 +5825,19 @@ u16 GetBattleBGM(void)
             && opponentA == TRAINER_BEN_ASCENT)
             return MUS_VS_REGI;
 
+        if (!(gBattleTypeFlags & (BATTLE_TYPE_FRONTIER | BATTLE_TYPE_TRAINER_HILL))
+            && opponentA == TRAINER_MARKTEAM1_ASCENT)
+            return MUS_VS_RIVAL;
+
+        if (!(gBattleTypeFlags & (BATTLE_TYPE_FRONTIER | BATTLE_TYPE_TRAINER_HILL))
+            && opponentA == TRAINER_MARKTEAM2_ASCENT)
+            return MUS_VS_GYM_LEADER;
+
+        if (!(gBattleTypeFlags & (BATTLE_TYPE_FRONTIER | BATTLE_TYPE_TRAINER_HILL))
+            && opponentA == TRAINER_MARKTEAM3_ASCENT)
+            return MUS_VS_RAYQUAZA;
+            
+
         //////////////////
         if (gBattleTypeFlags & BATTLE_TYPE_FRONTIER)
             trainerClass = GetFrontierOpponentClass(TRAINER_BATTLE_PARAM.opponentA);

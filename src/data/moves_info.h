@@ -3988,7 +3988,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
                 "rhythmic punches."),
         #endif
         .effect = EFFECT_HIT,
-        .power = 70,
+        .power = 90,
         .type = TYPE_NORMAL,
         .accuracy = 100,
         .pp = 10,

@@ -17,6 +17,9 @@
 #define TRAINER_BEN_ASCENT                   10
 #define TRAINER_ITAG_ASCENT                  11
 #define TRAINER_VICI_ASCENT                  12
+#define TRAINER_MARKTEAM1_ASCENT             13
+#define TRAINER_MARKTEAM2_ASCENT             14
+#define TRAINER_MARKTEAM3_ASCENT             15
 #define TRAINER_GABBY_AND_TY_1               51
 #define TRAINER_GABBY_AND_TY_2               52
 #define TRAINER_GABBY_AND_TY_3               53
