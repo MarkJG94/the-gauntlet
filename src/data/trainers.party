@@ -1026,6 +1026,22 @@ Bold Nature
 - Lunar Blessing
 - Protect
 
+=== TRAINER_SURPRISE_ASCENT ===
+Name: Surprise
+Class: Ninja Boy
+Pic: Ninja Boy
+Gender: Male
+Music: Suspicious
+Double Battle: No
+AI: Smart Trainer / Check Bad Move / Ace Pokemon / Smart Tera / Check Viability
+
+Rattata @ Focus Sash
+Level: 1
+Ability: Hustle
+Adamant Nature
+- Quick Attack
+- Endeavor
+
 
 === TRAINER_GABBY_AND_TY_1 ===
 Name: GABBY & TY

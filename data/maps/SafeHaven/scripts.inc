@@ -48,17 +48,16 @@ TheAbyss_Text_DusclopsPostBattle:
 SafeHaven_EventScript_Porygon2Heal::
     lock
     faceplayer
-    msgbox MyHealingNPC_Text, MSGBOX_DEFAULT
+    msgbox SafeHaven_MyHealingNPC_Text, MSGBOX_DEFAULT
     special HealPlayerParty
-    msgbox MyHealingNPC_DoneText, MSGBOX_DEFAULT
+    msgbox SafeHaven_MyHealingNPC_DoneText, MSGBOX_DEFAULT
     release
     end
 
-MyHealingNPC_Text:
+SafeHaven_MyHealingNPC_Text:
     .string "HI! I am Porygon2 version h.341!\n"
-    .string "BZZT! Let me heal your POKéMON!$"
+    .string "BZZT! Let me heal... BZZT!$"
 
-MyHealingNPC_DoneText:
-    .string "BZZT! Your POKéMON are fully healed!\n"
-    .string "BZZT! Take care!$"  
-      
+SafeHaven_MyHealingNPC_DoneText:
+    .string "BZZT! Your POKéMON are fully healed.$"
+

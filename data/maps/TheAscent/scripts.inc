@@ -163,4 +163,38 @@ TheAscent_Text_MarkTeam3PostBattle:
 	.string "The way is clear now.\n"
     .string "You can never defeat the real deal.$"
 
+TheAscent_EventScript_Surprise::
+    trainerbattle_single TRAINER_SURPRISE_ASCENT, TheAscent_Text_SurpriseIntro, TheAscent_Text_SurpriseDefeat, TheAscent_Text_SurpriseNeedTwoMons
+    msgbox TheAscent_Text_SurprisePostBattle, MSGBOX_AUTOCLOSE
+    end
+
+TheAscent_Text_SurpriseIntro:
+    .string "Surprise!$"
+
+TheAscent_Text_SurpriseDefeat:
+    .string "Surprise!$"
+
+TheAscent_Text_SurpriseNeedTwoMons:
+    .string "You need at least two POKeMON\n"
+    .string "for this battle.$"
+
+TheAscent_Text_SurprisePostBattle:
+    .string "Surprise!$"
+
+TheAscent_EventScript_Porygon2Heal::
+    lock
+    faceplayer
+    msgbox TheAscent_MyHealingNPC_Text, MSGBOX_DEFAULT
+    special HealPlayerParty
+    msgbox TheAscent_MyHealingNPC_DoneText, MSGBOX_DEFAULT
+    release
+    end
+
+TheAscent_MyHealingNPC_Text:
+    .string "H1! I am Poryg0n2 v-v-version h..!\n"
+    .string "BZZT! Let m3 <ERROR> y0ur P0K3M0N!$"
+
+TheAscent_MyHealingNPC_DoneText:
+    .string "BZZT! Your P0K3M0N are <ERROR>!\n"
+    .string "BZZT!$"  
 

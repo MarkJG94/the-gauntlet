@@ -22,7 +22,8 @@ static const u16 sCustomTitlesTrainerIds[] = {
     TRAINER_VICI_ASCENT,
     TRAINER_MARKTEAM1_ASCENT,
     TRAINER_MARKTEAM2_ASCENT,
-    TRAINER_MARKTEAM3_ASCENT
+    TRAINER_MARKTEAM3_ASCENT,
+    TRAINER_SURPRISE_ASCENT
 };
 
 static const u8 sCustomTitleWitchOfRuin[] = _("Witch of Ruin"); // Yuki
@@ -40,6 +41,7 @@ static const u8 sCustomTitleNuzlockeSaviour[] = _("Nuzlocke Saviour"); // Vici
 static const u8 sCustomTitleFirstEcho[] = _("First Echo of "); // Mark Team 1
 static const u8 sCustomTitleSecondEcho[] = _("Second Echo of "); // Mark Team 2
 static const u8 sCustomTitleFinalEcho[] = _("Legendary Echo of "); // Mark Team 3
+static const u8 sCustomTitleSurprise[] = _(""); // Surprise
 
 
 
@@ -59,7 +61,8 @@ static const u8 *sCustomTitles[] = {
     sCustomTitleNuzlockeSaviour,
     sCustomTitleFirstEcho,
     sCustomTitleSecondEcho,
-    sCustomTitleFinalEcho
+    sCustomTitleFinalEcho,
+    sCustomTitleSurprise
 };
 
 const u8 *GetCustomTrainerTitle(u16 trainerId)

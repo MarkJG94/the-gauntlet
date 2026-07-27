@@ -181,3 +181,48 @@ TheAbyss_Text_CosmoPostBattle:
 TheAbyss_Text_CosmoNeedTwoMons:
     .string "You need at least two POKeMON\n"
     .string "for this battle.$"
+
+TheAbyss_EventScript_Porygon2Heal1::
+    lock
+    faceplayer
+    msgbox TheAbyss_MyHealingNPC1_Text, MSGBOX_DEFAULT
+    special HealPlayerParty
+    msgbox TheAbyss_MyHealingNPC1_DoneText, MSGBOX_DEFAULT
+    release
+    end
+
+TheAbyss_MyHealingNPC1_Text:
+    .string "Oh... hello there friend!\n"
+    .string "Do you know where we are?\p"
+    .string "No? Well, I'd like to find out!\n"
+    .string "I am a Porygon2 helper robot!\p"
+    .string "I am version 1.0!, made by Mark!\n"
+    .string "I will heal your POKéMON!\p"
+    .string "Although I don't know how to get\n"
+    .string "out of this place, I will help you!\p"
+    .string "Maybe you can find more of my kind\n"
+    .string "around the castle to help you.\p"
+    .string "Allow me to heal your POKéMON now!$"
+
+TheAbyss_MyHealingNPC1_DoneText:
+    .string "All done! Good luck friend!$"
+
+TheAbyss_EventScript_Porygon2Heal2::
+    lock
+    faceplayer
+    msgbox TheAbyss_MyHealingNPC2_Text, MSGBOX_DEFAULT
+    special HealPlayerParty
+    msgbox TheAbyss_MyHealingNPC2_DoneText, MSGBOX_DEFAULT
+    release
+    end
+
+TheAbyss_MyHealingNPC2_Text:
+    .string "Hi there friend!\n"
+    .string "I am a Porygon2 helper robot!\p"
+    .string "I am version 1.0!\n"
+    .string "Mark made me to heal your POKéMON!\p"
+    .string "Allow me to heal your POKéMON now!$"
+
+TheAbyss_MyHealingNPC2_DoneText:
+    .string "All done! Good luck friend!$"
+

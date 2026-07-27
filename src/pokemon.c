@@ -5836,6 +5836,10 @@ u16 GetBattleBGM(void)
         if (!(gBattleTypeFlags & (BATTLE_TYPE_FRONTIER | BATTLE_TYPE_TRAINER_HILL))
             && opponentA == TRAINER_MARKTEAM3_ASCENT)
             return MUS_VS_RAYQUAZA;
+
+        if (!(gBattleTypeFlags & (BATTLE_TYPE_FRONTIER | BATTLE_TYPE_TRAINER_HILL))
+            && opponentA == TRAINER_SURPRISE_ASCENT)
+            return MUS_FOLLOW_ME;
             
 
         //////////////////
