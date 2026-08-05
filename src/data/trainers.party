@@ -1042,6 +1042,137 @@ Adamant Nature
 - Quick Attack
 - Endeavor
 
+=== TRAINER_KATIE_ELITE ===
+Name: Katie
+Class: Pike Queen
+Pic: Pike Queen
+Gender: Female
+Double Battle: No
+Music: Male
+AI: Smart Trainer / Check Bad Move / Ace Pokemon / Smart Tera / Check Viability
+Starting Status: Trick Room
+
+Togedemaru @ Heavy-Duty Boots
+Ability: Lightning Rod
+EVs: 252 HP / 8 SpA / 248 SpD
+Careful Nature
+- Wish
+- Spiky Shield
+- Iron Head
+- U-turn
+
+Glaceon @ Sitrus Berry
+Ability: Snow Cloak
+EVs: 252 HP / 252 SpA / 4 SpD 
+Timid Nature
+- Blizzard
+- Freeze-Dry
+- Mirror Coat
+- Barrier
+
+Sudowoodo @ Lum Berry
+Ability: Rock Head
+EVs: 252 HP / 252 Atk / 4 SpD
+Careful Nature
+- Head Smash
+- Submission
+- Stomping Tantrum
+- Double-Edge
+
+Maushold @ Iron Ball
+Ability: Technician
+EVs: 252 HP / 252 Atk / 4 SpD
+Adamant Nature
+- Population Bomb
+- Bullet Seed
+- Encore
+- Low Kick
+
+Dachsbun @ Leftovers
+Ability: Well-Baked Body
+EVs: 252 HP / 252 Def / 4 SpD
+Impish Nature
+- Play Rough
+- Body Press
+- Wish
+- Roar
+
+Wooloo @ Eviolite
+Ability: Fluffy
+EVs: 252 HP / 252 Def / 4 SpD
+Bold Nature
+- Extreme Evoboost
+- Extreme Speed
+
+=== TRAINER_DAVE_ELITE ===
+Name: Dave
+Class: Ace Trainer
+Pic: Psychic M
+Gender: Male
+Music: Cool
+Double Battle: No
+AI: Smart Trainer / Check Bad Move / Omniscient / Smart Tera / Check Viability
+Starting Status: Psychic Terrain
+
+Growlithe @ Eviolite
+Ability: Intimidate
+EVs: 160 HP / 252 Atk / 96 Spe
+Tera Type: Normal
+Adamant Nature
+- Curse
+- Extreme Speed
+- Flare Blitz
+- Morning Sun
+
+Mismagius @ Choice Scarf
+Ability: Levitate
+EVs: 252 SpA / 4 SpD / 252 Spe
+IVs: 0 Atk
+Timid Nature
+- Shadow Ball
+- Dazzling Gleam
+- Psychic
+- Trick
+
+Gengar @ Focus Sash
+Ability: Cursed Body
+EVs: 252 SpA / 4 SpD / 252 Spe
+IVs: 0 Atk
+Timid Nature
+- Toxic Spikes
+- Taunt
+- Destiny Bond
+- Sludge Bomb
+
+Venusaur @ Leftovers
+Ability: Overgrow
+EVs: 252 HP / 168 Def / 88 Spe
+Bold Nature
+- Giga Drain
+- Sludge Bomb
+- Knock Off
+- Synthesis
+
+Ninetales-Alola @ Icy Rock
+Ability: Snow Warning
+EVs: 252 HP / 4 SpD / 252 Spe
+Tera Type: Water
+Timid Nature
+- Aurora Veil
+- Freeze-Dry
+- Moonblast
+- Encore
+
+Ceruledge @ Life Orb
+Ability: Weak Armor
+EVs: 252 Atk / 4 SpD / 252 Spe
+Tera Type: Ghost
+Adamant Nature
+- Swords Dance
+- Bitter Blade
+- Shadow Sneak
+- Poltergeist
+
 
 === TRAINER_GABBY_AND_TY_1 ===
 Name: GABBY & TY

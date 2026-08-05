@@ -1864,3 +1864,7 @@ Text_PleaseVisitAgain:
 	.include "data/maps/SafeHaven/scripts.inc"
 
 	.include "data/maps/TheAscent/scripts.inc"
+
+	.include "data/maps/HallOfTheElite/scripts.inc"
+
+	.include "data/maps/ThePeak/scripts.inc"

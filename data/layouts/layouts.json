@@ -9383,6 +9383,26 @@
       "secondary_tileset": "gTileset_Cave",
       "border_filepath": "data/layouts/TheAscent/border.bin",
       "blockdata_filepath": "data/layouts/TheAscent/map.bin"
+    },
+    {
+      "id": "LAYOUT_HALL_OF_THE_ELITE",
+      "name": "HallOfTheElite_Layout",
+      "width": 21,
+      "height": 200,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_EliteFour",
+      "border_filepath": "data/layouts/HallOfTheElite/border.bin",
+      "blockdata_filepath": "data/layouts/HallOfTheElite/map.bin"
+    },
+    {
+      "id": "LAYOUT_THE_PEAK",
+      "name": "ThePeak_Layout",
+      "width": 41,
+      "height": 30,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_BattlePyramid",
+      "border_filepath": "data/layouts/ThePeak/border.bin",
+      "blockdata_filepath": "data/layouts/ThePeak/map.bin"
     }
   ]
 }

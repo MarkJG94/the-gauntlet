@@ -21,6 +21,15 @@
 #define TRAINER_MARKTEAM2_ASCENT             14
 #define TRAINER_MARKTEAM3_ASCENT             15
 #define TRAINER_SURPRISE_ASCENT              16
+#define TRAINER_KATIE_ELITE                  17
+#define TRAINER_DAVE_ELITE                   18
+#define TRAINER_GEORGE_ELITE                 19
+#define TRAINER_ZADE_ELITE                   20
+#define TRAINER_MATTHEW_ELITE                21
+#define TRAINER_MATT_ELITE                   22
+#define TRAINER_JACK_ELITE                   23
+#define TRAINER_CEIZOR_ELITE                 24
+#define TRAINER_CAMMY_ELITE                  25
 #define TRAINER_GABBY_AND_TY_1               51
 #define TRAINER_GABBY_AND_TY_2               52
 #define TRAINER_GABBY_AND_TY_3               53
