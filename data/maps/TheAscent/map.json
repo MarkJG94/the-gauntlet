@@ -192,6 +192,13 @@
       "elevation": 0,
       "dest_map": "MAP_THE_ASCENT",
       "dest_warp_id": "0"
+    },
+    {
+      "x": 4,
+      "y": 6,
+      "elevation": 0,
+      "dest_map": "MAP_HALL_OF_THE_ELITE",
+      "dest_warp_id": "0"
     }
   ],
   "coord_events": [],

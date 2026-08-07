@@ -2586,6 +2586,21 @@ static inline bool32 SetStartingSideStatus(u32 flag, enum BattleSide side, u32 m
     return FALSE;
 }
 
+static inline bool32 SetStartingWeather(u32 flag, u32 message, u32 anim, u16 duration)
+{
+    if (!(gBattleWeather & flag))
+    {
+        gBattleCommunication[MULTISTRING_CHOOSER] = message;
+        gBattleWeather = flag;
+        gBattleStruct->weatherDuration = duration;
+        gBattleScripting.animArg1 = anim;
+
+        return TRUE;
+    }
+
+    return FALSE;
+}
+
 static bool32 SetStartingHazardStatus(enum Hazards hazard, u32 targetSide, u8 layers, enum StartingStatusStringID messageId)
 {
     bool32 effect = FALSE;
@@ -2726,6 +2741,15 @@ bool32 TryFieldEffects(enum FieldEffectCases caseId)
                         &gFieldTimers.trickRoomTimer, gStartingStatuses.trickRoom ? 0 : 5);
             gStartingStatuses.trickRoomTemporary = gStartingStatuses.trickRoom = FALSE;
         }
+        else if (gStartingStatuses.gravity || gStartingStatuses.gravityTemporary)
+        {
+            effect = SetStartingFieldStatus(
+                        STATUS_FIELD_GRAVITY,
+                        B_MSG_SET_GRAVITY,
+                        0,
+                        &gFieldTimers.gravityTimer, gStartingStatuses.gravity ? 0 : 5);
+            gStartingStatuses.gravityTemporary = gStartingStatuses.gravity = FALSE;
+        }
         else if (gStartingStatuses.magicRoom || gStartingStatuses.magicRoomTemporary)
         {
             effect = SetStartingFieldStatus(
@@ -2823,6 +2847,22 @@ bool32 TryFieldEffects(enum FieldEffectCases caseId)
                         B_ANIM_SWAMP,
                         &gSideTimers[B_SIDE_OPPONENT].swampTimer, gStartingStatuses.swampOpponent ? 0 : 4);
             gStartingStatuses.swampOpponentTemporary = gStartingStatuses.swampOpponent = FALSE;
+        }
+        // Weather
+        else if (gStartingStatuses.hail || gStartingStatuses.hailTemporary)
+        {
+            effect = SetStartingWeather(B_WEATHER_HAIL, B_MSG_SET_HAIL, B_ANIM_HAIL_CONTINUES, gStartingStatuses.hail ? 0 : 5);
+            gStartingStatuses.hailTemporary = gStartingStatuses.hail = FALSE;
+        }
+        else if (gStartingStatuses.sandstorm || gStartingStatuses.sandstormTemporary)
+        {
+            effect = SetStartingWeather(B_WEATHER_SANDSTORM, B_MSG_SET_SANDSTORM, B_ANIM_SANDSTORM_CONTINUES, gStartingStatuses.sandstorm ? 0 : 5);
+            gStartingStatuses.sandstormTemporary = gStartingStatuses.sandstorm = FALSE;
+        }
+        else if (gStartingStatuses.fog || gStartingStatuses.fogTemporary)
+        {
+            effect = SetStartingWeather(B_WEATHER_FOG, B_MSG_SET_FOG, B_ANIM_FOG_CONTINUES, gStartingStatuses.fog ? 0 : 5);
+            gStartingStatuses.fogTemporary = gStartingStatuses.fog = FALSE;
         }
         // Hazards - Spikes
         else if (gStartingStatuses.spikesPlayerL1)

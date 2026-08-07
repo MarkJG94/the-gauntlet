@@ -56,7 +56,7 @@ static const u8 sCustomTitleFireMage[] = _("Fire Mage"); // Dave
 static const u8 sCustomTitleConstable[] = _("Constable"); // George
 static const u8 sCustomTitlePolishPisser[] = _("Polish Pisser"); // Zade
 static const u8 sCustomTitleItemLevelMaxxer[] = _("Item Level Maxxer"); // Matthew
-static const u8 sCustomTitleKPopStar[] = _("K-Pop Star"); // Matt
+static const u8 sCustomTitleKPopHairline[] = _("K-Pop Hairline"); // Matt
 static const u8 sCustomTitleVillageIdiot[] = _("Village Idiot"); // Jack
 static const u8 sCustomTitleSoupervisor[] = _("Soupervisor"); // Ceizor
 static const u8 sCustomTitleFoodKing[] = _("Food King"); // Cammy
@@ -87,7 +87,7 @@ static const u8 *sCustomTitles[] = {
     sCustomTitleConstable,
     sCustomTitlePolishPisser,
     sCustomTitleItemLevelMaxxer,
-    sCustomTitleKPopStar,
+    sCustomTitleKPopHairline,
     sCustomTitleVillageIdiot,
     sCustomTitleSoupervisor,
     sCustomTitleFoodKing

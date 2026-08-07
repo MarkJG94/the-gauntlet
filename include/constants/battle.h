@@ -761,6 +761,8 @@ enum FaintedActions
     F(STARTING_STATUS_PSYCHIC_TERRAIN_TEMPORARY,      psychicTerrainTemporary,    (u32, 1)) /* Psychic Terrain Temporary (5 turns) */      \
     F(STARTING_STATUS_TRICK_ROOM,                     trickRoom,                  (u32, 1)) /* Trick Room (Permanent) */                   \
     F(STARTING_STATUS_TRICK_ROOM_TEMPORARY,           trickRoomTemporary,         (u32, 1)) /* Trick Room Temporary (5 turns) */           \
+    F(STARTING_STATUS_GRAVITY,                        gravity,                    (u32, 1)) /* Gravity (Permanent) */                      \
+    F(STARTING_STATUS_GRAVITY_TEMPORARY,              gravityTemporary,           (u32, 1)) /* Gravity Temporary (5 turns) */              \
     F(STARTING_STATUS_MAGIC_ROOM,                     magicRoom,                  (u32, 1)) /* Magic Room (Permanent) */                   \
     F(STARTING_STATUS_MAGIC_ROOM_TEMPORARY,           magicRoomTemporary,         (u32, 1)) /* Magic Room Temporary (5 turns) */           \
     F(STARTING_STATUS_WONDER_ROOM,                    wonderRoom,                 (u32, 1)) /* Wonder Room (Permanent) */                  \
@@ -781,6 +783,13 @@ enum FaintedActions
     F(STARTING_STATUS_SWAMP_PLAYER_TEMPORARY,         swampPlayerTemporary,       (u32, 1)) /* Swamp Player Temporary (4 turns) */         \
     F(STARTING_STATUS_SWAMP_OPPONENT,                 swampOpponent,              (u32, 1)) /* Swamp Opponent (Permanent) */               \
     F(STARTING_STATUS_SWAMP_OPPONENT_TEMPORARY,       swampOpponentTemporary,     (u32, 1)) /* Swamp Opponent Temporary (4 turns) */       \
+    /* Weather */                                                                                                                          \
+    F(STARTING_STATUS_HAIL,                           hail,                       (u32, 1)) /* Hail (Permanent) */                         \
+    F(STARTING_STATUS_HAIL_TEMPORARY,                 hailTemporary,              (u32, 1)) /* Hail Temporary (5 turns) */                \
+    F(STARTING_STATUS_SANDSTORM,                      sandstorm,                  (u32, 1)) /* Sandstorm (Permanent) */                    \
+    F(STARTING_STATUS_SANDSTORM_TEMPORARY,            sandstormTemporary,         (u32, 1)) /* Sandstorm Temporary (5 turns) */            \
+    F(STARTING_STATUS_FOG,                            fog,                        (u32, 1)) /* Fog (Permanent) */                          \
+    F(STARTING_STATUS_FOG_TEMPORARY,                  fogTemporary,               (u32, 1)) /* Fog Temporary (5 turns) */                 \
     /* Hazards */                                                                                                                          \
     F(STARTING_STATUS_SPIKES_PLAYER_L1,               spikesPlayerL1,             (u32, 1)) /* Spikes Player Layer 1 */                    \
     F(STARTING_STATUS_SPIKES_PLAYER_L2,               spikesPlayerL2,             (u32, 1)) /* Spikes Player Layer 2 */                    \
