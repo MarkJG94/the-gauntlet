@@ -65,3 +65,6 @@ tools/aif2pcm/aif2pcm
 *.smolTM
 __pycache__
 .map_version
+Decisive Battle! (Pokémon League).mp3
+mus_mark_battle.mp3
+.gitignore

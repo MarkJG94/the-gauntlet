@@ -58,6 +58,9 @@ const u16 gTrainerPalette_Interviewer[] = INCBIN_U16("graphics/trainers/front_pi
 const u32 gTrainerFrontPic_Dusclops[] = INCBIN_U32("graphics/trainers/front_pics/dusclops.4bpp.smol");
 const u16 gTrainerPalette_Dusclops[] = INCBIN_U16("graphics/trainers/front_pics/dusclops.gbapal");
 
+const u32 gTrainerFrontPic_Porygon2[] = INCBIN_U32("graphics/trainers/front_pics/porygon2.4bpp.smol");
+const u16 gTrainerPalette_Porygon2[] = INCBIN_U16("graphics/trainers/front_pics/porygon2.gbapal");
+
 const u16 gTrainerPalette_AquaLeaderArchieGrayscale[] = INCBIN_U16("graphics/trainers/front_pics/aqua_leader_archie_grayscale.gbapal");
 
 const u32 gTrainerFrontPic_TuberF[] = INCBIN_U32("graphics/trainers/front_pics/tuber_f.4bpp.smol");
@@ -522,6 +525,7 @@ const struct TrainerSprite gTrainerSprites[] =
     TRAINER_SPRITE(TRAINER_PIC_FRONT_RUIN_MANIAC, gTrainerFrontPic_RuinManiac, gTrainerPalette_RuinManiac),
     TRAINER_SPRITE(TRAINER_PIC_FRONT_INTERVIEWER, gTrainerFrontPic_Interviewer, gTrainerPalette_Interviewer),
     TRAINER_SPRITE(TRAINER_PIC_FRONT_DUSCLOPS, gTrainerFrontPic_Dusclops, gTrainerPalette_Dusclops),
+    TRAINER_SPRITE(TRAINER_PIC_FRONT_PORYGON2, gTrainerFrontPic_Porygon2, gTrainerPalette_Porygon2),
     TRAINER_SPRITE(TRAINER_PIC_FRONT_AQUA_LEADER_ARCHIE_GRAYSCALE, gTrainerFrontPic_AquaLeaderArchie, gTrainerPalette_AquaLeaderArchieGrayscale),
     TRAINER_SPRITE(TRAINER_PIC_FRONT_TUBER_F, gTrainerFrontPic_TuberF, gTrainerPalette_TuberF),
     TRAINER_SPRITE(TRAINER_PIC_FRONT_TUBER_M, gTrainerFrontPic_TuberM, gTrainerPalette_TuberM),

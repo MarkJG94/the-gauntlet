@@ -22070,7 +22070,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
             "Normal Dynamax attack.\n"
             "Lowers foe's Speed stat."),
         .effect = EFFECT_MAX_MOVE,
-        .power = 1,
+        .power = 100,
         .type = TYPE_NORMAL,
         .accuracy = 0,
         .pp = 10,
@@ -22290,9 +22290,9 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
             "Ground Dynamax attack.\n"
             "Boosts ally Sp. Def stats."),
         .effect = EFFECT_MAX_MOVE,
-        .power = 1,
+        .power = 100,
         .type = TYPE_GROUND,
-        .accuracy = 0,
+        .accuracy = 100,
         .pp = 10,
         .target = TARGET_SELECTED,
         .priority = 0,

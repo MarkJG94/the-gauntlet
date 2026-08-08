@@ -376,7 +376,7 @@
 #define MUS_ABNORMAL_WEATHER        443 // MUS_OOAME            // Replaces MUS_WEATHER_KYOGRE from R/S.
 #define MUS_WEATHER_GROUDON         444 // MUS_HIDERI           // Unused, from R/S.
 #define MUS_SOOTOPOLIS              445 // MUS_RUNECITY
-#define MUS_CONTEST_RESULTS         446 // MUS_CON_K
+#define MUS_CONTEST_RESULTS         446 // MUS_CON_ 
 #define MUS_HALL_OF_FAME_ROOM       447 // MUS_EIKOU_R
 #define MUS_TRICK_HOUSE             448 // MUS_KARAKURI
 #define MUS_ENCOUNTER_TWINS         449 // MUS_HUTAGO

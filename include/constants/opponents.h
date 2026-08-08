@@ -30,6 +30,8 @@
 #define TRAINER_JACK_ELITE                   23
 #define TRAINER_CEIZOR_ELITE                 24
 #define TRAINER_CAMMY_ELITE                  25
+#define TRAINER_PORYGON2_PEAK                26
+#define TRAINER_MARK_PEAK                    27
 #define TRAINER_GABBY_AND_TY_1               51
 #define TRAINER_GABBY_AND_TY_2               52
 #define TRAINER_GABBY_AND_TY_3               53

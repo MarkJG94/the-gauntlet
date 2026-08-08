@@ -381,7 +381,7 @@ SINGLE_BATTLE_TEST("Embargo doesn't prevent Primal Reversion")
         ANIMATION(ANIM_TYPE_MOVE, MOVE_BATON_PASS, opponent);
         MESSAGE("2 sent out Groudon!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_PRIMAL_REVERSION, opponent);
-        MESSAGE("The opposing Groudon's Primal Reversion! It reverted to its primal state!");
+        MESSAGE("The opposing Groudon's Primal Reversion! It reverted to its primal form!");
         ABILITY_POPUP(opponent);
         // Turn 3
         MESSAGE("The opposing Groudon used Fling!");

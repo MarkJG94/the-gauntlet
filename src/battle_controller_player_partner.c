@@ -329,8 +329,7 @@ static void PlayerPartnerHandleChoosePokemon(enum BattlerId battler)
             for (chosenMonId = firstId; chosenMonId < PARTY_SIZE; chosenMonId++)
             {
                 if (GetMonData(&gPlayerParty[chosenMonId], MON_DATA_HP) != 0
-                    && chosenMonId != gBattlerPartyIndexes[battler1]
-                    && chosenMonId != gBattlerPartyIndexes[battler2])
+                    && !IsPartyMonOnFieldOrChosenToSwitch(chosenMonId, battler1, battler2))
                 {
                     break;
                 }

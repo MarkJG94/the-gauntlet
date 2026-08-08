@@ -593,8 +593,7 @@ static void OpponentHandleChoosePokemon(enum BattlerId battler)
             for (chosenMonId = firstId; chosenMonId < lastId; chosenMonId++)
             {
                 if (IsValidForBattle(&gEnemyParty[chosenMonId])
-                 && chosenMonId != gBattlerPartyIndexes[battler1]
-                 && chosenMonId != gBattlerPartyIndexes[battler2])
+                 && !IsPartyMonOnFieldOrChosenToSwitch(chosenMonId, battler1, battler2))
                     break;
             }
         }

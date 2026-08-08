@@ -10971,12 +10971,12 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
 #if P_FAMILY_SPHEAL
     [SPECIES_SPHEAL] =
     {
-        .baseHP        = 70,
-        .baseAttack    = 40,
-        .baseDefense   = 50,
-        .baseSpeed     = 25,
-        .baseSpAttack  = 55,
-        .baseSpDefense = 50,
+        .baseHP        = 255,
+        .baseAttack    = 255,
+        .baseDefense   = 255,
+        .baseSpeed     = 255,
+        .baseSpAttack  = 255,
+        .baseSpDefense = 255,
         .types = MON_TYPES(TYPE_ICE, TYPE_WATER),
         .catchRate = 255,
         .expYield = (P_UPDATED_EXP_YIELDS >= GEN_5) ? 58 : 75,

@@ -5841,6 +5841,49 @@ u16 GetBattleBGM(void)
             && opponentA == TRAINER_SURPRISE_ASCENT)
             return MUS_FOLLOW_ME;
             
+        if (!(gBattleTypeFlags & (BATTLE_TYPE_FRONTIER | BATTLE_TYPE_TRAINER_HILL))
+            && opponentA == TRAINER_KATIE_ELITE)
+            return MUS_POKE_CENTER;
+
+        if (!(gBattleTypeFlags & (BATTLE_TYPE_FRONTIER | BATTLE_TYPE_TRAINER_HILL))
+            && opponentA == TRAINER_DAVE_ELITE)
+            return MUS_VS_RIVAL;
+
+        if (!(gBattleTypeFlags & (BATTLE_TYPE_FRONTIER | BATTLE_TYPE_TRAINER_HILL))
+            && opponentA == TRAINER_GEORGE_ELITE)
+            return MUS_TRICK_HOUSE;
+
+        if (!(gBattleTypeFlags & (BATTLE_TYPE_FRONTIER | BATTLE_TYPE_TRAINER_HILL))
+            && opponentA == TRAINER_ZADE_ELITE)
+            return MUS_CAVE_OF_ORIGIN;
+
+        if (!(gBattleTypeFlags & (BATTLE_TYPE_FRONTIER | BATTLE_TYPE_TRAINER_HILL))
+            && opponentA == TRAINER_MATTHEW_ELITE)
+            return MUS_RG_VS_GYM_LEADER;
+
+        if (!(gBattleTypeFlags & (BATTLE_TYPE_FRONTIER | BATTLE_TYPE_TRAINER_HILL))
+            && opponentA == TRAINER_MATT_ELITE)
+            return MUS_SURF;
+
+        if (!(gBattleTypeFlags & (BATTLE_TYPE_FRONTIER | BATTLE_TYPE_TRAINER_HILL))
+            && opponentA == TRAINER_JACK_ELITE)
+            return MUS_RG_VS_DEOXYS;
+
+        if (!(gBattleTypeFlags & (BATTLE_TYPE_FRONTIER | BATTLE_TYPE_TRAINER_HILL))
+            && opponentA == TRAINER_CEIZOR_ELITE)
+            return MUS_VS_AQUA_MAGMA_LEADER;
+
+        if (!(gBattleTypeFlags & (BATTLE_TYPE_FRONTIER | BATTLE_TYPE_TRAINER_HILL))
+            && opponentA == TRAINER_CAMMY_ELITE)
+            return MUS_VS_CHAMPION;
+
+        if (!(gBattleTypeFlags & (BATTLE_TYPE_FRONTIER | BATTLE_TYPE_TRAINER_HILL))
+            && opponentA == TRAINER_PORYGON2_PEAK)
+            return MUS_VS_REGI;
+
+        if (!(gBattleTypeFlags & (BATTLE_TYPE_FRONTIER | BATTLE_TYPE_TRAINER_HILL))
+            && opponentA == TRAINER_MARK_PEAK)
+            return MUS_RG_VS_CHAMPION;
 
         //////////////////
         if (gBattleTypeFlags & BATTLE_TYPE_FRONTIER)
