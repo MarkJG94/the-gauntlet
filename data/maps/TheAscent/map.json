@@ -103,7 +103,7 @@
       "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "1",
       "script": "TheAscent_EventScript_MarkTeam1",
-      "flag": "0"
+      "flag": "FLAG_HIDE_MARKTEAM1_ASCENT"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_TRICK_HOUSE_STATUE",
@@ -116,7 +116,7 @@
       "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "1",
       "script": "TheAscent_EventScript_MarkTeam2",
-      "flag": "0"
+      "flag": "FLAG_HIDE_MARKTEAM2_ASCENT"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_TRICK_HOUSE_STATUE",
@@ -129,7 +129,7 @@
       "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "1",
       "script": "TheAscent_EventScript_MarkTeam3",
-      "flag": "0"
+      "flag": "FLAG_HIDE_MARKTEAM3_ASCENT"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_UNUSED_PORYGON2_DOLL",

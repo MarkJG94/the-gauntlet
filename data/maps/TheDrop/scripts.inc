@@ -45,5 +45,10 @@ TheDrop_Movement_PlayerStepForward:
 	step_end
 
 TheDrop_Text_NoWayOut:
-	.string "There is only one way out.\p" 
-    .string "Good luck.$"
+	.string "Hello? Hello!?\p"
+    .string "It's me, Porygon2!\p"
+    .string "How far did you fall?\n"
+    .string "I can't see you anywhere!\p"
+    .string "Try and find a way out,\n"
+    .string "and be careful!\p" 
+    .string "Who knows what's down there?$"

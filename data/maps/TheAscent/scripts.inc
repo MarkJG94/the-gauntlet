@@ -1,27 +1,5 @@
 TheAscent_MapScripts::
-	map_script MAP_SCRIPT_ON_RESUME, TheAscent_OnResume
 	.byte 0
-
-TheAscent_OnResume::
-	checktrainerflag TRAINER_MARKTEAM1_ASCENT
-	goto_if TRUE, TheAscent_OnResume_Team1Beaten
-	goto TheAscent_OnResume_CheckTeam2
-TheAscent_OnResume_Team1Beaten:
-	setobjectxyperm 7, 15, 21
-TheAscent_OnResume_CheckTeam2:
-	checktrainerflag TRAINER_MARKTEAM2_ASCENT
-	goto_if TRUE, TheAscent_OnResume_Team2Beaten
-	goto TheAscent_OnResume_CheckTeam3
-TheAscent_OnResume_Team2Beaten:
-	setobjectxyperm 8, 13, 16
-TheAscent_OnResume_CheckTeam3:
-	checktrainerflag TRAINER_MARKTEAM3_ASCENT
-	goto_if TRUE, TheAscent_OnResume_Team3Beaten
-	goto TheAscent_OnResume_End
-TheAscent_OnResume_Team3Beaten:
-	setobjectxyperm 9, 15, 12
-TheAscent_OnResume_End:
-	end
 
 TheAscent_EventScript_Ben::
 	trainerbattle_double TRAINER_BEN_ASCENT, TheAscent_Text_BenIntro, TheAscent_Text_BenDefeat, TheAscent_Text_BenNeedTwoMons
@@ -92,13 +70,10 @@ TheAscent_Text_DusclopsSightExclaim:
 TheAscent_EventScript_MarkTeam1::
 	trainerbattle_single TRAINER_MARKTEAM1_ASCENT, TheAscent_Text_MarkTeam1Intro, TheAscent_Text_MarkTeam1Defeat
 	msgbox TheAscent_Text_MarkTeam1PostBattle, MSGBOX_AUTOCLOSE
-	checkflag FLAG_MARKTEAM1_ASCENT_MOVED
-	goto_if TRUE, TheAscent_EventScript_MarkTeam1_End
-	setflag FLAG_MARKTEAM1_ASCENT_MOVED
-	applymovement 7, Common_Movement_WalkRight
-	waitmovement 0
-	setobjectxyperm 7, 15, 21
-TheAscent_EventScript_MarkTeam1_End:
+	playse SE_M_EXPLOSION
+	waitse
+	removeobject 7
+	setflag FLAG_HIDE_MARKTEAM1_ASCENT
 	end
 
 TheAscent_Text_MarkTeam1Intro:
@@ -114,13 +89,10 @@ TheAscent_Text_MarkTeam1PostBattle:
 TheAscent_EventScript_MarkTeam2::
 	trainerbattle_double TRAINER_MARKTEAM2_ASCENT, TheAscent_Text_MarkTeam2Intro, TheAscent_Text_MarkTeam2Defeat, TheAscent_Text_MarkTeam2NeedTwoMons
 	msgbox TheAscent_Text_MarkTeam2PostBattle, MSGBOX_AUTOCLOSE
-	checkflag FLAG_MARKTEAM2_ASCENT_MOVED
-	goto_if TRUE, TheAscent_EventScript_MarkTeam2_End
-	setflag FLAG_MARKTEAM2_ASCENT_MOVED
-	applymovement 8, Common_Movement_WalkLeft
-	waitmovement 0
-	setobjectxyperm 8, 13, 16
-TheAscent_EventScript_MarkTeam2_End:
+	playse SE_M_EXPLOSION
+	waitse
+	removeobject 8
+	setflag FLAG_HIDE_MARKTEAM2_ASCENT
 	end
 
 TheAscent_Text_MarkTeam2Intro:
@@ -139,13 +111,10 @@ TheAscent_Text_MarkTeam2PostBattle:
 TheAscent_EventScript_MarkTeam3::
 	trainerbattle_double TRAINER_MARKTEAM3_ASCENT, TheAscent_Text_MarkTeam3Intro, TheAscent_Text_MarkTeam3Defeat, TheAscent_Text_MarkTeam3NeedTwoMons
 	msgbox TheAscent_Text_MarkTeam3PostBattle, MSGBOX_AUTOCLOSE
-	checkflag FLAG_MARKTEAM3_ASCENT_MOVED
-	goto_if TRUE, TheAscent_EventScript_MarkTeam3_End
-	setflag FLAG_MARKTEAM3_ASCENT_MOVED
-	applymovement 9, Common_Movement_WalkRight
-	waitmovement 0
-	setobjectxyperm 9, 15, 12
-TheAscent_EventScript_MarkTeam3_End:
+	playse SE_M_EXPLOSION
+	waitse
+	removeobject 9
+	setflag FLAG_HIDE_MARKTEAM3_ASCENT
 	end
 
 TheAscent_Text_MarkTeam3Intro:

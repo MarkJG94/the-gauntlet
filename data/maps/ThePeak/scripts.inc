@@ -31,6 +31,12 @@ ThePeak_Text_Porygon2SelfDestruct::
 ThePeak_EventScript_Mark::
     trainerbattle_double TRAINER_MARK_PEAK, ThePeak_Text_MarkIntro, ThePeak_Text_MarkDefeat, ThePeak_Text_MarkNeedTwoMons
     msgbox ThePeak_Text_MarkPostBattle, MSGBOX_AUTOCLOSE
+    playse SE_M_EXPLOSION
+    waitse
+    removeobject 1
+    setflag FLAG_HIDE_THE_PEAK_MARK
+    special CB2_StartCreditsSequence
+    waitstate
     end
 
 ThePeak_Text_MarkIntro::

@@ -48,9 +48,7 @@ GauntletEntrance_Movement_Porygon2MoveAside:
 
 GauntletEntrance_Text_Porygon2Intro:
 	.string "BEEP! The Poke Ball beside me\n"
-    .string "can generate POKeMON.\p"
-	.string "The left PC is your POKeMON BOX, and\n"
-	.string "the right PC is an ITEM SHOP.$"
+    .string "can generate POKeMON.$"
 
 GauntletEntrance_Text_Porygon2Warning:
 	.string "WARNING! Once you enter the gauntlet,\n"
